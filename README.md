@@ -1,17 +1,29 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulo 1
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 y 2
 
-Simulador narrativo y de continuidad para el primer capítulo (*Light and Shadow*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los dos primeros capítulos (*Light and Shadow* y *Bloody Reunion*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los siete segmentos clave del Capítulo 1:
-1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio.
-2. `02_cobranza`: Introducción de Ichiban Kasuga adulto, Mitsuo y la primera cobranza a Ushio.
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los trece segmentos clave de los Capítulos 1 y 2:
+
+### Capítulo 1: Light and Shadow (1977 - 2001)
+1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
+2. `02_cobranza`: Introducción de Ichiban Kasuga adulto, Mitsuo y la primera cobranza a Ushio (2000).
 3. `03_encargo_urgente`: El favor de Michiyo en Shangri-La y el encuentro en la calle.
 4. `04_lo_que_se_debe`: La deuda de Koji Hiratsuka en Public Park 3 y la decisión del dinero.
 5. `05_el_joven_maestro`: Acompañar a Masato Arakawa al club nocturno y la revelación privada.
 6. `06_lo_que_nos_une`: La oficina Arakawa, la cena compartida y los orígenes de ambos protagonistas.
-7. `07_el_precio`: La mañana del incidente, el ataque de los Sakaki, la petición de Arakawa y la entrada en prisión.
+7. `07_el_precio`: La mañana del incidente (2001), ataque Sakaki, la petición de Arakawa y la entrada en prisión.
+
+### Capítulo 2: Bloody Reunion (2019)
+8. `08_liberacion`: Liberación de Ichiban tras 18 años, soledad y abordaje del ex-detective Koichi Adachi.
+9. `09_el_nuevo_kamurocho`: Retorno al barrio transformado y descubrimiento de la ocupación de la Alianza Omi.
+10. `10_rescate_en_la_calle`: Rescate de Nick Ogata de los extorsionadores y unión formal de Adachi al grupo.
+11. `11_los_bajos_fondos`: Infiltración a través de los conductos subterráneos de alcantarillado.
+12. `12_el_guantelete`: Asalto a la planta ejecutiva de la Omi y combate de jefe contra Jo Sawashiro.
+13. `13_reunion_sangrienta`: Cara a cara con Masumi Arakawa, el disparo a quemarropa y el rescate de Yu Nanba en Yokohama.
+
+---
 
 ## Requisitos
 
@@ -23,7 +35,7 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 
 ## Tutorial: Servidor Web e Interfaz Gráfica (Sinatra)
 
-El proyecto incluye un dashboard web interactivo construido sobre **Sinatra** que permite ejecutar episodios desde el navegador, inspeccionar eventos y consultar los reportes Markdown renderizados en HTML.
+El proyecto incluye un dashboard web interactivo construido sobre **Sinatra** que permite ejecutar episodios desde el navegador, inspeccionar eventos y consultar los reportes Markdown renderizados en HTML agrupados por capítulo.
 
 ### 1. Iniciar el servidor
 
@@ -40,7 +52,7 @@ ruby -Ilib bin/servidor
 Por defecto, Sinatra se iniciará en el puerto **`4567`**:
 ```text
 ======================================================================
-  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULO 1)
+  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 Y 2)
   Servidor Web Sinatra activo en: http://localhost:4567
 ======================================================================
 Presione Ctrl+C para detener el servidor.
@@ -58,11 +70,11 @@ PORT=8080 bin/servidor
    ```text
    http://localhost:4567
    ```
-3. Verás el **Dashboard del Capítulo 1** con la estética urbana inspirada en Kamurocho.
+3. Verás el **Dashboard de los Capítulos 1 y 2** con la estética urbana inspirada en Kamurocho y Yokohama.
 
 ### 3. Funcionalidades del Dashboard
 
-- **Catálogo lateral:** Selecciona cualquiera de los siete episodios (`01` a `07`) para ver su sinopsis y contexto.
+- **Catálogo lateral por capítulos:** Selecciona cualquiera de los trece episodios (`01` a `13`) para ver su sinopsis y contexto.
 - **Botón `▶ Ejecutar Episodio`:** Ejecuta el escenario seleccionado de forma determinista y despliega:
   - **Estado Final del Mundo:** Ubicación exacta, periodo temporal, saldo en yenes (¥), inventario de ítems y banderas booleanas activas.
   - **Línea de Tiempo de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
@@ -75,11 +87,12 @@ PORT=8080 bin/servidor
 El runner de línea de comandos se encuentra en `bin/episodio`:
 
 ```bash
-# Ejecutar un episodio por su identificador (01 a 07)
+# Ejecutar cualquier episodio por su identificador (01 a 13)
 ruby -Ilib bin/episodio 01
-ruby -Ilib bin/episodio 02
+ruby -Ilib bin/episodio 08
+ruby -Ilib bin/episodio 13
 
-# Ver ayuda y catálogo de episodios
+# Ver ayuda y catálogo completo
 ruby -Ilib bin/episodio --help
 ```
 
@@ -98,7 +111,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (46 tests, 306 aserciones)
+# Ejecutar todas las pruebas (67 tests, 475 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -109,6 +122,7 @@ ruby -Ilib -Itest test/test_scene.rb
 ruby -Ilib -Itest test/test_dispatcher.rb
 ruby -Ilib -Itest test/test_web_app.rb
 ruby -Ilib -Itest test/test_episode_continuity.rb
+ruby -Ilib -Itest test/test_chapter2_continuity.rb
 ```
 
 ---
@@ -122,14 +136,16 @@ ruby -Ilib -Itest test/test_episode_continuity.rb
 ├── BITACORA.md                        # Bitácora detallada del proyecto y registro histórico
 ├── Gemfile                            # Especificación de dependencias
 ├── Rakefile                           # Tarea de automatización rake test
+├── config.ru                          # Entrypoint Rack para despliegue
+├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable
+│   ├── episodio                       # Runner CLI ejecutable (01 a 13)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 35 documentos (briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 65 documentos (ep01 a ep13: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest
+└── test/                              # Suite de pruebas Minitest (67 tests)
 ```

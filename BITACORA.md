@@ -168,16 +168,58 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 9: Capítulo 2 — "Bloody Reunion" (Episodios 08 a 13)
+- **Objetivo:** Extender la arquitectura del laboratorio narrativo para cubrir íntegramente el Capítulo 2 de *Yakuza: Like a Dragon*, dividiéndolo en 6 episodios canónicos que narran la salida de prisión de Ichiban Kasuga en 2019 tras 18 años, el descubrimiento de Kamurocho bajo la Omi Alliance, la alianza con Koichi Adachi, la infiltración de los bajos fondos y el reencuentro dramático con Masumi Arakawa.
+- **Episodios implementados:**
+  1. **Episodio 08 (`08_liberacion` - "18 años después"):**
+     - Liberación en 2019 tras cumplir 18 años (esperaba 15). Nadie de la familia Arakawa lo espera en la puerta salvo el detective Koichi Adachi. Emboscada de matones callejeros superada.
+     - Documentación: `docs/episodios/ep08_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep08.rb`.
+     - Test: `test/test_scenario_ep08.rb`.
+  2. **Episodio 09 (`09_el_nuevo_kamurocho` - "La caída del clan Tojo"):**
+     - Kamurocho bajo la hegemonía de la Omi Alliance de Kansai. Visita a la antigua oficina de la familia Arakawa desierta. Combate contra patrulla de la Omi y hallazgo de la pista de la reunión cumbre en Shangri-La.
+     - Documentación: `docs/episodios/ep09_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep09.rb`.
+     - Test: `test/test_scenario_ep09.rb`.
+  3. **Episodio 10 (`10_rescate_en_la_calle` - "Alianza de marginados"):**
+     - Rescate de Nick Ogata frente a extorsionadores. Obtención de la tarjeta de contacto de Nick (`:nick_ogata_card`). Pacto formal de grupo con Adachi como compañero de combate permanente (`adachi.party_member = true`).
+     - Documentación: `docs/episodios/ep10_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep10.rb`.
+     - Test: `test/test_scenario_ep10.rb`.
+  4. **Episodio 11 (`11_los_bajos_fondos` - "Infiltración por las cloacas"):**
+     - Infiltración a través de los túneles subterráneos de Kamurocho para burlar el cordón policial y de la Omi. Desactivación de guardias y apertura de la escotilla de mantenimiento hacia el sótano del edificio de la reunión.
+     - Documentación: `docs/episodios/ep11_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep11.rb`.
+     - Test: `test/test_scenario_ep11.rb`.
+  5. **Episodio 12 (`12_el_guantelete` - "El enfrentamiento con Sawashiro"):**
+     - Asalto a la planta ejecutiva. Duelo de jefes contra Jo Sawashiro, ahora capitán de la Omi Alliance. Victoria táctica de Ichiban y Adachi, desbloqueando el acceso directo a la sala privada de Arakawa.
+     - Documentación: `docs/episodios/ep12_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep12.rb`.
+     - Test: `test/test_scenario_ep12.rb`.
+  6. **Episodio 13 (`13_reunion_sangrienta` - "Reunión sangrienta y despertar en Yokohama"):**
+     - Audiencia con Masumi Arakawa en la sala privada. Reacción fría de Arakawa, quien le dispara a quemarropa en el pecho. Ichiban es dado por muerto y arrojado al basurero de Isezaki Ijincho (Yokohama). Rescate quirúrgico de urgencia por el exmédico indigente Yu Nanba.
+     - Evento de frontera: `story.chapter_boundary` con `chapter: 2`, `status: :concluded`, `next: :chapter_3`.
+     - Documentación: `docs/episodios/ep13_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep13.rb`.
+     - Test: `test/test_scenario_ep13.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 2:**
+  - `test/test_chapter2_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep07 hasta el Ep13, verificando inventarios, estados de salud, alianzas y el clímax dramático.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `13`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulo 1 y Capítulo 2.
+  - Suite de pruebas ejecutada al 100% con éxito: **67 tests, 475 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
 |---|---|---|
-| **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas de NERV/SIEM | Evitar distorsiones conceptuales y respetar la narrativa de drama urbano de Yakuza. |
+| **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
-| **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso) | El resultado trágico de la historia (ingreso en prisión en el ep 07) no es un fallo técnico. |
+| **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | El desenlace trágico de la historia (ingreso en prisión en el ep 07 o el disparo en el ep 13) no es un fallo técnico. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de carácter de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la entrega a la comisaría (Capítulo 1) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 2 en adelante. |
+| **Límite Canónico** | Fin cerrado en el despertar en Yokohama junto a Nanba (Capítulo 2) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 3 en adelante. |
 
 ---
 
@@ -186,21 +228,28 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ```text
 07 - like a dragon/
 ├── AGENTS.md                                # Reglas operativas y contratos del simulador
-├── README.md                                # Documentación de uso, instalación y tests
+├── README.md                                # Documentación de uso, servidor web Sinatra y tests
 ├── BITACORA.md                              # Este documento (registro histórico completo)
-├── Gemfile                                  # Configuración de dependencias (Rake, Minitest)
+├── Gemfile                                  # Configuración de dependencias (Rake, Minitest, Sinatra)
 ├── Rakefile                                 # Tarea por defecto rake test
 ├── bin/
-│   └── episodio                             # Runner CLI ejecutable (IDs 01..07)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..13)
+│   └── servidor_web                         # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 35 documentos (5 por cada episodio)
-│       ├── ep01_aar.md, ep01_briefing.md, ep01_escenas.md, ep01_lab.md, ep01_mecanicas.md
-│       ├── ep02_aar.md, ep02_briefing.md, ep02_escenas.md, ep02_lab.md, ep02_mecanicas.md
-│       ├── ep03_aar.md, ep03_briefing.md, ep03_escenas.md, ep03_lab.md, ep03_mecanicas.md
-│       ├── ep04_aar.md, ep04_briefing.md, ep04_escenas.md, ep04_lab.md, ep04_mecanicas.md
-│       ├── ep05_aar.md, ep05_briefing.md, ep05_escenas.md, ep05_lab.md, ep05_mecanicas.md
-│       ├── ep06_aar.md, ep06_briefing.md, ep06_escenas.md, ep06_lab.md, ep06_mecanicas.md
-│       └── ep07_aar.md, ep07_briefing.md, ep07_escenas.md, ep07_lab.md, ep07_mecanicas.md
+│   └── episodios/                           # 65 documentos (5 por cada uno de los 13 episodios)
+│       ├── ep01_aar.md ... ep01_mecanicas.md
+│       ├── ep02_aar.md ... ep02_mecanicas.md
+│       ├── ep03_aar.md ... ep03_mecanicas.md
+│       ├── ep04_aar.md ... ep04_mecanicas.md
+│       ├── ep05_aar.md ... ep05_mecanicas.md
+│       ├── ep06_aar.md ... ep06_mecanicas.md
+│       ├── ep07_aar.md ... ep07_mecanicas.md
+│       ├── ep08_aar.md ... ep08_mecanicas.md
+│       ├── ep09_aar.md ... ep09_mecanicas.md
+│       ├── ep10_aar.md ... ep10_mecanicas.md
+│       ├── ep11_aar.md ... ep11_mecanicas.md
+│       ├── ep12_aar.md ... ep12_mecanicas.md
+│       └── ep13_aar.md ... ep13_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -208,16 +257,21 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 7 episodios
+│       ├── manifest.rb                      # Catálogo inmutable de los 13 episodios (Cap 1 y Cap 2)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
+│       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
-│           ├── ep01.rb                      # 01_origen
-│           ├── ep02.rb                      # 02_cobranza
-│           ├── ep03.rb                      # 03_encargo_urgente
-│           ├── ep04.rb                      # 04_lo_que_se_debe
-│           ├── ep05.rb                      # 05_el_joven_maestro
-│           ├── ep06.rb                      # 06_lo_que_nos_une
-│           └── ep07.rb                      # 07_el_precio
+│           ├── ep01.rb ... ep07.rb          # Cap 1: 01_origen hasta 07_el_precio
+│           ├── ep08.rb                      # Cap 2: 08_liberacion
+│           ├── ep09.rb                      # Cap 2: 09_el_nuevo_kamurocho
+│           ├── ep10.rb                      # Cap 2: 10_rescate_en_la_calle
+│           ├── ep11.rb                      # Cap 2: 11_los_bajos_fondos
+│           ├── ep12.rb                      # Cap 2: 12_el_guantelete
+│           └── ep13.rb                      # Cap 2: 13_reunion_sangrienta
+├── views/                                   # Vistas ERB para interfaz web Sinatra
+│   ├── layout.erb
+│   ├── index.erb
+│   └── episode.erb
 ├── prompts/
 │   └── ESTADO.txt                           # Cursor de estado persistente del proyecto
 └── test/
@@ -227,18 +281,15 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_event_log.rb                    # Tests unitarios de EventLog
     ├── test_scene.rb                        # Tests unitarios de Scene
     ├── test_dispatcher.rb                   # Tests del runner bin/episodio y códigos CLI
-    ├── test_scenario_ep01.rb                # Tests del Episodio 01
-    ├── test_scenario_ep02.rb                # Tests del Episodio 02
-    ├── test_scenario_ep03.rb                # Tests del Episodio 03
-    ├── test_scenario_ep04.rb                # Tests del Episodio 04
-    ├── test_scenario_ep05.rb                # Tests del Episodio 05
-    ├── test_scenario_ep06.rb                # Tests del Episodio 06
-    ├── test_scenario_ep07.rb                # Tests del Episodio 07
-    └── test_episode_continuity.rb           # Tests de integración y continuidad completa
+    ├── test_web_app.rb                      # Tests de la interfaz web Sinatra
+    ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
+    ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
+    ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
+    └── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo del Capítulo 1 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable y modularidad limpia en Ruby.
+El laboratorio narrativo de los Capítulos 1 y 2 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura de tests automatizados (67 tests, 475 aserciones) e interfaz interactiva tanto por CLI como web.

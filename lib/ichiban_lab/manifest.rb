@@ -2,62 +2,124 @@
 
 module IchibanLab
   module Manifest
-    EpisodeInfo = Struct.new(:id, :slug, :title, :class_name, :description, keyword_init: true)
+    EpisodeInfo = Struct.new(:id, :slug, :title, :class_name, :description, :chapter, keyword_init: true)
 
     EPISODES = [
+      # --- CAPÍTULO 1: LIGHT AND SHADOW ---
       EpisodeInfo.new(
         id: "01",
         slug: "01_origen",
         title: "La primera deuda",
         class_name: "IchibanLab::Scenarios::Ep01",
-        description: "Prólogo de Masumi niño: el vínculo con Toshio y la muerte de su padre."
+        description: "Prólogo de Masumi niño: el vínculo con Toshio y la muerte de su padre.",
+        chapter: 1
       ),
       EpisodeInfo.new(
         id: "02",
         slug: "02_cobranza",
         title: "El trabajo del día",
         class_name: "IchibanLab::Scenarios::Ep02",
-        description: "Ichiban adulto y Mitsuo: cobranza a Ushio y devolución a los compradores."
+        description: "Ichiban adulto y Mitsuo: cobranza a Ushio y devolución a los compradores.",
+        chapter: 1
       ),
       EpisodeInfo.new(
         id: "03",
         slug: "03_encargo_urgente",
         title: "Un favor en el barrio",
         class_name: "IchibanLab::Scenarios::Ep03",
-        description: "Recado de Michiyo, desatascador de Shangri-La y protección al anciano."
+        description: "Recado de Michiyo, desatascador de Shangri-La y protección al anciano.",
+        chapter: 1
       ),
       EpisodeInfo.new(
         id: "04",
         slug: "04_lo_que_se_debe",
         title: "Cobrar sin destruir",
         class_name: "IchibanLab::Scenarios::Ep04",
-        description: "Deuda de Hiratsuka en Public Park 3 y decisión de cuánto dinero cobrar."
+        description: "Deuda de Hiratsuka en Public Park 3 y decisión de cuánto dinero cobrar.",
+        chapter: 1
       ),
       EpisodeInfo.new(
         id: "05",
         slug: "05_el_joven_maestro",
         title: "Una noche para Masato",
         class_name: "IchibanLab::Scenarios::Ep05",
-        description: "Acompañar a Masato al club, buscar a Yumeno y escuchar la verdad."
+        description: "Acompañar a Masato al club, buscar a Yumeno y escuchar la verdad.",
+        chapter: 1
       ),
       EpisodeInfo.new(
         id: "06",
         slug: "06_lo_que_nos_une",
         title: "La familia Arakawa",
         class_name: "IchibanLab::Scenarios::Ep06",
-        description: "Regreso a la oficina, cena compartida con Arakawa y altercado en Theater Square."
+        description: "Regreso a la oficina, cena compartida con Arakawa y altercado en Theater Square.",
+        chapter: 1
       ),
       EpisodeInfo.new(
         id: "07",
         slug: "07_el_precio",
         title: "Quince años",
         class_name: "IchibanLab::Scenarios::Ep07",
-        description: "Ataque de los Sakaki, la petición de Arakawa y la entrega a la policía."
+        description: "Ataque de los Sakaki, la petición de Arakawa y la entrega a la policía.",
+        chapter: 1
+      ),
+
+      # --- CAPÍTULO 2: BLOODY REUNION ---
+      EpisodeInfo.new(
+        id: "08",
+        slug: "08_liberacion",
+        title: "18 años después",
+        class_name: "IchibanLab::Scenarios::Ep08",
+        description: "Salida de prisión en 2019, soledad y abordaje del ex-detective Adachi.",
+        chapter: 2
+      ),
+      EpisodeInfo.new(
+        id: "09",
+        slug: "09_el_nuevo_kamurocho",
+        title: "El nuevo Kamurocho",
+        class_name: "IchibanLab::Scenarios::Ep09",
+        description: "Retorno al barrio transformado y descubrimiento de la ocupación de la Alianza Omi.",
+        chapter: 2
+      ),
+      EpisodeInfo.new(
+        id: "10",
+        slug: "10_rescate_en_la_calle",
+        title: "Alianza con Adachi y Nick Ogata",
+        class_name: "IchibanLab::Scenarios::Ep10",
+        description: "Rescate de Nick Ogata frente a extorsionadores y unión formal de Adachi al grupo.",
+        chapter: 2
+      ),
+      EpisodeInfo.new(
+        id: "11",
+        slug: "11_los_bajos_fondos",
+        title: "Los conductos subterráneos",
+        class_name: "IchibanLab::Scenarios::Ep11",
+        description: "Infiltración a través de las alcantarillas subterráneas para evitar el cerco policial.",
+        chapter: 2
+      ),
+      EpisodeInfo.new(
+        id: "12",
+        slug: "12_el_guantelete",
+        title: "Duelo con Sawashiro",
+        class_name: "IchibanLab::Scenarios::Ep12",
+        description: "Asalto a la reunión cumbre de la Omi y combate contra el capitán Jo Sawashiro.",
+        chapter: 2
+      ),
+      EpisodeInfo.new(
+        id: "13",
+        slug: "13_reunion_sangrienta",
+        title: "Reunión sangrienta",
+        class_name: "IchibanLab::Scenarios::Ep13",
+        description: "Cara a cara con Masumi Arakawa, el disparo a quemarropa y el rescate de Nanba en Yokohama.",
+        chapter: 2
       )
     ].freeze
 
     def self.all
       EPISODES
+    end
+
+    def self.by_chapter(num)
+      EPISODES.select { |ep| ep.chapter == num.to_i }
     end
 
     def self.ids

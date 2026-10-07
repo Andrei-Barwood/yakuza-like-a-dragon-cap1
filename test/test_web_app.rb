@@ -14,9 +14,11 @@ class TestWebApp < Minitest::Test
     request = Rack::MockRequest.new(app)
     response = request.get("/")
     assert_equal 200, response.status
-    assert_includes response.body, "Capítulo 1: Light and Shadow"
-    assert_includes response.body, "Catálogo de Episodios"
+    assert_includes response.body, "Capítulos 1 & 2"
+    assert_includes response.body, "Capítulo 1: Light & Shadow"
+    assert_includes response.body, "Capítulo 2: Bloody Reunion"
     assert_includes response.body, "01_origen"
+    assert_includes response.body, "08_liberacion"
   end
 
   def test_post_run_episode

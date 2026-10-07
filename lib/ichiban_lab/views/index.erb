@@ -89,15 +89,29 @@
   <!-- Columna izquierda: Catálogo de Episodios -->
   <div>
     <div class="card">
-      <h3 style="margin-bottom: 15px; color: var(--gold);">Catálogo de Episodios</h3>
-      <ul class="episode-list">
-        <% @episodes.each do |ep| %>
+      <h3 style="margin-bottom: 12px; color: var(--gold);">Capítulo 1: Light & Shadow</h3>
+      <ul class="episode-list" style="margin-bottom: 20px;">
+        <% @episodes.select { |e| e.chapter == 1 }.each do |ep| %>
           <li class="episode-item">
             <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
               <div>
                 <strong><%= ep.id %></strong>. <%= h(ep.title) %>
               </div>
               <span class="badge badge-gold"><%= ep.slug %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+
+      <h3 style="margin-bottom: 12px; color: #ff8a80;">Capítulo 2: Bloody Reunion</h3>
+      <ul class="episode-list">
+        <% @episodes.select { |e| e.chapter == 2 }.each do |ep| %>
+          <li class="episode-item">
+            <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
+              <div>
+                <strong><%= ep.id %></strong>. <%= h(ep.title) %>
+              </div>
+              <span class="badge badge-red"><%= ep.slug %></span>
             </a>
           </li>
         <% end %>

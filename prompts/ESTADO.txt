@@ -1,18 +1,27 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULO 1]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 Y 2]
 
 Última actualización: 2026-10-07
-Episodio actual: 07 (07_el_precio)
-Fase completada: Integración del Capítulo 1 (Continuidad técnica y documental verificada, 42 tests pasando al 100%)
-Próximo paso: Capítulo 1 completamente implementado y verificado (El alcance termina con Ichiban en prisión; capítulos posteriores quedan fuera de alcance)
+Episodio actual: 13 (13_reunion_sangrienta)
+Fase completada: Capítulos 1 y 2 completamente integrados y verificados (67 tests pasando al 100%, 475 aserciones)
+Próximo paso: El alcance cubre los dos primeros capítulos (Capítulo 1: Light and Shadow, 01 a 07; Capítulo 2: Bloody Reunion, 08 a 13).
 
 Catálogo de episodios:
-- 01_origen: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
-- 02_cobranza: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
-- 03_encargo_urgente: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
-- 04_lo_que_se_debe: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
-- 05_el_joven_maestro: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
-- 06_lo_que_nos_une: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
-- 07_el_precio: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+-- CAPÍTULO 1: LIGHT AND SHADOW --
+- 01_origen: Completado (1977, Masumi niño, muerte de Toshio)
+- 02_cobranza: Completado (2000, Ichiban adulto, Ushio, reembolso de ¥50,000)
+- 03_encargo_urgente: Completado (Favor de Michiyo, Shangri-La, desatascador)
+- 04_lo_que_se_debe: Completado (Koji Hiratsuka, cobro parcial de ¥50,000)
+- 05_el_joven_maestro: Completado (Masato en el club, Yumeno, cartera de Masato)
+- 06_lo_que_nos_une: Completado (Oficina Arakawa, cena íntima, Theater Square)
+- 07_el_precio: Completado (Crimen de Sawashiro, sacrificio e ingreso en prisión)
+
+-- CAPÍTULO 2: BLOODY REUNION --
+- 08_liberacion: Completado (2019, 18 años después, salida y encuentro con Adachi)
+- 09_el_nuevo_kamurocho: Completado (Kamurocho ocupado por la Omi Alliance)
+- 10_rescate_en_la_calle: Completado (Rescate de Nick Ogata, alianza formal de grupo con Adachi)
+- 11_los_bajos_fondos: Completado (Infiltración por los conductos subterráneos de alcantarillado)
+- 12_el_guantelete: Completado (Asalto a la planta ejecutiva y duelo de jefe contra Jo Sawashiro)
+- 13_reunion_sangrienta: Completado (Encuentro con Arakawa, disparo en el pecho y rescate de Nanba en Yokohama)
 
 Archivos clave:
 - AGENTS.md
@@ -20,19 +29,10 @@ Archivos clave:
 - BITACORA.md
 - Gemfile
 - Rakefile
-- bin/episodio
-- bin/servidor
-- lib/ichiban_lab.rb
-- lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/character.rb
-- lib/ichiban_lab/world_state.rb
-- lib/ichiban_lab/event_log.rb
-- lib/ichiban_lab/scene.rb
-- lib/ichiban_lab/manifest.rb
-- lib/ichiban_lab/base_scenario.rb
-- lib/ichiban_lab/scenarios/ep01.rb .. ep07.rb
-- docs/episodios/ (35 documentos en total)
-- test/ (test_character.rb, test_world_state.rb, test_event_log.rb, test_scene.rb, test_dispatcher.rb, test_scenario_ep01..07.rb, test_episode_continuity.rb)
-
-Bloqueadores / Dudas de canon pendientes:
-- Ninguno. La continuidad entre 02 y 07 respeta las transiciones de estado, y el prólogo 01 permanece cronológicamente aislado.
+- config.ru
+- Procfile
+- bin/episodio (runner CLI para episodios 01 a 13)
+- bin/servidor (servidor web Sinatra)
+- lib/ichiban_lab/ (dominio, escenarios ep01 a ep13, WebApp)
+- docs/episodios/ (65 documentos técnicos en total)
+- test/ (suite completa de 67 tests unitarios, de continuidad y de servidor web)

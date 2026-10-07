@@ -5,11 +5,12 @@ require "open3"
 
 class TestDispatcher < Minitest::Test
   def test_manifest_contains_seven_episodes
-    assert_equal 7, IchibanLab::Manifest.all.size
-    assert_equal %w[01 02 03 04 05 06 07], IchibanLab::Manifest.ids
+    assert_equal 13, IchibanLab::Manifest.all.size
+    assert_equal %w[01 02 03 04 05 06 07 08 09 10 11 12 13], IchibanLab::Manifest.ids
     assert IchibanLab::Manifest.valid_id?("01")
-    assert IchibanLab::Manifest.valid_id?(1)
-    refute IchibanLab::Manifest.valid_id?("08")
+    assert IchibanLab::Manifest.valid_id?("08")
+    assert IchibanLab::Manifest.valid_id?(13)
+    refute IchibanLab::Manifest.valid_id?("14")
     refute IchibanLab::Manifest.valid_id?("unknown")
   end
 
@@ -27,7 +28,8 @@ class TestDispatcher < Minitest::Test
   def test_bin_episodio_help_exits_with_code_0
     stdout, _stderr, status = Open3.capture3("ruby", "-Ilib", "bin/episodio", "--help")
     assert_equal 0, status.exitstatus
-    assert_includes stdout, "Episodios disponibles:"
+    assert_includes stdout, "CAPÍTULO 1: LIGHT AND SHADOW"
+    assert_includes stdout, "CAPÍTULO 2: BLOODY REUNION"
   end
 
   def test_bin_episodio_execution_error_exits_with_code_2
