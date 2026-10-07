@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 7
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 8
 
-Simulador narrativo y de continuidad para los siete primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition* y *The Spider's Web*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los ocho primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web* y *Bleached Black*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los cuarenta y dos segmentos clave de los Capítulos 1 al 7:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los cuarenta y ocho segmentos clave de los Capítulos 1 al 8:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -61,6 +61,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 40. `40_la_confesion_de_nanba`: Revelación del pasado de Nanba, búsqueda de su hermano periodista Shoichi, descarga con taser y captura como rehén.
 41. `41_el_rescate_de_nanba`: Rescate inquebrantable de Nanba, combate de jefe contra Joon-gi Han, huida de Nanba y citación en Heian Tower a las 2 AM.
 42. `42_la_cumbre_de_los_tres`: Hallazgo del portátil de Nanba con la trama política de Yutaka Ogikubo, reunión cumbre con Zhao, Seonhee y Hoshino en Heian Tower.
+
+### Capítulo 8: Bleached Black (2019)
+43. `43_el_pacto_de_los_tres`: Revelación histórica de posguerra, sistema de Ogikubo y sobornos policiales para sostener la zona gris de Ijincho.
+44. `44_el_dilema_de_la_lealtad`: Ultimátum mafioso para silenciar a Nanba, rotunda negativa de Kasuga y pista al Edificio Hakuryo.
+45. `45_asalto_al_edificio_hakuryo`: Perímetro de Bleach Japan en Carriage Highway, combate contra el asesino de Matsuo e ingreso a la planta 2F.
+46. `46_la_caida_de_mabuchi`: Reencuentro en el despacho con Nanba y Ogasawara, combate definitivo de jefe contra Akira Mabuchi y confesión sobre el crimen de Nonomiya y la Omi.
+47. `47_la_huida_de_nanba`: Partida de Nanba cargando a Mabuchi para rescatar a su hermano Shoichi y hallazgo de la foto fundacional de Bleach Japan.
+48. `48_la_verdadera_identidad_de_aoki`: Revelación de que el gobernador Ryo Aoki es Masato Arakawa, orden de Aoki a la Alianza Omi para invadir Yokohama y transición al Capítulo 9.
 
 ---
 
@@ -155,7 +163,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (169 tests, 972 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (190 tests, 1096 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -172,6 +180,7 @@ ruby -Ilib -Itest test/test_chapter4_continuity.rb
 ruby -Ilib -Itest test/test_chapter5_continuity.rb
 ruby -Ilib -Itest test/test_chapter6_continuity.rb
 ruby -Ilib -Itest test/test_chapter7_continuity.rb
+ruby -Ilib -Itest test/test_chapter8_continuity.rb
 ```
 
 ---
@@ -188,13 +197,13 @@ ruby -Ilib -Itest test/test_chapter7_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 42)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 48)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 210 documentos (ep01 a ep42: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 240 documentos (ep01 a ep48: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (169 tests, 972 aserciones)
+└── test/                              # Suite de pruebas Minitest (190 tests, 1096 aserciones)
 ```

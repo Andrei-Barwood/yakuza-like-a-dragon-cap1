@@ -353,6 +353,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep42",
         description: "Investigación en el ordenador de Nanba sobre Yutaka Ogikubo, ascenso a Heian Tower y reunión cumbre de los tres líderes de Ijincho.",
         chapter: 7
+      ),
+
+      # --- CAPÍTULO 8: BLEACHED BLACK ---
+      EpisodeInfo.new(
+        id: "43",
+        slug: "43_el_pacto_de_los_tres",
+        title: "El pacto de los tres",
+        class_name: "IchibanLab::Scenarios::Ep43",
+        description: "Audiencia en Heian Tower, la historia de posguerra, la propuesta de Ogikubo y el origen de la zona gris de Ijincho.",
+        chapter: 8
+      ),
+      EpisodeInfo.new(
+        id: "44",
+        slug: "44_el_dilema_de_la_lealtad",
+        title: "El dilema de la lealtad",
+        class_name: "IchibanLab::Scenarios::Ep44",
+        description: "Exigencia de silenciar a Nanba, negativa absoluta de Ichiban a traicionar a su amigo y pista hacia el Edificio Hakuryo.",
+        chapter: 8
+      ),
+      EpisodeInfo.new(
+        id: "45",
+        slug: "45_asalto_al_edificio_hakuryo",
+        title: "Asalto al edificio Hakuryo",
+        class_name: "IchibanLab::Scenarios::Ep45",
+        description: "Llegada a la sede de Bleach Japan, emboscada del renegado de Geomijul y asalto a la segunda planta.",
+        chapter: 8
+      ),
+      EpisodeInfo.new(
+        id: "46",
+        slug: "46_la_caida_de_mabuchi",
+        title: "La caída de Mabuchi",
+        class_name: "IchibanLab::Scenarios::Ep46",
+        description: "Reencuentro con Nanba, batalla definitiva contra Akira Mabuchi y confesión de la alianza de Ogasawara con la Omi Alliance.",
+        chapter: 8
+      ),
+      EpisodeInfo.new(
+        id: "47",
+        slug: "47_la_huida_de_nanba",
+        title: "La huida de Nanba",
+        class_name: "IchibanLab::Scenarios::Ep47",
+        description: "Nanba se lleva a Mabuchi para dar con su hermano, registro de la oficina y hallazgo de la foto fundacional de Bleach Japan.",
+        chapter: 8
+      ),
+      EpisodeInfo.new(
+        id: "48",
+        slug: "48_la_verdadera_identidad_de_aoki",
+        title: "La verdadera identidad de Aoki",
+        class_name: "IchibanLab::Scenarios::Ep48",
+        description: "Descubrimiento de que Ryo Aoki es Masato Arakawa, despacho de Tokio y orden de movilización de tropas de la Omi hacia Yokohama.",
+        chapter: 8
       )
     ].freeze
 

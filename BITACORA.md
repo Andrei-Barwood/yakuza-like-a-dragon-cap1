@@ -410,6 +410,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 15: Capítulo 8 — Bleached Black (Episodios 43 a 48)
+- **Objetivo:** Modelar los seis episodios clave del Capítulo 8 de *Yakuza: Like a Dragon*, abarcando la revelación histórica del pacto de Ogikubo, el asalto a Bleach Japan, la caída y confesión de Mabuchi, la marcha de Nanba y el impactante descubrimiento de la verdadera identidad del gobernador Ryo Aoki como Masato Arakawa.
+- **Episodios implementados:**
+  1. **Episodio 43 (`43_el_pacto_de_los_tres` - "El pacto de los Tres de Ijin"):**
+     - En el mirador de Heian Tower, Ryuhei Hoshino y Seonhee narran a Kasuga el origen del pacto criminal concebido hace sesenta años por el influyente político Yutaka Ogikubo para financiar a la policía y sostener la zona gris de Ijincho.
+     - Documentación: `docs/episodios/ep43_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep43.rb`.
+     - Test: `test/test_scenario_ep43.rb`.
+  2. **Episodio 44 (`44_el_dilema_de_la_lealtad` - "El dilema de la lealtad"):**
+     - Zhao y Hoshino plantean a Kasuga la exigencia de eliminar a Nanba para proteger el secreto de las tres mafias. Ichiban rechaza tajantemente traicionar a su amigo. Joon-gi Han deduce que Nanba buscará asilo en la sede de Bleach Japan en el Edificio Hakuryo.
+     - Documentación: `docs/episodios/ep44_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep44.rb`.
+     - Test: `test/test_scenario_ep44.rb`.
+  3. **Episodio 45 (`45_asalto_al_edificio_hakuryo` - "Asalto al edificio Hakuryo"):**
+     - Llegada al Edificio Hakuryo en Carriage Highway. Emboscada por parte del mercenario renegado de Geomijul responsable de la muerte de Matsuo. Tras derrotarlo en combate, el grupo se abre paso al 2F de Bleach Japan.
+     - Documentación: `docs/episodios/ep45_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep45.rb`.
+     - Test: `test/test_scenario_ep45.rb`.
+  4. **Episodio 46 (`46_la_caida_de_mabuchi` - "La caída de Mabuchi"):**
+     - Encuentro en el despacho con Nanba y Hajime Ogasawara. Combate de jefe contra Akira Mabuchi. Al ser derrotado, Mabuchi confiesa que Ogasawara ordenó asesinar a Nonomiya y que la Alianza Omi prepara una invasión inminente sobre Yokohama.
+     - Documentación: `docs/episodios/ep46_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep46.rb`.
+     - Test: `test/test_scenario_ep46.rb`.
+  5. **Episodio 47 (`47_la_huida_de_nanba` - "La huida de Nanba"):**
+     - Nanba se desmarca del grupo llevándose a rastras a Mabuchi para dar con el paradero de su hermano Shoichi. El grupo inspecciona el despacho de Bleach Japan y halla un recorte con la fotografía de sus fundadores: Hajime Ogasawara y Ryo Aoki.
+     - Documentación: `docs/episodios/ep47_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep47.rb`.
+     - Test: `test/test_scenario_ep47.rb`.
+  6. **Episodio 48 (`48_la_verdadera_identidad_de_aoki` - "La verdadera identidad de Aoki"):**
+     - Al examinar la fotografía, Kasuga descubre atónito que el gobernador de Tokio, Ryo Aoki, es en realidad el joven maestro Masato Arakawa. En Tokio, Aoki recibe la llamada de Ogasawara y ordena a la Alianza Omi arrasar Ijincho. Evento de frontera: `story.chapter_boundary` hacia el Capítulo 9.
+     - Documentación: `docs/episodios/ep48_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep48.rb`.
+     - Test: `test/test_scenario_ep48.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 8:**
+  - `test/test_chapter8_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep42 hasta el desenlace del Ep48, controlando inventarios, recorte de prensa de los fundadores, derrota de Mabuchi, revelación de Masato Arakawa y evento de cierre de capítulo hacia el Capítulo 9.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `48`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1 al 8.
+  - Suite de pruebas ejecutada al 100% con éxito: **190 tests, 1096 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -417,9 +458,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la captura de Nanba o la cumbre de Heian Tower) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la marcha de Nanba o la invasión de la Omi) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la cumbre de Heian Tower y el misterio de Ogikubo (Capítulo 7) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 8 en adelante. |
+| **Límite Canónico** | Fin cerrado en la orden de invasión de la Omi y la revelación de Aoki (Capítulo 8) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 9 en adelante. |
 
 ---
 
@@ -435,10 +476,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..42)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..48)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 210 documentos (5 por cada uno de los 42 episodios)
+│   └── episodios/                           # 240 documentos (5 por cada uno de los 48 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -480,7 +521,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep39_aar.md ... ep39_mecanicas.md
 │       ├── ep40_aar.md ... ep40_mecanicas.md
 │       ├── ep41_aar.md ... ep41_mecanicas.md
-│       └── ep42_aar.md ... ep42_mecanicas.md
+│       ├── ep42_aar.md ... ep42_mecanicas.md
+│       ├── ep43_aar.md ... ep43_mecanicas.md
+│       ├── ep44_aar.md ... ep44_mecanicas.md
+│       ├── ep45_aar.md ... ep45_mecanicas.md
+│       ├── ep46_aar.md ... ep46_mecanicas.md
+│       ├── ep47_aar.md ... ep47_mecanicas.md
+│       └── ep48_aar.md ... ep48_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -488,7 +535,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 42 episodios (Caps 1 al 7)
+│       ├── manifest.rb                      # Catálogo inmutable de los 48 episodios (Caps 1 al 8)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -498,12 +545,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep19.rb ... ep24.rb          # Cap 4: 19_el_empleo_prometido hasta 24_el_dragon_del_seiryu
 │           ├── ep25.rb ... ep30.rb          # Cap 5: 25_la_heredera_de_otohime hasta 30_explosion_en_el_muelle
 │           ├── ep31.rb ... ep36.rb          # Cap 6: 31_el_despertar_encadenado hasta 36_el_juicio_de_tianyou_zhao
-│           ├── ep37.rb                      # Cap 7: 37_el_barrio_coreano
-│           ├── ep38.rb                      # Cap 7: 38_la_fortaleza_electrica
-│           ├── ep39.rb                      # Cap 7: 39_la_reina_de_la_telaraña
-│           ├── ep40.rb                      # Cap 7: 40_la_confesion_de_nanba
-│           ├── ep41.rb                      # Cap 7: 41_el_rescate_de_nanba
-│           └── ep42.rb                      # Cap 7: 42_la_cumbre_de_los_tres
+│           ├── ep37.rb ... ep42.rb          # Cap 7: 37_el_barrio_coreano hasta 42_la_cumbre_de_los_tres
+│           ├── ep43.rb                      # Cap 8: 43_el_pacto_de_los_tres
+│           ├── ep44.rb                      # Cap 8: 44_el_dilema_de_la_lealtad
+│           ├── ep45.rb                      # Cap 8: 45_asalto_al_edificio_hakuryo
+│           ├── ep46.rb                      # Cap 8: 46_la_caida_de_mabuchi
+│           ├── ep47.rb                      # Cap 8: 47_la_huida_de_nanba
+│           └── ep48.rb                      # Cap 8: 48_la_verdadera_identidad_de_aoki
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -511,31 +559,33 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── prompts/
 │   └── ESTADO.txt                           # Cursor de estado persistente del proyecto
 └── test/
-    ├── test_helper.rb                       # Helper de Minitest
-    ├── test_character.rb                    # Tests unitarios de Character
-    ├── test_world_state.rb                  # Tests unitarios de WorldState
-    ├── test_event_log.rb                    # Tests unitarios de EventLog
-    ├── test_scene.rb                        # Tests unitarios de Scene
-    ├── test_dispatcher.rb                   # Tests del runner bin/episodio y códigos CLI
-    ├── test_web_app.rb                      # Tests de la interfaz web Sinatra
-    ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
-    ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
-    ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
-    ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
-    ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
-    ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
-    ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
-    ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
-    ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
-    ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
-    ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
-    ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
-    ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
-    └── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
+│   ├── test_helper.rb                       # Helper de Minitest
+│   ├── test_character.rb                    # Tests unitarios de Character
+│   ├── test_world_state.rb                  # Tests unitarios de WorldState
+│   ├── test_event_log.rb                    # Tests unitarios de EventLog
+│   ├── test_scene.rb                        # Tests unitarios de Scene
+│   ├── test_dispatcher.rb                   # Tests del runner bin/episodio y códigos CLI
+│   ├── test_web_app.rb                      # Tests de la interfaz web Sinatra
+│   ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
+│   ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
+│   ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
+│   ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
+│   ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
+│   ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
+│   ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
+│   ├── test_scenario_ep43.rb ... ep48.rb    # Tests unitarios Cap 8
+│   ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
+│   ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
+│   ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
+│   ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
+│   ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
+│   ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
+│   ├── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
+│   └── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6 y 7 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (169 tests, 972 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7 y 8 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (190 tests, 1096 aserciones) e interfaz interactiva tanto por CLI como web.
