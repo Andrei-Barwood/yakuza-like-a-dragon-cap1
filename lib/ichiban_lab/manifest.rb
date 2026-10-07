@@ -303,6 +303,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep36",
         description: "Llegada del líder de Yokohama Liumang, exhibición del video editado, tregua armada y orden de buscar pruebas en Geomijul.",
         chapter: 6
+      ),
+
+      # --- CAPÍTULO 7: THE SPIDER'S WEB ---
+      EpisodeInfo.new(
+        id: "37",
+        slug: "37_el_barrio_coreano",
+        title: "El barrio coreano y la guía enigmática",
+        class_name: "IchibanLab::Scenarios::Ep37",
+        description: "Búsqueda de Geomijul en Koreatown, encuentro con la mujer misteriosa y llegada a la fachada de cables eléctricos.",
+        chapter: 7
+      ),
+      EpisodeInfo.new(
+        id: "38",
+        slug: "38_la_fortaleza_electrica",
+        title: "La fortaleza eléctrica",
+        class_name: "IchibanLab::Scenarios::Ep38",
+        description: "Traspaso de puentes de alta tensión, reencuentro con Joon-gi Han y confirmación de la cinta de seguridad de Mabuchi en Otohime Land.",
+        chapter: 7
+      ),
+      EpisodeInfo.new(
+        id: "39",
+        slug: "39_la_reina_de_la_telaraña",
+        title: "La reina de la telaraña",
+        class_name: "IchibanLab::Scenarios::Ep39",
+        description: "Descubrimiento de la imprenta clandestina de yenes, aparición de Seonhee como líder de Geomijul e interrogatorio por el billete defectuoso.",
+        chapter: 7
+      ),
+      EpisodeInfo.new(
+        id: "40",
+        slug: "40_la_confesion_de_nanba",
+        title: "La confesión de Nanba",
+        class_name: "IchibanLab::Scenarios::Ep40",
+        description: "Revelación del pasado de Nanba, la búsqueda de su hermano periodista Shoichi, electrocución con taser y captura como rehén.",
+        chapter: 7
+      ),
+      EpisodeInfo.new(
+        id: "41",
+        slug: "41_el_rescate_de_nanba",
+        title: "El rescate de Nanba",
+        class_name: "IchibanLab::Scenarios::Ep41",
+        description: "Defensa inquebrantable de Nanba por Kasuga, victoria en combate contra Joon-gi Han, huida de Nanba y citación en Heian Tower a las 2 AM.",
+        chapter: 7
+      ),
+      EpisodeInfo.new(
+        id: "42",
+        slug: "42_la_cumbre_de_los_tres",
+        title: "La cumbre de los Tres de Ijin",
+        class_name: "IchibanLab::Scenarios::Ep42",
+        description: "Investigación en el ordenador de Nanba sobre Yutaka Ogikubo, ascenso a Heian Tower y reunión cumbre de los tres líderes de Ijincho.",
+        chapter: 7
       )
     ].freeze
 

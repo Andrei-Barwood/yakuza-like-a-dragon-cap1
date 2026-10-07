@@ -160,7 +160,7 @@
       </ul>
 
       <h3 style="margin-bottom: 12px; color: #ff5252;">Capítulo 6: Ignition</h3>
-      <ul class="episode-list">
+      <ul class="episode-list" style="margin-bottom: 20px;">
         <% @episodes.select { |e| e.chapter == 6 }.each do |ep| %>
           <li class="episode-item">
             <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
@@ -168,6 +168,20 @@
                 <strong><%= ep.id %></strong>. <%= h(ep.title) %>
               </div>
               <span class="badge badge-crimson"><%= ep.slug %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+
+      <h3 style="margin-bottom: 12px; color: #69f0ae;">Capítulo 7: The Spider's Web</h3>
+      <ul class="episode-list">
+        <% @episodes.select { |e| e.chapter == 7 }.each do |ep| %>
+          <li class="episode-item">
+            <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
+              <div>
+                <strong><%= ep.id %></strong>. <%= h(ep.title) %>
+              </div>
+              <span class="badge badge-green"><%= ep.slug %></span>
             </a>
           </li>
         <% end %>

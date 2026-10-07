@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1, 2, 3, 4, 5 y 6
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 7
 
-Simulador narrativo y de continuidad para los seis primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web* e *Ignition*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los siete primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition* y *The Spider's Web*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los treinta y seis segmentos clave de los Capítulos 1, 2, 3, 4, 5 y 6:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los cuarenta y dos segmentos clave de los Capítulos 1 al 7:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -54,6 +54,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 35. `35_camino_a_restaurant_row`: Travesía por el campo de batalla urbano en Restaurant Row, disparo intimidatorio en la entrada de Qing Jin y combate a puño limpio con Takabe.
 36. `36_el_juicio_de_tianyou_zhao`: Intervención de Tianyou Zhao con pistola en mano, confrontación con el video editado por Mabuchi, tregua armada y ultimátum para conseguir pruebas en Geomijul.
 
+### Capítulo 7: The Spider's Web (2019)
+37. `37_el_barrio_coreano`: Incursión en Koreatown para buscar a Geomijul, encuentro con la mujer misteriosa y llegada a la fachada de cables.
+38. `38_la_fortaleza_electrica`: Traspaso de cables de alta tensión, reencuentro con Joon-gi Han y confirmación del video de Mabuchi entrando a Otohime Land.
+39. `39_la_reina_de_la_telaraña`: Imprenta clandestina de yenes, aparición de Seonhee como líder suprema e interrogatorio por el billete defectuoso.
+40. `40_la_confesion_de_nanba`: Revelación del pasado de Nanba, búsqueda de su hermano periodista Shoichi, descarga con taser y captura como rehén.
+41. `41_el_rescate_de_nanba`: Rescate inquebrantable de Nanba, combate de jefe contra Joon-gi Han, huida de Nanba y citación en Heian Tower a las 2 AM.
+42. `42_la_cumbre_de_los_tres`: Hallazgo del portátil de Nanba con la trama política de Yutaka Ogikubo, reunión cumbre con Zhao, Seonhee y Hoshino en Heian Tower.
+
 ---
 
 ## Requisitos
@@ -83,7 +91,7 @@ ruby -Ilib bin/servidor
 Por defecto, Sinatra se iniciará en el puerto **`4567`**:
 ```text
 ======================================================================
-  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 6)
+  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 7)
   Servidor Web Sinatra activo en: http://localhost:4567
 ======================================================================
 Presione Ctrl+C para detener el servidor.
@@ -101,11 +109,11 @@ PORT=8080 bin/servidor
    ```text
    http://localhost:4567
    ```
-3. Verás el **Dashboard de los Capítulos 1 al 6** con la estética urbana inspirada en Kamurocho y Yokohama.
+3. Verás el **Dashboard de los Capítulos 1 al 7** con la estética urbana inspirada en Kamurocho y Yokohama.
 
 ### 3. Funcionalidades del Dashboard
 
-- **Catálogo lateral por capítulos:** Selecciona cualquiera de los treinta y seis episodios (`01` a `36`) para ver su sinopsis y contexto.
+- **Catálogo lateral por capítulos:** Selecciona cualquiera de los cuarenta y dos episodios (`01` a `42`) para ver su sinopsis y contexto.
 - **Botón `▶ Ejecutar Episodio`:** Ejecuta el escenario seleccionado de forma determinista y despliega:
   - **Estado Final del Mundo:** Ubicación exacta, periodo temporal, saldo en yenes (¥), inventario de ítems y banderas booleanas activas.
   - **Línea de Tiempo de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
@@ -118,14 +126,15 @@ PORT=8080 bin/servidor
 El runner de línea de comandos se encuentra en `bin/episodio`:
 
 ```bash
-# Ejecutar cualquier episodio por su identificador (01 a 36)
+# Ejecutar cualquier episodio por su identificador (01 a 42)
 ruby -Ilib bin/episodio 01
 ruby -Ilib bin/episodio 08
 ruby -Ilib bin/episodio 14
 ruby -Ilib bin/episodio 19
 ruby -Ilib bin/episodio 25
 ruby -Ilib bin/episodio 31
-ruby -Ilib bin/episodio 36
+ruby -Ilib bin/episodio 37
+ruby -Ilib bin/episodio 42
 
 # Ver ayuda y catálogo completo
 ruby -Ilib bin/episodio --help
@@ -146,7 +155,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (148 tests, 869 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (169 tests, 972 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -162,6 +171,7 @@ ruby -Ilib -Itest test/test_chapter3_continuity.rb
 ruby -Ilib -Itest test/test_chapter4_continuity.rb
 ruby -Ilib -Itest test/test_chapter5_continuity.rb
 ruby -Ilib -Itest test/test_chapter6_continuity.rb
+ruby -Ilib -Itest test/test_chapter7_continuity.rb
 ```
 
 ---
@@ -178,13 +188,13 @@ ruby -Ilib -Itest test/test_chapter6_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 36)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 42)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 180 documentos (ep01 a ep36: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 210 documentos (ep01 a ep42: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (148 tests, 869 aserciones)
+└── test/                              # Suite de pruebas Minitest (169 tests, 972 aserciones)
 ```

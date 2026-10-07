@@ -369,6 +369,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 14: Capítulo 7 — "The Spider's Web" (Episodios 37 a 42)
+- **Objetivo:** Extender el laboratorio narrativo para cubrir con fidelidad el Capítulo 7 de *Yakuza: Like a Dragon* (蜘蛛の巣), estructurado en 6 episodios canónicos que narran la incursión en Koreatown tras la tregua de Zhao, el traspaso de la red eléctrica de Geomijul, la revelación de Seonhee y la imprenta clandestina de yenes japoneses, la conmovedora confesión de Yu Nanba sobre su hermano periodista Shoichi, la defensa fraternal de Ichiban ante Joon-gi Han y la cumbre de los Tres de Ijin en Heian Tower junto a Ryuhei Hoshino, Seonhee y Tianyou Zhao.
+- **Episodios implementados:**
+  1. **Episodio 37 (`37_el_barrio_coreano` - "El barrio coreano y la guía enigmática"):**
+     - Tras la tregua concedida por Zhao, el grupo ingresa a Koreatown. Encuentro con una mujer misteriosa que los guía por callejones oscuros hasta la fachada de un edificio decrépito cubierto de intrincados cables eléctricos de alta tensión.
+     - Documentación: `docs/episodios/ep37_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep37.rb`.
+     - Test: `test/test_scenario_ep37.rb`.
+  2. **Episodio 38 (`38_la_fortaleza_electrica` - "La fortaleza eléctrica"):**
+     - Cruce de pasarelas suspendidas entre cables de alta tensión y superación de la emboscada de agentes de Geomijul. Son recibidos por Joon-gi Han, su misterioso salvador subterráneo, quien les enseña la red de vigilancia panóptica y la grabación de Mabuchi entrando a Otohime Land antes de la muerte de Nonomiya.
+     - Documentación: `docs/episodios/ep38_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep38.rb`.
+     - Test: `test/test_scenario_ep38.rb`.
+  3. **Episodio 39 (`39_la_reina_de_la_telaraña` - "La reina de la telaraña"):**
+     - Ingreso a la imprenta clandestina de yenes falsificados de Geomijul. La guía misteriosa se desvela como Seonhee, la líder suprema de la organización. Explica el pacto del papel importado por Liumang y encañona a Kasuga para exigirle el origen del billete defectuoso de su chaqueta, antes de posar su mirada inquisidora en Nanba.
+     - Documentación: `docs/episodios/ep39_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep39.rb`.
+     - Test: `test/test_scenario_ep39.rb`.
+  4. **Episodio 40 (`40_la_confesion_de_nanba` - "La confesión de Nanba"):**
+     - Seonhee expone la vigilancia de medio año de Nanba. Nanba confiesa que fingió ser indigente para investigar la desaparición de su hermano menor, el periodista Shoichi Nanba (alias Shoichi Akiba). Tras pedir que liberen a Kasuga, Seonhee lo electrocuta con un taser y lo toma como rehén hostil.
+     - Documentación: `docs/episodios/ep40_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep40.rb`.
+     - Test: `test/test_scenario_ep40.rb`.
+  5. **Episodio 41 (`41_el_rescate_de_nanba` - "El rescate de Nanba"):**
+     - Kasuga defiende el lazo inquebrantable con Nanba ("me salvó la vida y sigue siendo mi camarada"). Combate de jefe contra Joon-gi Han, rescate de Nanba de las garras de Geomijul y huida exitosa. Seonhee profetiza la ruina inminente de Ijincho y convoca a Kasuga a Heian Tower a las 2 AM.
+     - Documentación: `docs/episodios/ep41_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep41.rb`.
+     - Test: `test/test_scenario_ep41.rb`.
+  6. **Episodio 42 (`42_la_cumbre_de_los_tres` - "La cumbre de los Tres de Ijin"):**
+     - Examen forense del ordenador portátil de Nanba en el campamento: hallazgo del artículo de Shoichi vinculando los billetes falsos al presidente del CLP, Yutaka Ogikubo. Encuentro en la azotea de Heian Tower con los tres líderes de Ijincho reunidos (Tianyou Zhao, Seonhee y Ryuhei Hoshino), revelándose la verdad detrás del Gran Muro del Músculo. Evento de frontera: `story.chapter_boundary` hacia el Capítulo 8.
+     - Documentación: `docs/episodios/ep42_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep42.rb`.
+     - Test: `test/test_scenario_ep42.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 7:**
+  - `test/test_chapter7_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep36 hasta el desenlace del Ep42, controlando inventarios, rescate de Nanba, notas investigativas de Shoichi, cumbre en Heian Tower y evento de conclusión hacia el Capítulo 8.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `42`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1 al 7.
+  - Suite de pruebas ejecutada al 100% con éxito: **169 tests, 972 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -376,9 +417,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos de la trama (la ejecución de Nonomiya o el duelo con Takabe) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la captura de Nanba o la cumbre de Heian Tower) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la tregua de Qing Jin y la pista de Geomijul (Capítulo 6) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 7 en adelante. |
+| **Límite Canónico** | Fin cerrado en la cumbre de Heian Tower y el misterio de Ogikubo (Capítulo 7) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 8 en adelante. |
 
 ---
 
@@ -394,10 +435,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..36)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..42)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 180 documentos (5 por cada uno de los 36 episodios)
+│   └── episodios/                           # 210 documentos (5 por cada uno de los 42 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -433,7 +474,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep33_aar.md ... ep33_mecanicas.md
 │       ├── ep34_aar.md ... ep34_mecanicas.md
 │       ├── ep35_aar.md ... ep35_mecanicas.md
-│       └── ep36_aar.md ... ep36_mecanicas.md
+│       ├── ep36_aar.md ... ep36_mecanicas.md
+│       ├── ep37_aar.md ... ep37_mecanicas.md
+│       ├── ep38_aar.md ... ep38_mecanicas.md
+│       ├── ep39_aar.md ... ep39_mecanicas.md
+│       ├── ep40_aar.md ... ep40_mecanicas.md
+│       ├── ep41_aar.md ... ep41_mecanicas.md
+│       └── ep42_aar.md ... ep42_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -441,7 +488,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 36 episodios (Caps 1, 2, 3, 4, 5 y 6)
+│       ├── manifest.rb                      # Catálogo inmutable de los 42 episodios (Caps 1 al 7)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -450,12 +497,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep14.rb ... ep18.rb          # Cap 3: 14_la_ciudad_en_el_fondo hasta 18_un_techo_y_un_ideal
 │           ├── ep19.rb ... ep24.rb          # Cap 4: 19_el_empleo_prometido hasta 24_el_dragon_del_seiryu
 │           ├── ep25.rb ... ep30.rb          # Cap 5: 25_la_heredera_de_otohime hasta 30_explosion_en_el_muelle
-│           ├── ep31.rb                      # Cap 6: 31_el_despertar_encadenado
-│           ├── ep32.rb                      # Cap 6: 32_la_fuga_subterranea
-│           ├── ep33.rb                      # Cap 6: 33_el_duelo_de_la_excavadora
-│           ├── ep34.rb                      # Cap 6: 34_la_chispa_del_conflicto
-│           ├── ep35.rb                      # Cap 6: 35_camino_a_restaurant_row
-│           └── ep36.rb                      # Cap 6: 36_el_juicio_de_tianyou_zhao
+│           ├── ep31.rb ... ep36.rb          # Cap 6: 31_el_despertar_encadenado hasta 36_el_juicio_de_tianyou_zhao
+│           ├── ep37.rb                      # Cap 7: 37_el_barrio_coreano
+│           ├── ep38.rb                      # Cap 7: 38_la_fortaleza_electrica
+│           ├── ep39.rb                      # Cap 7: 39_la_reina_de_la_telaraña
+│           ├── ep40.rb                      # Cap 7: 40_la_confesion_de_nanba
+│           ├── ep41.rb                      # Cap 7: 41_el_rescate_de_nanba
+│           └── ep42.rb                      # Cap 7: 42_la_cumbre_de_los_tres
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -476,16 +524,18 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
     ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
     ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
+    ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
     ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
     ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
     ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
-    └── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
+    ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
+    └── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5 y 6 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (148 tests, 869 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6 y 7 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (169 tests, 972 aserciones) e interfaz interactiva tanto por CLI como web.

@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2, 3, 4, 5 Y 6]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 7]
 
 Última actualización: 2026-10-07
-Episodio actual: 36 (36_el_juicio_de_tianyou_zhao)
-Fase completada: Capítulos 1 al 6 completamente integrados y verificados (148 tests pasando al 100%, 869 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 36 episodios.
+Episodio actual: 42 (42_la_cumbre_de_los_tres)
+Fase completada: Capítulos 1 al 7 completamente integrados y verificados (169 tests pasando al 100%, 972 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 42 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -54,6 +54,14 @@ Catálogo de episodios:
 - 35_camino_a_restaurant_row: Completado (Incursión en la zona de guerra de Restaurant Row, disparo de advertencia frente a Qing Jin y combate desarmado con Takabe)
 - 36_el_juicio_de_tianyou_zhao: Completado (Llegada del líder de Yokohama Liumang, exhibición del video editado, tregua armada y orden de buscar pruebas en Geomijul)
 
+-- CAPÍTULO 7: THE SPIDER'S WEB --
+- 37_el_barrio_coreano: Completado (Búsqueda de Geomijul en Koreatown, encuentro con la guía enigmática y fachada de cables)
+- 38_la_fortaleza_electrica: Completado (Traspaso de pasarelas de alta tensión, identidad de Joon-gi Han y cintas de Mabuchi en Otohime Land)
+- 39_la_reina_de_la_telaraña: Completado (Imprenta secreta de yenes, revelación de Seonhee como líder e interrogatorio por el billete defectuoso)
+- 40_la_confesion_de_nanba: Completado (Confesión de la búsqueda de su hermano periodista Shoichi, descarga con taser y captura como rehén)
+- 41_el_rescate_de_nanba: Completado (Defensa inquebrantable de Nanba, derrota de Joon-gi Han en combate, fuga de Nanba y cita en Heian Tower a las 2 AM)
+- 42_la_cumbre_de_los_tres: Completado (Investigación del portátil sobre Yutaka Ogikubo, cumbre con Zhao, Seonhee y Hoshino, y pacto del Gran Muro del Músculo)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -63,12 +71,13 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep36.rb
-- docs/episodios/ep01_* a ep36_* (180 documentos)
-- test/test_scenario_ep01.rb a ep36.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep42.rb
+- docs/episodios/ep01_* a ep42_* (210 documentos)
+- test/test_scenario_ep01.rb a ep42.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
 - test/test_chapter4_continuity.rb
 - test/test_chapter5_continuity.rb
 - test/test_chapter6_continuity.rb
+- test/test_chapter7_continuity.rb
