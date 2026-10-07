@@ -246,6 +246,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 11: Capítulo 4 — "The Dragon of Yokohama" (Episodios 19 a 24)
+- **Objetivo:** Ampliar el laboratorio narrativo para cubrir con fidelidad el Capítulo 4 de *Yakuza: Like a Dragon* (横浜の龍), estructurado en 6 episodios canónicos que narran la obtención de empleo formal tras fijar residencia, la investigación de Nanoha Mukoda para Nonomiya en Otohime Land, la infiltración en el asilo Sunlight Castle, el descubrimiento de la trama de eutanasia para cobrar pensiones de la Familia Ryuto (Clan Seiryu), la consolidación en Survive Bar y la confrontación ante el Patriarca Ryuhei Hoshino que culmina con la trágica muerte de Nonomiya.
+- **Episodios implementados:**
+  1. **Episodio 19 (`19_el_empleo_prometido` - "El empleo prometido"):**
+     - Con residencia acreditada en Sunrise Street, Ichiban y Nanba regresan a Hello Work. Registro laboral formal ante Ririka. Reencuentro con Koichi Adachi en el exterior y oferta laboral de Nonomiya para un puesto de investigación en el soapland Otohime Land.
+     - Documentación: `docs/episodios/ep19_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep19.rb`.
+     - Test: `test/test_scenario_ep19.rb`.
+  2. **Episodio 20 (`20_otohime_land` - "La sospecha de Nonomiya"):**
+     - Briefing en Otohime Land: Nonomiya sospecha del agotamiento y adelantos de dinero de Nanoha Mukoda. Escucha encubierta en Pocket Café mediante el micrófono/teléfono colocado por Adachi en una maceta. Pista sobre su padre Tatsuro y localización del asilo Sunlight Castle.
+     - Documentación: `docs/episodios/ep20_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep20.rb`.
+     - Test: `test/test_scenario_ep20.rb`.
+  3. **Episodio 21 (`21_el_castillo_de_la_luz` - "Infiltración en Sunlight Castle"):**
+     - Contrato externo de contratistas a través del Director Kanbe (Ichiban conserje, Nanba cuidador, Adachi guardia). Gritos aterradores de una anciana en la zona VIP de evacuación. Confirmación del fraude de pensiones orquestado por la Familia Ryuto (filial del Clan Seiryu) y plazo de urgencia para Tatsuro Mukoda.
+     - Documentación: `docs/episodios/ep21_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep21.rb`.
+     - Test: `test/test_scenario_ep21.rb`.
+  4. **Episodio 22 (`22_la_noche_en_survive` - "La noche en Survive Bar"):**
+     - Adachi conduce al grupo a Survive Bar en el Bar District. Desbloqueo del hideout y mecánica de *Drink Links*. Diálogo nocturno fraternal entre Ichiban y Adachi consolidando su alianza antes del asalto definitivo matutino.
+     - Documentación: `docs/episodios/ep22_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep22.rb`.
+     - Test: `test/test_scenario_ep22.rb`.
+  5. **Episodio 23 (`23_el_rescate_de_tatsuro` - "El rescate en la sala VIP"):**
+     - Asalto a la Excellent Room de Sunlight Castle mediante la tarjeta de acceso de Adachi. Interrupción in extremis al médico a punto de inyectar cloruro de potasio a Tatsuro. Combate y derrota del patriarca de la Familia Ryuto, Yamato Totsuka. Decisión de llevarlo ante la cúpula del Seiryu.
+     - Documentación: `docs/episodios/ep23_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep23.rb`.
+     - Test: `test/test_scenario_ep23.rb`.
+  6. **Episodio 24 (`24_el_dragon_del_seiryu` - "La sede del Seiryu y el precio del silencio"):**
+     - Infiltración en el cuartel del Clan Seiryu y rescate acrobático en la ventana. Audiencia con el presidente Ryuhei Hoshino y el capitán Mamoru Takabe. Descubrimiento del billete falso defectuoso que desconcierta a Hoshino. Clausura del asilo y restitución del dinero a Nanoha Mukoda (bono de ¥20,000 para Ichiban). Regreso a Otohime Land y conmoción al encontrar a Nonomiya ahorcado. Evento de frontera: `story.chapter_boundary` hacia el Capítulo 5.
+     - Documentación: `docs/episodios/ep24_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep24.rb`.
+     - Test: `test/test_scenario_ep24.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 4:**
+  - `test/test_chapter4_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep18 hasta el desenlace del Ep24, controlando fondos (¥6,300 a ¥26,300), inventario de tarjetas y llaves, lazos fraternos y shock final.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `24`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1, 2, 3 y 4.
+  - Suite de pruebas ejecutada al 100% con éxito: **106 tests, 677 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -253,9 +294,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Las dificultades dramáticas de la historia no constituyen fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos de la trama (la muerte de Nonomiya) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la habitación de Sunrise Street y el juramento del Héroe (Capítulo 3) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 4 en adelante. |
+| **Límite Canónico** | Fin cerrado en la tragedia de Otohime Land (Capítulo 4) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 5 en adelante. |
 
 ---
 
@@ -271,10 +312,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..18)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..24)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 90 documentos (5 por cada uno de los 18 episodios)
+│   └── episodios/                           # 120 documentos (5 por cada uno de los 24 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -292,7 +333,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep15_aar.md ... ep15_mecanicas.md
 │       ├── ep16_aar.md ... ep16_mecanicas.md
 │       ├── ep17_aar.md ... ep17_mecanicas.md
-│       └── ep18_aar.md ... ep18_mecanicas.md
+│       ├── ep18_aar.md ... ep18_mecanicas.md
+│       ├── ep19_aar.md ... ep19_mecanicas.md
+│       ├── ep20_aar.md ... ep20_mecanicas.md
+│       ├── ep21_aar.md ... ep21_mecanicas.md
+│       ├── ep22_aar.md ... ep22_mecanicas.md
+│       ├── ep23_aar.md ... ep23_mecanicas.md
+│       └── ep24_aar.md ... ep24_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -300,17 +347,19 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 18 episodios (Caps 1, 2 y 3)
+│       ├── manifest.rb                      # Catálogo inmutable de los 24 episodios (Caps 1, 2, 3 y 4)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
 │           ├── ep01.rb ... ep07.rb          # Cap 1: 01_origen hasta 07_el_precio
 │           ├── ep08.rb ... ep13.rb          # Cap 2: 08_liberacion hasta 13_reunion_sangrienta
-│           ├── ep14.rb                      # Cap 3: 14_la_ciudad_en_el_fondo
-│           ├── ep15.rb                      # Cap 3: 15_la_ley_del_campamento
-│           ├── ep16.rb                      # Cap 3: 16_en_busca_de_empleo
-│           ├── ep17.rb                      # Cap 3: 17_defensa_de_harbor_light
-│           └── ep18.rb                      # Cap 3: 18_un_techo_y_un_ideal
+│           ├── ep14.rb ... ep18.rb          # Cap 3: 14_la_ciudad_en_el_fondo hasta 18_un_techo_y_un_ideal
+│           ├── ep19.rb                      # Cap 4: 19_el_empleo_prometido
+│           ├── ep20.rb                      # Cap 4: 20_otohime_land
+│           ├── ep21.rb                      # Cap 4: 21_el_castillo_de_la_luz
+│           ├── ep22.rb                      # Cap 4: 22_la_noche_en_survive
+│           ├── ep23.rb                      # Cap 4: 23_el_rescate_de_tatsuro
+│           └── ep24.rb                      # Cap 4: 24_el_dragon_del_seiryu
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -328,13 +377,15 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
     ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
     ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
+    ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
-    └── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
+    ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
+    └── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2 y 3 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (85 tests, 572 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3 y 4 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (106 tests, 677 aserciones) e interfaz interactiva tanto por CLI como web.

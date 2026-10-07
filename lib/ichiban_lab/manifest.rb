@@ -153,6 +153,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep18",
         description: "Enfrentamiento a Bleach Japan y Sota Kume, habitación propia en el hostal de Hamako y el sueño de convertirse en Héroe.",
         chapter: 3
+      ),
+
+      # --- CAPÍTULO 4: THE DRAGON OF YOKOHAMA ---
+      EpisodeInfo.new(
+        id: "19",
+        slug: "19_el_empleo_prometido",
+        title: "El empleo prometido",
+        class_name: "IchibanLab::Scenarios::Ep19",
+        description: "Regreso a Hello Work con domicilio legal, reencuentro con Adachi y oferta de Nonomiya en Otohime Land.",
+        chapter: 4
+      ),
+      EpisodeInfo.new(
+        id: "20",
+        slug: "20_otohime_land",
+        title: "La sospecha de Nonomiya",
+        class_name: "IchibanLab::Scenarios::Ep20",
+        description: "Llegada al soapland Otohime Land, encargo de investigar a Nanoha Mukoda y vigilancia en Pocket Café.",
+        chapter: 4
+      ),
+      EpisodeInfo.new(
+        id: "21",
+        slug: "21_el_castillo_de_la_luz",
+        title: "Infiltración en Sunlight Castle",
+        class_name: "IchibanLab::Scenarios::Ep21",
+        description: "Colocación como contratistas con Kanbe en el asilo y descubrimiento del fraude de pensiones y eutanasia.",
+        chapter: 4
+      ),
+      EpisodeInfo.new(
+        id: "22",
+        slug: "22_la_noche_en_survive",
+        title: "La noche en Survive Bar",
+        class_name: "IchibanLab::Scenarios::Ep22",
+        description: "Refugio y reunión en Survive Bar junto a Adachi y Nanba: plazo de diez días para salvar a Tatsuro Mukoda.",
+        chapter: 4
+      ),
+      EpisodeInfo.new(
+        id: "23",
+        slug: "23_el_rescate_de_tatsuro",
+        title: "El rescate en la sala VIP",
+        class_name: "IchibanLab::Scenarios::Ep23",
+        description: "Asalto a la Excellent Room de Sunlight Castle, freno a la inyección letal de cloruro de potasio y caída de Totsuka.",
+        chapter: 4
+      ),
+      EpisodeInfo.new(
+        id: "24",
+        slug: "24_el_dragon_del_seiryu",
+        title: "La sede del Seiryu y el precio del silencio",
+        class_name: "IchibanLab::Scenarios::Ep24",
+        description: "Audiencia con Ryuhei Hoshino del Clan Seiryu, restitución de fondos a Nanoha y hallazgo del cuerpo de Nonomiya.",
+        chapter: 4
       )
     ].freeze
 

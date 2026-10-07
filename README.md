@@ -30,6 +30,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 17. `17_defensa_de_harbor_light`: Guardia nocturna en el bar de Hamako, derrota de Matsuo y desafío abierto al francotirador de Geomijul.
 18. `18_un_techo_y_un_ideal`: Confrontación moral con Sota Kume (Bleach Japan), habitación propia con Hamako y promesa de convertirse en Héroe.
 
+### Capítulo 4: The Dragon of Yokohama (2019)
+19. `19_el_empleo_prometido`: Registro laboral en Hello Work con domicilio legal, reencuentro con Adachi y oferta de Otohime Land.
+20. `20_otohime_land`: Encargo de investigar a Nanoha Mukoda, escucha encubierta en Pocket Café y localización de Sunlight Castle.
+21. `21_el_castillo_de_la_luz`: Infiltración como contratistas, gritos en la sala VIP y descubrimiento del fraude de pensiones de la Familia Ryuto.
+22. `22_la_noche_en_survive`: Base de operaciones en Survive Bar, mecánica Drink Links y plan de rescate para Tatsuro Mukoda.
+23. `23_el_rescate_de_tatsuro`: Asalto a la sala VIP, detención in extremis de la inyección letal de cloruro de potasio y derrota de Totsuka.
+24. `24_el_dragon_del_seiryu`: Audiencia con Ryuhei Hoshino, el billete defectuoso, restitución a Nanoha y hallazgo del cadáver de Nonomiya.
+
 ---
 
 ## Requisitos
@@ -118,7 +126,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (85 tests, 572 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (106 tests, 677 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -131,6 +139,7 @@ ruby -Ilib -Itest test/test_web_app.rb
 ruby -Ilib -Itest test/test_episode_continuity.rb
 ruby -Ilib -Itest test/test_chapter2_continuity.rb
 ruby -Ilib -Itest test/test_chapter3_continuity.rb
+ruby -Ilib -Itest test/test_chapter4_continuity.rb
 ```
 
 ---
@@ -147,13 +156,13 @@ ruby -Ilib -Itest test/test_chapter3_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 18)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 24)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 90 documentos (ep01 a ep18: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 120 documentos (ep01 a ep24: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (85 tests, 572 aserciones)
+└── test/                              # Suite de pruebas Minitest (106 tests, 677 aserciones)
 ```

@@ -7,7 +7,7 @@ require "ichiban_lab"
 def print_help
   puts "Uso: bin/episodio <ID_EPISODIO> [--seed <NUM>]"
   puts ""
-  puts "Simulador narrativo de Yakuza: Like a Dragon — Capítulos 1, 2 y 3"
+  puts "Simulador narrativo de Yakuza: Like a Dragon — Capítulos 1, 2, 3 y 4"
   puts ""
   puts "CAPÍTULO 1: LIGHT AND SHADOW (01 - 07)"
   IchibanLab::Manifest.by_chapter(1).each do |ep|
@@ -21,6 +21,11 @@ def print_help
   puts ""
   puts "CAPÍTULO 3: THE TOWN AT ROCK BOTTOM (14 - 18)"
   IchibanLab::Manifest.by_chapter(3).each do |ep|
+    puts "  #{ep.id} (#{ep.slug}): #{ep.title} — #{ep.description}"
+  end
+  puts ""
+  puts "CAPÍTULO 4: THE DRAGON OF YOKOHAMA (19 - 24)"
+  IchibanLab::Manifest.by_chapter(4).each do |ep|
     puts "  #{ep.id} (#{ep.slug}): #{ep.title} — #{ep.description}"
   end
   puts ""
@@ -51,7 +56,7 @@ normalized = IchibanLab::Manifest.normalize_id(raw_id)
 ep_info = IchibanLab::Manifest.find(normalized)
 
 unless ep_info
-  warn "Error: Episodio '#{raw_id}' no reconocido en el catálogo (IDs válidos: 01 a 18)."
+  warn "Error: Episodio '#{raw_id}' no reconocido en el catálogo (IDs válidos: 01 a 24)."
   warn "Ejecute 'bin/episodio --help' para ver el listado de episodios."
   exit 3
 end

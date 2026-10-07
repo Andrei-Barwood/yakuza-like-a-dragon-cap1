@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2 Y 3]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2, 3 Y 4]
 
 Última actualización: 2026-10-07
-Episodio actual: 18 (18_un_techo_y_un_ideal)
-Fase completada: Capítulos 1, 2 y 3 completamente integrados y verificados (85 tests pasando al 100%, 572 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 18 episodios.
+Episodio actual: 24 (24_el_dragon_del_seiryu)
+Fase completada: Capítulos 1, 2, 3 y 4 completamente integrados y verificados (106 tests pasando al 100%, 677 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 24 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -30,18 +30,27 @@ Catálogo de episodios:
 - 17_defensa_de_harbor_light: Completado (Guardia en The Harbor Light, derrota de Matsuo, desafío al francotirador de Geomijul y cobro de ¥5,000)
 - 18_un_techo_y_un_ideal: Completado (Resistencia a Bleach Japan / Kume, habitación propia con Hamako y juramento del camino del Héroe)
 
+-- CAPÍTULO 4: THE DRAGON OF YOKOHAMA --
+- 19_el_empleo_prometido: Completado (Hello Work con domicilio, reencuentro con Adachi y oferta de Nonomiya en Otohime Land)
+- 20_otohime_land: Completado (Encargo de Nanoha Mukoda, vigilancia en Pocket Café y localización de Sunlight Castle)
+- 21_el_castillo_de_la_luz: Completado (Infiltración como contratistas, gritos en la sala VIP y descubrimiento del fraude de pensiones)
+- 22_la_noche_en_survive: Completado (Base de operaciones Survive Bar, Drink Links y plan de rescate para Tatsuro)
+- 23_el_rescate_de_tatsuro: Completado (Asalto a la sala VIP, detención de inyección letal de cloruro de potasio y derrota de Totsuka)
+- 24_el_dragon_del_seiryu: Completado (Audiencia con Ryuhei Hoshino, billete defectuoso, restitución a Nanoha y hallazgo del cadáver de Nonomiya)
+
 Archivos clave:
 - AGENTS.md
 - README.md
 - BITACORA.md
 - Gemfile
 - bin/episodio
-- bin/servidor_web
+- bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep18.rb
-- docs/episodios/ep01_* a ep18_* (90 documentos)
-- test/test_scenario_ep01.rb a ep18.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep24.rb
+- docs/episodios/ep01_* a ep24_* (120 documentos)
+- test/test_scenario_ep01.rb a ep24.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
+- test/test_chapter4_continuity.rb
