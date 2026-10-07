@@ -1,0 +1,38 @@
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULO 1]
+
+Última actualización: 2026-10-07
+Episodio actual: 07 (07_el_precio)
+Fase completada: Integración del Capítulo 1 (Continuidad técnica y documental verificada, 42 tests pasando al 100%)
+Próximo paso: Capítulo 1 completamente implementado y verificado (El alcance termina con Ichiban en prisión; capítulos posteriores quedan fuera de alcance)
+
+Catálogo de episodios:
+- 01_origen: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+- 02_cobranza: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+- 03_encargo_urgente: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+- 04_lo_que_se_debe: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+- 05_el_joven_maestro: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+- 06_lo_que_nos_une: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+- 07_el_precio: Completado (Briefing, Escenas, Mecánicas, Lab, AAR, Escenario Ruby y Tests)
+
+Archivos clave:
+- AGENTS.md
+- README.md
+- BITACORA.md
+- Gemfile
+- Rakefile
+- bin/episodio
+- bin/servidor
+- lib/ichiban_lab.rb
+- lib/ichiban_lab/web_app.rb
+- lib/ichiban_lab/character.rb
+- lib/ichiban_lab/world_state.rb
+- lib/ichiban_lab/event_log.rb
+- lib/ichiban_lab/scene.rb
+- lib/ichiban_lab/manifest.rb
+- lib/ichiban_lab/base_scenario.rb
+- lib/ichiban_lab/scenarios/ep01.rb .. ep07.rb
+- docs/episodios/ (35 documentos en total)
+- test/ (test_character.rb, test_world_state.rb, test_event_log.rb, test_scene.rb, test_dispatcher.rb, test_scenario_ep01..07.rb, test_episode_continuity.rb)
+
+Bloqueadores / Dudas de canon pendientes:
+- Ninguno. La continuidad entre 02 y 07 respeta las transiciones de estado, y el prólogo 01 permanece cronológicamente aislado.

@@ -1,0 +1,205 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 25px;
+  }
+  @media (max-width: 800px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .episode-list {
+    list-style: none;
+  }
+  .episode-item {
+    margin-bottom: 8px;
+  }
+  .episode-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: #141720;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .episode-link:hover, .episode-link.active {
+    border-color: var(--crimson);
+    background: #25161a;
+  }
+  .episode-link.active {
+    font-weight: bold;
+    border-left: 4px solid var(--crimson);
+  }
+  .doc-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .doc-pill {
+    background: #202533;
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 1px solid #303749;
+  }
+  .doc-pill:hover {
+    background: #2b3347;
+    color: #fff;
+  }
+  .state-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .state-table th, .state-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .state-table th { color: var(--text-muted); font-weight: normal; }
+  .event-timeline {
+    list-style: none;
+    margin-top: 15px;
+  }
+  .event-entry {
+    padding: 10px 14px;
+    background: #12151e;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 8px;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="grid">
+  <!-- Columna izquierda: Catálogo de Episodios -->
+  <div>
+    <div class="card">
+      <h3 style="margin-bottom: 15px; color: var(--gold);">Catálogo de Episodios</h3>
+      <ul class="episode-list">
+        <% @episodes.each do |ep| %>
+          <li class="episode-item">
+            <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
+              <div>
+                <strong><%= ep.id %></strong>. <%= h(ep.title) %>
+              </div>
+              <span class="badge badge-gold"><%= ep.slug %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Columna derecha: Detalles y Ejecución -->
+  <div>
+    <% if @error %>
+      <div class="card" style="border-color: var(--crimson); background: #281014;">
+        <h3 style="color: #ff8a80;">Error en la ejecución</h3>
+        <p style="margin-top: 5px;"><%= h(@error) %></p>
+      </div>
+    <% end %>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+        <div>
+          <h2>Episodio <%= @episode.id %>: <%= h(@episode.title) %></h2>
+          <p style="color: var(--text-muted); margin-top: 5px;"><%= h(@episode.description) %></p>
+        </div>
+        <form action="/run" method="post">
+          <input type="hidden" name="episode_id" value="<%= @episode.id %>">
+          <button type="submit" class="btn">▶ Ejecutar Episodio</button>
+        </form>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <h4 style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;">Documentación Técnica</h4>
+        <div class="doc-pills">
+          <a class="doc-pill" href="/docs/<%= @episode.id %>/briefing">📄 Briefing</a>
+          <a class="doc-pill" href="/docs/<%= @episode.id %>/escenas">🎬 Escenas</a>
+          <a class="doc-pill" href="/docs/<%= @episode.id %>/mecanicas">⚙️ Mecánicas</a>
+          <a class="doc-pill" href="/docs/<%= @episode.id %>/lab">🧪 Lab</a>
+          <a class="doc-pill" href="/docs/<%= @episode.id %>/aar">📋 AAR</a>
+        </div>
+      </div>
+    </div>
+
+    <% if @outcome %>
+      <!-- Resultado de Ejecución -->
+      <div class="card">
+        <h3 style="color: #a5d6a7; margin-bottom: 15px;">✓ Escenario Ejecutado Exitosamente</h3>
+        <p style="background: #102416; padding: 10px 14px; border-radius: 5px; color: #d4edda; margin-bottom: 20px;">
+          <strong>Resumen:</strong> <%= h(@outcome[:summary]) %>
+        </p>
+
+        <h4 style="color: var(--gold); margin-bottom: 10px;">Estado Final del Mundo</h4>
+        <table class="state-table">
+          <tr>
+            <th>Ubicación:</th>
+            <td><strong><%= h(@outcome[:state].location) %></strong></td>
+          </tr>
+          <tr>
+            <th>Hora / Periodo:</th>
+            <td><%= h(@outcome[:state].time_period) %></td>
+          </tr>
+          <tr>
+            <th>Dinero en Mano:</th>
+            <td><span class="badge badge-gold">¥<%= @outcome[:state].money %></span></td>
+          </tr>
+          <tr>
+            <th>Inventario:</th>
+            <td>
+              <% if @outcome[:state].inventory.empty? %>
+                <em style="color: var(--text-muted);">(Vacío)</em>
+              <% else %>
+                <% @outcome[:state].inventory.each do |item| %>
+                  <span class="badge"><%= item %></span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>Banderas / Flags:</th>
+            <td>
+              <code><%= h(@outcome[:state].flags.inspect) %></code>
+            </td>
+          </tr>
+        </table>
+
+        <h4 style="color: var(--gold); margin-top: 25px; margin-bottom: 10px;">
+          Línea de Eventos Registrados (<%= @outcome[:events].size %>)
+        </h4>
+        <ul class="event-timeline">
+          <% @outcome[:events].each do |ev| %>
+            <li class="event-entry">
+              <span class="badge badge-green">#<%= format('%02d', ev.sequence) %></span>
+              <strong style="color: #90caf9;"><%= h(ev.id) %></strong>
+              <% if ev.actor %> <span style="color: #ffcc80;">[<%= h(ev.actor) %>]</span><% end %>
+              <% if ev.target %> &rarr; <span style="color: #ce93d8;">[<%= h(ev.target) %>]</span><% end %>
+              <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 4px;">
+                Escena: <em><%= h(ev.scene) %></em>
+                <% unless ev.data.empty? %>
+                  | Payload: <%= h(ev.data.inspect) %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

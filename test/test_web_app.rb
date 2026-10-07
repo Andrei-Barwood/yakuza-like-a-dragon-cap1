@@ -1,0 +1,42 @@
+# frozen_string_literal: true
+
+require_relative "test_helper"
+gem "sinatra", "~> 2.2"
+require "ichiban_lab/web_app"
+require "rack/mock"
+
+class TestWebApp < Minitest::Test
+  def app
+    IchibanLab::WebApp.new
+  end
+
+  def test_index_route
+    request = Rack::MockRequest.new(app)
+    response = request.get("/")
+    assert_equal 200, response.status
+    assert_includes response.body, "Capítulo 1: Light and Shadow"
+    assert_includes response.body, "Catálogo de Episodios"
+    assert_includes response.body, "01_origen"
+  end
+
+  def test_post_run_episode
+    request = Rack::MockRequest.new(app)
+    response = request.post("/run", params: { episode_id: "01" })
+    assert_equal 200, response.status
+    assert_includes response.body, "Escenario Ejecutado Exitosamente"
+    assert_includes response.body, "story.sacrifice_recorded"
+  end
+
+  def test_docs_view_route
+    request = Rack::MockRequest.new(app)
+    response = request.get("/docs/01/briefing")
+    assert_equal 200, response.status
+    assert_includes response.body, "Briefing — Episodio 01"
+  end
+
+  def test_nonexistent_episode_returns_404
+    request = Rack::MockRequest.new(app)
+    response = request.get("/docs/99/briefing")
+    assert_equal 404, response.status
+  end
+end

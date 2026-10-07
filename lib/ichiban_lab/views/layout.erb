@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio Narrativo — Yakuza: Like a Dragon (Capítulo 1)</title>
+  <style>
+    :root {
+      --bg-dark: #0f1117;
+      --card-bg: #1a1d26;
+      --card-border: #2a2f3d;
+      --crimson: #d32f2f;
+      --crimson-hover: #b71c1c;
+      --gold: #ffb300;
+      --text-main: #f0f2f5;
+      --text-muted: #9aa0a6;
+      --code-bg: #232733;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    header {
+      border-bottom: 2px solid var(--crimson);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    header h1 span {
+      background: var(--crimson);
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .nav-links a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 15px;
+    }
+    .nav-links a:hover { text-decoration: underline; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .btn {
+      background: var(--crimson);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { background: var(--crimson-hover); }
+    .badge {
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #333;
+    }
+    .badge-gold { background: #5c4300; color: #ffd54f; }
+    .badge-red { background: #5c1414; color: #ff8a80; }
+    .badge-green { background: #13391b; color: #a5d6a7; }
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--card-border);
+      padding-top: 15px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        龍が如く7 <span>Capítulo 1: Light and Shadow</span>
+      </h1>
+      <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/docs/01/briefing">Docs</a>
+      </div>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      Laboratorio Narrativo Yakuza: Like a Dragon — Simulación determinista ejecutándose en Sinatra (puerto 4567).
+    </footer>
+  </div>
+</body>
+</html>

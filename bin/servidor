@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+gem "sinatra", "~> 2.2"
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "ichiban_lab/web_app"
+
+port = (ENV["PORT"] || 4567).to_i
+puts "======================================================================"
+puts "  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULO 1)"
+puts "  Servidor Web Sinatra activo en: http://localhost:#{port}"
+puts "======================================================================"
+puts "Presione Ctrl+C para detener el servidor."
+
+IchibanLab::WebApp.run!(port: port, bind: "0.0.0.0")

@@ -1,0 +1,244 @@
+# Bitácora del Proyecto: Laboratorio Narrativo *Yakuza: Like a Dragon* — Capítulo 1
+
+**Proyecto:** Laboratorio Narrativo y de Continuidad (*Light and Shadow*)  
+**Tecnología:** Ruby (>= 2.6), Minitest, CLI Runner  
+**Fecha de finalización:** 2026-10-07  
+**Estado:** Capítulo 1 completado e integrado al 100% (42 tests, 290 aserciones, 0 fallos)
+
+---
+
+## 1. Visión y Metodología de Trabajo
+
+Este proyecto implementa un simulador narrativo y de decisiones verificables para el primer capítulo de *Yakuza: Like a Dragon*. A diferencia de un motor RPG genérico o un port del videojuego, el foco está puesto en la comprobación estricta de:
+- Estados de mundo (`WorldState`) e identidades de personaje (`Character`).
+- Eventos estructurados estables (`EventLog`).
+- Precondiciones no ambiguas que rechazan transiciones inválidas (`PreconditionError`).
+- Continuidad y handoff encadenado de inventario, dinero y relaciones.
+- Aislamiento cronológico estricto entre el prólogo de 1977 y la línea adulta de 2000-2001.
+
+La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA_CAP1.md` y `PROMPTS_IMPLEMENTACION_YAKUZA_CAP1.md`, avanzando secuencialmente desde el esqueleto del dominio (Prompt 00), por cada uno de los 7 episodios en tres fases disciplinadas (**Especificación -> Implementación -> Cierre**), hasta la **Integración final de Continuidad**.
+
+---
+
+## 2. Registro Cronológico de Fases
+
+### Fase 0: Esqueleto Técnico y Arquitectura de Dominio (Prompt 00)
+- **Objetivo:** Establecer los cimientos del repositorio sin adelantar escenas de los episodios.
+- **Actividades realizadas:**
+  - Redacción de reglas maestras en `AGENTS.md` (idioma de código en inglés, documentación en español, determinismo, códigos CLI 0/2/3).
+  - Creación del documento de bienvenida y guía de ejecución en `README.md`.
+  - Creación del cursor de estado en `prompts/ESTADO.txt`.
+  - Implementación del núcleo de dominio en `lib/ichiban_lab/`:
+    - `Character`: Entidad con `id`, `name`, `attributes`, `relationships`, `belongings` y método `deep_clone`.
+    - `WorldState`: Estado observable con `episode`, `scene_id`, `location`, `time_period`, `characters`, `inventory`, `money`, `flags` y aislamiento de memoria mediante `deep_clone`.
+    - `EventLog` y `Event`: Registro cronológico y estructurado de eventos con capacidades de filtrado por identificador, escena o actores.
+    - `Scene`: Definición de escenas con soporte para precondiciones ejecutables (`check_preconditions!`).
+    - `Manifest`: Catálogo único e inmutable de los 7 episodios (`01` a `07`).
+    - `BaseScenario`: Clase base orquestadora de episodios deterministas con semilla (`seed`).
+  - Implementación del runner CLI ejecutable `bin/episodio`.
+  - Configuración del entorno de pruebas con `test/test_helper.rb`, `Rakefile` y pruebas unitarias para todas las entidades básicas (`test_character.rb`, `test_world_state.rb`, `test_event_log.rb`, `test_scene.rb`, `test_dispatcher.rb`).
+- **Verificación:** Ejecución de 17 tests unitarios iniciales pasando al 100%.
+
+---
+
+### Fase 1: Episodio 01 — `01_origen` ("La primera deuda")
+- **Objetivo:** Modelar el prólogo de Masumi Arakawa en su infancia (1977), estableciendo su origen y la muerte de su padre Toshio.
+- **Especificación documental:**
+  - `docs/episodios/ep01_briefing.md`
+  - `docs/episodios/ep01_escenas.md`
+  - `docs/episodios/ep01_mecanicas.md`
+  - `docs/episodios/ep01_lab.md`
+  - `docs/episodios/ep01_aar.md`
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep01.rb`: Escenas `theatre_dressing_room`, `dinner_at_eatery`, `dark_alleyway_ambush`, `prologue_aftermath`.
+  - Entrega del objeto `:family_talisman` a Masumi.
+  - Asesinato inevitable de Toshio protegiendo a su hijo (`status: :deceased`, HP 0).
+  - Masumi adquiere `:trauma => :father_killed` y emite `story.chapter_boundary` con `prologue_1977_end`.
+- **Pruebas:** `test/test_scenario_ep01.rb` (ejecución completa, fallo de precondición si no concluye la función previa, y CLI retornando código 0).
+- **Handoff:** Aislamiento cronológico estricto; el inventario y fondos de 1977 no se transfieren a la línea adulta.
+
+---
+
+### Fase 2: Episodio 02 — `02_cobranza` ("El trabajo del día")
+- **Objetivo:** Iniciar la línea temporal adulta en Kamurocho (año 2000), presentando a Ichiban Kasuga, Mitsuo Yasuda y la primera cobranza a Hirotaka Ushio.
+- **Especificación documental:**
+  - `docs/episodios/ep02_briefing.md`, `ep02_escenas.md`, `ep02_mecanicas.md`, `ep02_lab.md`, `ep02_aar.md`.
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep02.rb`: Escenas `streets_morning_patrol`, `ushio_den_confrontation`, `ushio_combat`, `moral_choice_reimbursement`.
+  - Introducción del combate callejero contra Ushio (`status: :defeated`).
+  - Decisión moral distintiva de Ichiban: reembolsar ¥50,000 a las víctimas timadas por Ushio y retener ¥200,000 debidos a la familia.
+  - Saldo final de dinero: ¥202,000 (¥2,000 iniciales + ¥200,000 recaudados).
+  - Vínculo con Mitsuo consolidado como `:loyal_comrade`.
+- **Pruebas:** `test/test_scenario_ep02.rb` (validación de precondiciones, cobranza, eventos y CLI).
+
+---
+
+### Fase 3: Episodio 03 — `03_encargo_urgente` ("Un favor en el barrio")
+- **Objetivo:** Simular los encargos comunitarios de Ichiban en el barrio: el recado de Michiyo respecto a la fontanería de Shangri-La y el encuentro callejero.
+- **Especificación documental:**
+  - `docs/episodios/ep03_briefing.md`, `ep03_escenas.md`, `ep03_mecanicas.md`, `ep03_lab.md`, `ep03_aar.md`.
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep03.rb`: Escenas `michiyo_request`, `street_skirmish_elderly`, `cigarette_shop_errand`, `shangri_la_resolution`.
+  - Intervención callejera en defensa de un anciano frente a matones (`elderly_protected => true`).
+  - Adquisición del ítem `:heavy_duty_plunger` en la tienda de cigarrillos.
+  - Validación de precondición: Shangri-La exige poseer el desatascador; tras resolver la fontanería, el ítem se consume del inventario.
+  - Recepción de la llamada/mensaje de Mitsuo activando el siguiente trabajo: `:next_assignment_target => :hiratsuka`.
+- **Pruebas:** `test/test_scenario_ep03.rb` (validación de que la resolución sin desatascador lanza `PreconditionError`).
+
+---
+
+### Fase 4: Episodio 04 — `04_lo_que_se_debe` ("Cobrar sin destruir")
+- **Objetivo:** Cobrar la deuda a Koji Hiratsuka en Public Park 3, equilibrando el deber con la compasión hacia un conocido de la infancia.
+- **Especificación documental:**
+  - `docs/episodios/ep04_briefing.md`, `ep04_escenas.md`, `ep04_mecanicas.md`, `ep04_lab.md`, `ep04_aar.md`.
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep04.rb`: Escenas `park_confrontation`, `park_combat`, `wallet_inspection_and_mercy`, `sawashiro_pager_call`.
+  - Precondición: El objetivo de cobranza activo debe ser `:hiratsuka`.
+  - Combate y sometimiento de Hiratsuka.
+  - Decisión con la cartera: contiene ¥100,000; Ichiban retiene ¥50,000 para la familia y le perdona los otros ¥50,000 al ver la difícil situación familiar de Hiratsuka.
+  - Saldo acumulado: pasa a ¥252,000.
+  - Llamada de Jo Sawashiro convocando a Ichiban para custodiar a Masato (`:sawashiro_summons => true`).
+- **Pruebas:** `test/test_scenario_ep04.rb` (saldo, perdonar deuda, llamadas y CLI).
+
+---
+
+### Fase 5: Episodio 05 — `05_el_joven_maestro` ("Una noche para Masato")
+- **Objetivo:** Acompañar y proteger a Masato Arakawa ("El Joven Maestro") en silla de ruedas durante su salida al club nocturno de anfitrionas.
+- **Especificación documental:**
+  - `docs/episodios/ep05_briefing.md`, `ep05_escenas.md`, `ep05_mecanicas.md`, `ep05_lab.md`, `ep05_aar.md`.
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep05.rb`: Escenas `escorting_masato`, `hostess_club_lounge`, `overhearing_backstage`, `masato_departure_and_bill`.
+  - Precondición de entrada: orden activa de Sawashiro.
+  - Tensión con el comisario Horinouchi en el salón VIP.
+  - Conversación secreta escuchada por Ichiban: Yumeno revela su desprecio y oportunismo hacia Masato.
+  - Masato arroja su cartera a Ichiban y se marcha furioso.
+  - Ichiban paga la cuenta del club (¥80,000) con los fondos de la cartera de Masato y conserva la cartera (`:masato_wallet`) en su inventario para rendir cuentas ante el clan.
+- **Pruebas:** `test/test_scenario_ep05.rb` (posesión de la cartera de Masato, pago de consumición, salida del joven maestro).
+
+---
+
+### Fase 6: Episodio 06 — `06_lo_que_nos_une` ("La familia Arakawa")
+- **Objetivo:** Regreso a la oficina de la familia Arakawa, resolución de la reprimenda, cena íntima entre Arakawa e Ichiban, y recuerdos de lealtad.
+- **Especificación documental:**
+  - `docs/episodios/ep06_briefing.md`, `ep06_escenas.md`, `ep06_mecanicas.md`, `ep06_lab.md`, `ep06_aar.md`.
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep06.rb`: Escenas `office_reprimand`, `intimate_dinner_talk`, `theater_square_brawl`, `apartment_retirement`.
+  - Precondición: Ichiban debe portar `:masato_wallet`.
+  - Entrega de la cartera a Masumi Arakawa y depósito de los ¥250,000 recaudados en la jornada (remanente personal de Ichiban: ¥2,000).
+  - Sawashiro golpea a Ichiban; Arakawa interviene con autoridad paternal.
+  - Cena tradicional: revelación de los sacrificios de Arakawa (el dedo cortado para salvar a Ichiban en su juventud) y consolidación de la relación como figura paterna (`:father_figure`).
+  - Pacificación conjunta de alborotadores en Theater Square.
+  - Retiro a descansar al apartamento en la víspera de Año Nuevo (`resting_for_night => true`).
+- **Pruebas:** `test/test_scenario_ep06.rb` (restitución de cartera, depósito de fondos, relación paterno-filial).
+
+---
+
+### Fase 7: Episodio 07 — `07_el_precio` ("Quince años")
+- **Objetivo:** Clímax dramático y cierre definitivo del Capítulo 1. El crimen de Sawashiro, la petición de Arakawa, la última comida y el ingreso en prisión.
+- **Especificación documental:**
+  - `docs/episodios/ep07_briefing.md`, `ep07_escenas.md`, `ep07_mecanicas.md`, `ep07_lab.md`, `ep07_aar.md`.
+- **Implementación Ruby:**
+  - `lib/ichiban_lab/scenarios/ep07.rb`: Escenas `new_years_awakening`, `sakaki_family_ambush`, `patriarch_solemn_request`, `the_last_meal_and_surrender`.
+  - Precondición: descanso completado de la noche anterior.
+  - Llamada de emergencia de Arakawa en la mañana del 1 de enero de 2001.
+  - Emboscada y combate callejero superado frente a sicarios del clan Sakaki.
+  - Revelación privada en la oficina: Sawashiro disparó y mató a un alto mando Sakaki.
+  - Petición solemne: Arakawa le ruega a Ichiban que asuma la culpa para salvar a la familia del exterminio. Ichiban acepta el sacrificio por amor y lealtad.
+  - Última comida compartida (beef bowl) en silencio solemne.
+  - Entrega voluntaria ante la policía: Ichiban pasa a estado `:prisoner`, `:incarcerated`, dinero ¥0 y pertenencias entregadas.
+  - Evento de frontera: `story.chapter_boundary` con `chapter: 1`, `status: :concluded`, `next: :out_of_scope`.
+- **Pruebas:** `test/test_scenario_ep07.rb` (estado de reclusión, evento de frontera del capítulo, código CLI 0).
+- **Límite:** Cierre estricto del alcance sin simular la vida en prisión ni acontecimientos del capítulo 2.
+
+---
+
+### Fase 8: Integración de Continuidad y Aceptación Final
+- **Objetivo:** Validar que los escenarios encadenan estado de forma exacta y no fugan información ni suposiciones omniscientes.
+- **Pruebas de integración (`test/test_episode_continuity.rb`):**
+  1. `test_ep01_prologue_isolation`: Valida que el prólogo de 1977 no interfiere ni es precondición técnica requerida por el inicio del episodio 02.
+  2. `test_sequential_adult_continuity_from_ep02_to_ep07`: Ejecuta en cadena los episodios 02 a 07 pasando únicamente el estado formal resultante de cada uno (flujo de fondos: ¥2,000 -> ¥202,000 -> ¥252,000 -> ¥2,000 -> ¥0; inventario; banderas de asignación y relaciones).
+  3. `test_all_seven_episodes_executable_via_cli_with_exit_code_0`: Verifica la ejecución por proceso independiente vía `bin/episodio` para cada uno de los 7 identificadores, confirmando salida exitosa (código 0).
+- **Pruebas de despacho y códigos de error (`test/test_dispatcher.rb`):**
+  - Código `0`: Ejecución normal o comando `--help`.
+  - Código `2`: Simulación de fallo de ejecución / precondición rota.
+  - Código `3`: Argumentos vacíos o IDs desconocidos (e.g., `99`).
+- **Actualización de documentación:**
+  - Sincronización de `prompts/ESTADO.txt`.
+  - Detalle completo en `README.md`.
+
+---
+
+## 3. Matriz de Decisiones de Arquitectura
+
+| Aspecto | Decisión Adoptada | Justificación |
+|---|---|---|
+| **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas de NERV/SIEM | Evitar distorsiones conceptuales y respetar la narrativa de drama urbano de Yakuza. |
+| **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
+| **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso) | El resultado trágico de la historia (ingreso en prisión en el ep 07) no es un fallo técnico. |
+| **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de carácter de Ichiban. |
+| **Límite Canónico** | Fin cerrado en la entrega a la comisaría (Capítulo 1) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 2 en adelante. |
+
+---
+
+## 4. Inventario de Archivos Entregados
+
+```text
+07 - like a dragon/
+├── AGENTS.md                                # Reglas operativas y contratos del simulador
+├── README.md                                # Documentación de uso, instalación y tests
+├── BITACORA.md                              # Este documento (registro histórico completo)
+├── Gemfile                                  # Configuración de dependencias (Rake, Minitest)
+├── Rakefile                                 # Tarea por defecto rake test
+├── bin/
+│   └── episodio                             # Runner CLI ejecutable (IDs 01..07)
+├── docs/
+│   └── episodios/                           # 35 documentos (5 por cada episodio)
+│       ├── ep01_aar.md, ep01_briefing.md, ep01_escenas.md, ep01_lab.md, ep01_mecanicas.md
+│       ├── ep02_aar.md, ep02_briefing.md, ep02_escenas.md, ep02_lab.md, ep02_mecanicas.md
+│       ├── ep03_aar.md, ep03_briefing.md, ep03_escenas.md, ep03_lab.md, ep03_mecanicas.md
+│       ├── ep04_aar.md, ep04_briefing.md, ep04_escenas.md, ep04_lab.md, ep04_mecanicas.md
+│       ├── ep05_aar.md, ep05_briefing.md, ep05_escenas.md, ep05_lab.md, ep05_mecanicas.md
+│       ├── ep06_aar.md, ep06_briefing.md, ep06_escenas.md, ep06_lab.md, ep06_mecanicas.md
+│       └── ep07_aar.md, ep07_briefing.md, ep07_escenas.md, ep07_lab.md, ep07_mecanicas.md
+├── lib/
+│   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
+│   └── ichiban_lab/
+│       ├── character.rb                     # Dominio: Personaje
+│       ├── world_state.rb                   # Dominio: Estado de Mundo
+│       ├── event_log.rb                     # Dominio: Registro de Eventos
+│       ├── scene.rb                         # Dominio: Escenas y Precondiciones
+│       ├── manifest.rb                      # Catálogo inmutable de los 7 episodios
+│       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
+│       └── scenarios/
+│           ├── ep01.rb                      # 01_origen
+│           ├── ep02.rb                      # 02_cobranza
+│           ├── ep03.rb                      # 03_encargo_urgente
+│           ├── ep04.rb                      # 04_lo_que_se_debe
+│           ├── ep05.rb                      # 05_el_joven_maestro
+│           ├── ep06.rb                      # 06_lo_que_nos_une
+│           └── ep07.rb                      # 07_el_precio
+├── prompts/
+│   └── ESTADO.txt                           # Cursor de estado persistente del proyecto
+└── test/
+    ├── test_helper.rb                       # Helper de Minitest
+    ├── test_character.rb                    # Tests unitarios de Character
+    ├── test_world_state.rb                  # Tests unitarios de WorldState
+    ├── test_event_log.rb                    # Tests unitarios de EventLog
+    ├── test_scene.rb                        # Tests unitarios de Scene
+    ├── test_dispatcher.rb                   # Tests del runner bin/episodio y códigos CLI
+    ├── test_scenario_ep01.rb                # Tests del Episodio 01
+    ├── test_scenario_ep02.rb                # Tests del Episodio 02
+    ├── test_scenario_ep03.rb                # Tests del Episodio 03
+    ├── test_scenario_ep04.rb                # Tests del Episodio 04
+    ├── test_scenario_ep05.rb                # Tests del Episodio 05
+    ├── test_scenario_ep06.rb                # Tests del Episodio 06
+    ├── test_scenario_ep07.rb                # Tests del Episodio 07
+    └── test_episode_continuity.rb           # Tests de integración y continuidad completa
+```
+
+---
+
+## 5. Conclusión
+
+El laboratorio narrativo del Capítulo 1 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable y modularidad limpia en Ruby.

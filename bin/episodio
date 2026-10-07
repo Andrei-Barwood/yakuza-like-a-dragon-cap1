@@ -1,0 +1,103 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "ichiban_lab"
+
+def print_help
+  puts "Uso: bin/episodio <ID_EPISODIO> [--seed <NUM>]"
+  puts ""
+  puts "Simulador narrativo de Yakuza: Like a Dragon — Capítulo 1"
+  puts ""
+  puts "Episodios disponibles:"
+  IchibanLab::Manifest.all.each do |ep|
+    puts "  #{ep.id} (#{ep.slug}): #{ep.title} — #{ep.description}"
+  end
+  puts ""
+  puts "Códigos de salida:"
+  puts "  0: Escenario ejecutado con éxito."
+  puts "  2: Error de ejecución o episodio pendiente de implementación."
+  puts "  3: Uso incorrecto o identificador de episodio inválido."
+end
+
+args = ARGV.dup
+
+if args.empty? || args.include?("-h") || args.include?("--help")
+  print_help
+  exit(args.empty? ? 3 : 0)
+end
+
+raw_id = args.shift
+seed = 42
+
+while (arg = args.shift)
+  case arg
+  when "--seed"
+    seed = (args.shift || 42).to_i
+  end
+end
+
+normalized = IchibanLab::Manifest.normalize_id(raw_id)
+ep_info = IchibanLab::Manifest.find(normalized)
+
+unless ep_info
+  warn "Error: Episodio '#{raw_id}' no reconocido en el catálogo del Capítulo 1 (IDs válidos: 01 a 07)."
+  warn "Ejecute 'bin/episodio --help' para ver el listado de episodios."
+  exit 3
+end
+
+scenario_file = File.expand_path("../lib/ichiban_lab/scenarios/ep#{ep_info.id}.rb", __dir__)
+
+unless File.exist?(scenario_file)
+  warn "Error: El episodio #{ep_info.id} ('#{ep_info.title}') está en el catálogo pero no ha sido implementado aún."
+  exit 2
+end
+
+require scenario_file
+
+scenario_class = begin
+  Object.const_get(ep_info.class_name)
+rescue NameError => e
+  warn "Error de resolución: No se pudo cargar #{ep_info.class_name}: #{e.message}"
+  exit 2
+end
+
+begin
+  scenario = scenario_class.new(seed: seed)
+  outcome = scenario.run
+
+  puts "=" * 70
+  puts "EPISODIO #{ep_info.id}: #{ep_info.title.upcase}"
+  puts "Slug: #{ep_info.slug}"
+  puts "=" * 70
+  puts ""
+  puts "Eventos registrados (#{outcome[:events].size}):"
+  outcome[:events].each do |ev|
+    actor_str = ev.actor ? "[#{ev.actor}]" : ""
+    target_str = ev.target ? "-> [#{ev.target}]" : ""
+    data_str = ev.data.empty? ? "" : " | #{ev.data.inspect}"
+    puts "  #{format('%02d', ev.sequence)}. #{ev.id} #{actor_str} #{target_str} (escena: #{ev.scene})#{data_str}"
+  end
+  puts ""
+  puts "Estado final:"
+  puts "  Ubicación: #{outcome[:state].location}"
+  puts "  Hora/Periodo: #{outcome[:state].time_period}"
+  puts "  Dinero: ¥#{outcome[:state].money}"
+  puts "  Inventario: #{outcome[:state].inventory.inspect}"
+  puts "  Flags: #{outcome[:state].flags.inspect}"
+  puts ""
+  puts "Resumen:"
+  puts "  #{outcome[:summary]}"
+  puts "=" * 70
+  exit 0
+rescue IchibanLab::PreconditionError => e
+  warn "Error de precondición en #{ep_info.id}: #{e.message}"
+  exit 2
+rescue IchibanLab::ExecutionError => e
+  warn "Error de ejecución en #{ep_info.id}: #{e.message}"
+  exit 2
+rescue StandardError => e
+  warn "Error inesperado durante la simulación de #{ep_info.id}: #{e.message}"
+  warn e.backtrace.first(5).join("\n")
+  exit 2
+end

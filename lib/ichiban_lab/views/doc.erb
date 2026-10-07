@@ -1,0 +1,14 @@
+<div style="margin-bottom: 20px;">
+  <a href="/?ep=<%= @episode.id %>" class="btn" style="padding: 6px 14px; font-size: 0.9rem;">&larr; Volver al Dashboard</a>
+</div>
+
+<div class="card" style="padding: 30px;">
+  <div style="border-bottom: 1px solid var(--card-border); padding-bottom: 15px; margin-bottom: 25px;">
+    <h2><%= h(@title) %></h2>
+    <span class="badge badge-gold">Episodio <%= @episode.id %> (<%= @episode.slug %>)</span>
+  </div>
+
+  <div class="markdown-body" style="line-height: 1.8;">
+    <%= render_markdown(@content) %>
+  </div>
+</div>
