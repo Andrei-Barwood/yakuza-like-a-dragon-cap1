@@ -253,6 +253,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep30",
         description: "Detección de la trampa por los capataces de Liumang, choque del camión cisterna, explosión del almacén y desenlace del Capítulo 5.",
         chapter: 5
+      ),
+
+      # --- CAPÍTULO 6: IGNITION ---
+      EpisodeInfo.new(
+        id: "31",
+        slug: "31_el_despertar_encadenado",
+        title: "El despertar encadenado",
+        class_name: "IchibanLab::Scenarios::Ep31",
+        description: "Cautiverio en el sótano secreto de Mabuchi, interrogatorio grabado para culpar al Seiryu y admisión del asesinato de Nonomiya.",
+        chapter: 6
+      ),
+      EpisodeInfo.new(
+        id: "32",
+        slug: "32_la_fuga_subterranea",
+        title: "La fuga subterránea",
+        class_name: "IchibanLab::Scenarios::Ep32",
+        description: "Intervención de un salvador anónimo, liberación de los compañeros, recuperación del botín y aislamiento sin cobertura.",
+        chapter: 6
+      ),
+      EpisodeInfo.new(
+        id: "33",
+        slug: "33_el_duelo_de_la_excavadora",
+        title: "El duelo de la excavadora",
+        class_name: "IchibanLab::Scenarios::Ep33",
+        description: "Ascenso por los conductos de contrabando hacia B1F, batalla de jefe contra la excavadora pesada de Yan y salida a la superficie.",
+        chapter: 6
+      ),
+      EpisodeInfo.new(
+        id: "34",
+        slug: "34_la_chispa_del_conflicto",
+        title: "La chispa del conflicto",
+        class_name: "IchibanLab::Scenarios::Ep34",
+        description: "Llamada urgente al Patriarca Hoshino, noticias de asesinatos en Isezaki Road, represalia de Takabe y deducción de la trampa de Mabuchi.",
+        chapter: 6
+      ),
+      EpisodeInfo.new(
+        id: "35",
+        slug: "35_camino_a_restaurant_row",
+        title: "Camino a Restaurant Row",
+        class_name: "IchibanLab::Scenarios::Ep35",
+        description: "Incursión entre las víctimas de la guerra de pandillas, disparo a los pies frente a Qing Jin y combate a puño limpio con Takabe.",
+        chapter: 6
+      ),
+      EpisodeInfo.new(
+        id: "36",
+        slug: "36_el_juicio_de_tianyou_zhao",
+        title: "El juicio de Tianyou Zhao",
+        class_name: "IchibanLab::Scenarios::Ep36",
+        description: "Llegada del líder de Yokohama Liumang, exhibición del video editado, tregua armada y orden de buscar pruebas en Geomijul.",
+        chapter: 6
       )
     ].freeze
 

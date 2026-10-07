@@ -328,6 +328,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 13: Capítulo 6 — "Ignition" (Episodios 31 a 36)
+- **Objetivo:** Ampliar el laboratorio narrativo para cubrir con fidelidad el Capítulo 6 de *Yakuza: Like a Dragon* (戦禍の銃爪), estructurado en 6 episodios canónicos que narran el cautiverio encadenado en el escondite secreto de Mabuchi, la liberación mediante un salvador anónimo, el combate contra la excavadora pesada de Yan en los túneles subterráneos de contrabando, la notificación de asesinatos del Clan Seiryu por el Patriarca Hoshino, la carrera contra reloj a Restaurant Row para someter a golpes a Mamoru Takabe y la intervención definitiva de Tianyou Zhao que desemboca en la pista hacia Geomijul.
+- **Episodios implementados:**
+  1. **Episodio 31 (`31_el_despertar_encadenado` - "El despertar encadenado"):**
+     - Tras la destrucción del almacén, el grupo despierta atado con cadenas en el sótano secreto de Mabuchi. Interrogatorio bajo grabación de video para imputar falsamente al Clan Seiryu la ruptura de la paz territorial. Mabuchi admite haber asesinado a Nonomiya, sube el material a la red para encender la mecha y ordena a Yan ejecutarlos.
+     - Documentación: `docs/episodios/ep31_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep31.rb`.
+     - Test: `test/test_scenario_ep31.rb`.
+  2. **Episodio 32 (`32_la_fuga_subterranea` - "La fuga subterránea"):**
+     - Justo antes de que Adachi sea apuñalado, un individuo desconocido corta las cadenas de Ichiban susurrando que el resto depende de él. Kasuga combate a los carceleros, desencadena a Nanba, Adachi y Saeko, y recuperan las cajas con todas sus pertenencias, comprobando que se hallan en una red de túneles sin cobertura de señal telefónica.
+     - Documentación: `docs/episodios/ep32_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep32.rb`.
+     - Test: `test/test_scenario_ep32.rb`.
+  3. **Episodio 33 (`33_el_duelo_de_la_excavadora` - "El duelo de la excavadora"):**
+     - Progresión ascendente a través de los túneles de contrabando hacia el nivel B1F. Enfrentamiento contra Yan a bordo de una excavadora de construcción pesada. Inutilización de la máquina, victoria en combate sobre Yan y escape vertical hacia los callejones traseros de Isezaki Ijincho.
+     - Documentación: `docs/episodios/ep33_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep33.rb`.
+     - Test: `test/test_scenario_ep33.rb`.
+  4. **Episodio 34 (`34_la_chispa_del_conflicto` - "La chispa del conflicto"):**
+     - Comunicación telefónica con el presidente Ryuhei Hoshino para alertar sobre la provocación de Mabuchi. Hoshino revela que dos subalternos del Seiryu fueron asesinados a tiros en Isezaki Road y que Takabe se dirige en un camión hacia Restaurant Row para cobrarse venganza. Deducción de la maniobra de falsa bandera y activación del objetivo prioritario.
+     - Documentación: `docs/episodios/ep34_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep34.rb`.
+     - Test: `test/test_scenario_ep34.rb`.
+  5. **Episodio 35 (`35_camino_a_restaurant_row` - "Camino a Restaurant Row"):**
+     - Incursión en Restaurant Row entre hordas de gánsteres heridos y barricadas urbanas. Disparo de advertencia de Takabe rozando las piernas de Ichiban a las puertas de Qing Jin. Takabe insiste en sacrificar su vida por el honor de sus jóvenes caídos. Ichiban lo desafía a un combate desarmado y lo somete por la fuerza no letal.
+     - Documentación: `docs/episodios/ep35_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep35.rb`.
+     - Test: `test/test_scenario_ep35.rb`.
+  6. **Episodio 36 (`36_el_juicio_de_tianyou_zhao` - "El juicio de Tianyou Zhao"):**
+     - Llegada de Tianyou Zhao apuntando con una pistola a Takabe. Zhao exhibe el video manipulado por Mabuchi, pero desconfía de la falta de un motivo claro para la traición de su mano derecha. Al carecer de pruebas irrefutables, Zhao concede una tregua temporal y exige a Kasuga que acuda a la red de espionaje Geomijul para obtener las pruebas concluyentes. Evento de frontera: `story.chapter_boundary` hacia el Capítulo 7.
+     - Documentación: `docs/episodios/ep36_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep36.rb`.
+     - Test: `test/test_scenario_ep36.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 6:**
+  - `test/test_chapter6_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep30 hasta el desenlace del Ep36, controlando inventarios, recuperación de equipamiento, sumisión de Takabe, tregua armada de Zhao y evento de conclusión hacia el Capítulo 7.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `36`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1, 2, 3, 4, 5 y 6.
+  - Suite de pruebas ejecutada al 100% con éxito: **148 tests, 869 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -335,9 +376,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos de la trama (la muerte de Nonomiya o la explosión del muelle) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos de la trama (la ejecución de Nonomiya o el duelo con Takabe) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la fuga del muelle y la evidencia de los yuanes falsos (Capítulo 5) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 6 en adelante. |
+| **Límite Canónico** | Fin cerrado en la tregua de Qing Jin y la pista de Geomijul (Capítulo 6) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 7 en adelante. |
 
 ---
 
@@ -353,10 +394,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..30)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..36)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 150 documentos (5 por cada uno de los 30 episodios)
+│   └── episodios/                           # 180 documentos (5 por cada uno de los 36 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -386,7 +427,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep27_aar.md ... ep27_mecanicas.md
 │       ├── ep28_aar.md ... ep28_mecanicas.md
 │       ├── ep29_aar.md ... ep29_mecanicas.md
-│       └── ep30_aar.md ... ep30_mecanicas.md
+│       ├── ep30_aar.md ... ep30_mecanicas.md
+│       ├── ep31_aar.md ... ep31_mecanicas.md
+│       ├── ep32_aar.md ... ep32_mecanicas.md
+│       ├── ep33_aar.md ... ep33_mecanicas.md
+│       ├── ep34_aar.md ... ep34_mecanicas.md
+│       ├── ep35_aar.md ... ep35_mecanicas.md
+│       └── ep36_aar.md ... ep36_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -394,7 +441,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 30 episodios (Caps 1, 2, 3, 4 y 5)
+│       ├── manifest.rb                      # Catálogo inmutable de los 36 episodios (Caps 1, 2, 3, 4, 5 y 6)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -402,12 +449,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep08.rb ... ep13.rb          # Cap 2: 08_liberacion hasta 13_reunion_sangrienta
 │           ├── ep14.rb ... ep18.rb          # Cap 3: 14_la_ciudad_en_el_fondo hasta 18_un_techo_y_un_ideal
 │           ├── ep19.rb ... ep24.rb          # Cap 4: 19_el_empleo_prometido hasta 24_el_dragon_del_seiryu
-│           ├── ep25.rb                      # Cap 5: 25_la_heredera_de_otohime
-│           ├── ep26.rb                      # Cap 5: 26_el_club_lin_lin
-│           ├── ep27.rb                      # Cap 5: 27_el_cambio_de_oficio
-│           ├── ep28.rb                      # Cap 5: 28_la_resistencia_vecinal
-│           ├── ep29.rb                      # Cap 5: 29_la_imprenta_clandestina
-│           └── ep30.rb                      # Cap 5: 30_explosion_en_el_muelle
+│           ├── ep25.rb ... ep30.rb          # Cap 5: 25_la_heredera_de_otohime hasta 30_explosion_en_el_muelle
+│           ├── ep31.rb                      # Cap 6: 31_el_despertar_encadenado
+│           ├── ep32.rb                      # Cap 6: 32_la_fuga_subterranea
+│           ├── ep33.rb                      # Cap 6: 33_el_duelo_de_la_excavadora
+│           ├── ep34.rb                      # Cap 6: 34_la_chispa_del_conflicto
+│           ├── ep35.rb                      # Cap 6: 35_camino_a_restaurant_row
+│           └── ep36.rb                      # Cap 6: 36_el_juicio_de_tianyou_zhao
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -427,15 +475,17 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
     ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
     ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
+    ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
     ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
     ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
-    └── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
+    ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
+    └── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4 y 5 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (127 tests, 771 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5 y 6 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (148 tests, 869 aserciones) e interfaz interactiva tanto por CLI como web.

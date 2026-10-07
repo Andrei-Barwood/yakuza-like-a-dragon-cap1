@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2, 3, 4 Y 5]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2, 3, 4, 5 Y 6]
 
 Última actualización: 2026-10-07
-Episodio actual: 30 (30_explosion_en_el_muelle)
-Fase completada: Capítulos 1, 2, 3, 4 y 5 completamente integrados y verificados (127 tests pasando al 100%, 771 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 30 episodios.
+Episodio actual: 36 (36_el_juicio_de_tianyou_zhao)
+Fase completada: Capítulos 1 al 6 completamente integrados y verificados (148 tests pasando al 100%, 869 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 36 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -46,6 +46,14 @@ Catálogo de episodios:
 - 29_la_imprenta_clandestina: Completado (Descubrimiento de la maquinaria clandestina de falsificación de yuanes y plan para obtener una muestra)
 - 30_explosion_en_el_muelle: Completado (Tropiezo del billete, combate, explosión provocada por el camión cisterna y escape del muelle)
 
+-- CAPÍTULO 6: IGNITION --
+- 31_el_despertar_encadenado: Completado (Cautiverio en el sótano secreto de Mabuchi, interrogatorio grabado y admisión de la muerte de Nonomiya)
+- 32_la_fuga_subterranea: Completado (Intervención de un salvador anónimo, liberación del grupo, recuperación de pertenencias y ausencia de señal)
+- 33_el_duelo_de_la_excavadora: Completado (Ascenso por los conductos de contrabando, combate de jefe contra Yan en la excavadora y salida a superficie)
+- 34_la_chispa_del_conflicto: Completado (Llamada al Patriarca Hoshino, asesinatos en Isezaki Road, represalia de Takabe y deducción de la conspiración)
+- 35_camino_a_restaurant_row: Completado (Incursión en la zona de guerra de Restaurant Row, disparo de advertencia frente a Qing Jin y combate desarmado con Takabe)
+- 36_el_juicio_de_tianyou_zhao: Completado (Llegada del líder de Yokohama Liumang, exhibición del video editado, tregua armada y orden de buscar pruebas en Geomijul)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -55,11 +63,12 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep30.rb
-- docs/episodios/ep01_* a ep30_* (150 documentos)
-- test/test_scenario_ep01.rb a ep30.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep36.rb
+- docs/episodios/ep01_* a ep36_* (180 documentos)
+- test/test_scenario_ep01.rb a ep36.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
 - test/test_chapter4_continuity.rb
 - test/test_chapter5_continuity.rb
+- test/test_chapter6_continuity.rb

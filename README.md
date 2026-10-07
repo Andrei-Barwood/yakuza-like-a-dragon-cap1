@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1, 2, 3, 4 y 5
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1, 2, 3, 4, 5 y 6
 
-Simulador narrativo y de continuidad para los cinco primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama* y *The Liumang's Web*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los seis primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web* e *Ignition*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los treinta segmentos clave de los Capítulos 1, 2, 3, 4 y 5:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los treinta y seis segmentos clave de los Capítulos 1, 2, 3, 4, 5 y 6:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -43,8 +43,16 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 26. `26_el_club_lin_lin`: Entrada en Lin Lin, interrogatorio a las anfitrionas, derrota de Zheng y revelación de Yokohama Trading Company.
 27. `27_el_cambio_de_oficio`: Sistema de empleos de Hello Work con Ririka, desbloqueo de oficios y colocación encubierta en el muelle de Hamakita con Kanbe.
 28. `28_la_resistencia_vecinal`: Protesta de Bleach Japan ante Otohime Land, humillación de Sota Kume y solidaridad de la comunidad de Ijincho.
-29: `29_la_imprenta_clandestina`: Infiltración al almacén, hallazgo de la imprenta clandestina de yuanes chinos y obtención de billetes de muestra.
+29. `29_la_imprenta_clandestina`: Infiltración al almacén, hallazgo de la imprenta clandestina de yuanes chinos y obtención de billetes de muestra.
 30. `30_explosion_en_el_muelle`: Alerta por el billete caído, combate contra el capataz Liumang, explosión de camión cisterna, escape con evidencia y avistamiento del observador misterioso.
+
+### Capítulo 6: Ignition (2019)
+31. `31_el_despertar_encadenado`: Despertar maniatados con cadenas en el sótano secreto de Mabuchi, interrogatorio forzado grabado y confesión del homicidio de Nonomiya.
+32. `32_la_fuga_subterranea`: Intervención del salvador misterioso, derrota de carceleros, liberación del grupo y recuperación del equipamiento en zona sin señal telefónica.
+33. `33_el_duelo_de_la_excavadora`: Ascenso por la ruta subterránea de contrabando hacia B1F, batalla de jefe contra Yan al mando de la excavadora pesada y salida a la superficie.
+34. `34_la_chispa_del_conflicto`: Contacto telefónico con el Patriarca Hoshino, aviso de asesinatos callejeros en Isezaki Road, ofensiva descontrolada de Takabe y deducción de la trampa.
+35. `35_camino_a_restaurant_row`: Travesía por el campo de batalla urbano en Restaurant Row, disparo intimidatorio en la entrada de Qing Jin y combate a puño limpio con Takabe.
+36. `36_el_juicio_de_tianyou_zhao`: Intervención de Tianyou Zhao con pistola en mano, confrontación con el video editado por Mabuchi, tregua armada y ultimátum para conseguir pruebas en Geomijul.
 
 ---
 
@@ -75,7 +83,7 @@ ruby -Ilib bin/servidor
 Por defecto, Sinatra se iniciará en el puerto **`4567`**:
 ```text
 ======================================================================
-  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 5)
+  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 6)
   Servidor Web Sinatra activo en: http://localhost:4567
 ======================================================================
 Presione Ctrl+C para detener el servidor.
@@ -93,11 +101,11 @@ PORT=8080 bin/servidor
    ```text
    http://localhost:4567
    ```
-3. Verás el **Dashboard de los Capítulos 1 al 5** con la estética urbana inspirada en Kamurocho y Yokohama.
+3. Verás el **Dashboard de los Capítulos 1 al 6** con la estética urbana inspirada en Kamurocho y Yokohama.
 
 ### 3. Funcionalidades del Dashboard
 
-- **Catálogo lateral por capítulos:** Selecciona cualquiera de los treinta episodios (`01` a `30`) para ver su sinopsis y contexto.
+- **Catálogo lateral por capítulos:** Selecciona cualquiera de los treinta y seis episodios (`01` a `36`) para ver su sinopsis y contexto.
 - **Botón `▶ Ejecutar Episodio`:** Ejecuta el escenario seleccionado de forma determinista y despliega:
   - **Estado Final del Mundo:** Ubicación exacta, periodo temporal, saldo en yenes (¥), inventario de ítems y banderas booleanas activas.
   - **Línea de Tiempo de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
@@ -110,13 +118,14 @@ PORT=8080 bin/servidor
 El runner de línea de comandos se encuentra en `bin/episodio`:
 
 ```bash
-# Ejecutar cualquier episodio por su identificador (01 a 30)
+# Ejecutar cualquier episodio por su identificador (01 a 36)
 ruby -Ilib bin/episodio 01
 ruby -Ilib bin/episodio 08
 ruby -Ilib bin/episodio 14
 ruby -Ilib bin/episodio 19
 ruby -Ilib bin/episodio 25
-ruby -Ilib bin/episodio 30
+ruby -Ilib bin/episodio 31
+ruby -Ilib bin/episodio 36
 
 # Ver ayuda y catálogo completo
 ruby -Ilib bin/episodio --help
@@ -137,7 +146,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (127 tests, 771 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (148 tests, 869 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -152,6 +161,7 @@ ruby -Ilib -Itest test/test_chapter2_continuity.rb
 ruby -Ilib -Itest test/test_chapter3_continuity.rb
 ruby -Ilib -Itest test/test_chapter4_continuity.rb
 ruby -Ilib -Itest test/test_chapter5_continuity.rb
+ruby -Ilib -Itest test/test_chapter6_continuity.rb
 ```
 
 ---
@@ -168,13 +178,13 @@ ruby -Ilib -Itest test/test_chapter5_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 30)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 36)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 150 documentos (ep01 a ep30: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 180 documentos (ep01 a ep36: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (127 tests, 771 aserciones)
+└── test/                              # Suite de pruebas Minitest (148 tests, 869 aserciones)
 ```
