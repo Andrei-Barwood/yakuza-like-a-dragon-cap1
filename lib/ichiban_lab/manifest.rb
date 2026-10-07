@@ -203,6 +203,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep24",
         description: "Audiencia con Ryuhei Hoshino del Clan Seiryu, restitución de fondos a Nanoha y hallazgo del cuerpo de Nonomiya.",
         chapter: 4
+      ),
+
+      # --- CAPÍTULO 5: THE LIUMANG'S WEB ---
+      EpisodeInfo.new(
+        id: "25",
+        slug: "25_la_heredera_de_otohime",
+        title: "La heredera de Otohime Land",
+        class_name: "IchibanLab::Scenarios::Ep25",
+        description: "Muerte de Nonomiya, alianza con Saeko Mukoda y sospechas hacia Akira Mabuchi de Yokohama Liumang.",
+        chapter: 5
+      ),
+      EpisodeInfo.new(
+        id: "26",
+        slug: "26_el_club_lin_lin",
+        title: "El club Lin Lin y la pista de Mabuchi",
+        class_name: "IchibanLab::Scenarios::Ep26",
+        description: "Incursión en Lin Lin Hostess Bar, derrota de Zheng y descubrimiento de Yokohama Trading Company.",
+        chapter: 5
+      ),
+      EpisodeInfo.new(
+        id: "27",
+        slug: "27_el_cambio_de_oficio",
+        title: "El cambio de oficio y el empleo encubierto",
+        class_name: "IchibanLab::Scenarios::Ep27",
+        description: "Desbloqueo del Job System con Ririka en Hello Work e infiltración como mozos de almacén en el muelle de Hamakita.",
+        chapter: 5
+      ),
+      EpisodeInfo.new(
+        id: "28",
+        slug: "28_la_resistencia_vecinal",
+        title: "La resistencia de Otohime Land",
+        class_name: "IchibanLab::Scenarios::Ep28",
+        description: "Manifestación hostil de Bleach Japan frente al soapland, confrontación con Sota Kume y apoyo de la comunidad.",
+        chapter: 5
+      ),
+      EpisodeInfo.new(
+        id: "29",
+        slug: "29_la_imprenta_clandestina",
+        title: "La imprenta clandestina",
+        class_name: "IchibanLab::Scenarios::Ep29",
+        description: "Investigación en el almacén de Mabuchi, sospecha de falsificación de yuanes y plan para obtener una muestra del papel.",
+        chapter: 5
+      ),
+      EpisodeInfo.new(
+        id: "30",
+        slug: "30_explosion_en_el_muelle",
+        title: "Explosión en el muelle de Hamakita",
+        class_name: "IchibanLab::Scenarios::Ep30",
+        description: "Detección de la trampa por los capataces de Liumang, choque del camión cisterna, explosión del almacén y desenlace del Capítulo 5.",
+        chapter: 5
       )
     ].freeze
 

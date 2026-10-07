@@ -287,6 +287,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 12: Capítulo 5 — "The Liumang's Web" (Episodios 25 a 30)
+- **Objetivo:** Ampliar el laboratorio narrativo para cubrir con fidelidad el Capítulo 5 de *Yakuza: Like a Dragon* (流氓の網), estructurado en 6 episodios canónicos que narran la investigación del presunto suicidio de Nonomiya, la incorporación de Saeko Mukoda al equipo, la incursión en Lin Lin Hostess Bar, el desbloqueo del sistema de cambio de oficios en Hello Work, la defensa vecinal ante Bleach Japan y el descubrimiento de la imprenta clandestina de yuanes chinos en el almacén de Yokohama Trading Company que culmina en una explosión en el muelle.
+- **Episodios implementados:**
+  1. **Episodio 25 (`25_la_heredera_de_otohime` - "La heredera de Otohime"):**
+     - Examen forense preliminar de Nonomiya; rechazo a la versión del suicidio y sospecha de homicidio encubierto. Saeko Mukoda se une al grupo (`saeko.party_member = true`). Confesión sobre los pagos extorsivos que Nonomiya enviaba a Akira Mabuchi en Lin Lin Hostess Bar.
+     - Documentación: `docs/episodios/ep25_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep25.rb`.
+     - Test: `test/test_scenario_ep25.rb`.
+  2. **Episodio 26 (`26_el_club_lin_lin` - "Incursión en Lin Lin Hostess Bar"):**
+     - Infiltración en Lin Lin; interrogatorio a las empleadas para romper el silencio. Aparición y combate contra Zheng y los matones de Yokohama Liumang. Revelación de que Mabuchi opera a través de Yokohama Trading Company en el muelle de Hamakita.
+     - Documentación: `docs/episodios/ep26_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep26.rb`.
+     - Test: `test/test_scenario_ep26.rb`.
+  3. **Episodio 27 (`27_el_cambio_de_oficio` - "El sistema de oficios y la colocación encubierta"):**
+     - Regreso a Hello Work. Ririka introduce el sistema formal de cambio de trabajo (*Job System*). Desbloqueo de oficios específicos (`:hero`, `:homeless_guy`, `:detective`, `:barmaid`). Audiencia con el Director Shuichi Kanbe para obtener colocación encubierta como estibadores nocturnos en el almacén portuario por ¥15,000.
+     - Documentación: `docs/episodios/ep27_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep27.rb`.
+     - Test: `test/test_scenario_ep27.rb`.
+  4. **Episodio 28 (`28_la_resistencia_vecinal` - "La resistencia de Ijincho"):**
+     - Sota Kume y los activistas de Bleach Japan intentan vandalizar Otohime Land aprovechando el luto. Intervención contundente de Ichiban y Saeko (bofetada/golpe moral a Kume). Derrota de los alborotadores y muestra masiva de solidaridad del vecindario de Ijincho protegiendo el establecimiento.
+     - Documentación: `docs/episodios/ep28_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep28.rb`.
+     - Test: `test/test_scenario_ep28.rb`.
+  5. **Episodio 29 (`29_la_imprenta_clandestina` - "La imprenta clandestina del muelle"):**
+     - Infiltración nocturna al almacén de Yokohama Trading Company en el muelle Hamakita. Desvío de la guardia y descubrimiento en el piso superior de una sofisticada imprenta clandestina de yuanes chinos falsificados (*Counterfeit Yuan Printing Press*). Sustracción de muestras de billetes falsos (`:counterfeit_yuan_sample`).
+     - Documentación: `docs/episodios/ep29_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep29.rb`.
+     - Test: `test/test_scenario_ep29.rb`.
+  6. **Episodio 30 (`30_explosion_en_el_muelle` - "Explosión en el muelle y escape"):**
+     - Descuido con un billete caído que delata su presencia. Combate contra el capataz Liumang y refuerzos armados. Nanba provoca la ignición de un camión cisterna para cortar la persecución. Huida exitosa con la evidencia del dinero falso en mano. Avistamiento de una figura misteriosa observándolos en las sombras. Cobro de ¥15,000 (fondos acumulados ¥41,300). Evento de frontera: `story.chapter_boundary` hacia el Capítulo 6.
+     - Documentación: `docs/episodios/ep30_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep30.rb`.
+     - Test: `test/test_scenario_ep30.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 5:**
+  - `test/test_chapter5_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep24 hasta el desenlace del Ep30, controlando fondos (¥26,300 a ¥41,300), inventario de evidencia de falsificación, desbloqueo de oficios, unión definitiva de Saeko y evento de conclusión hacia el Capítulo 6.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `30`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1, 2, 3, 4 y 5.
+  - Suite de pruebas ejecutada al 100% con éxito: **127 tests, 771 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -294,9 +335,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos de la trama (la muerte de Nonomiya) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos de la trama (la muerte de Nonomiya o la explosión del muelle) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la tragedia de Otohime Land (Capítulo 4) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 5 en adelante. |
+| **Límite Canónico** | Fin cerrado en la fuga del muelle y la evidencia de los yuanes falsos (Capítulo 5) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 6 en adelante. |
 
 ---
 
@@ -312,10 +353,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..24)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..30)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 120 documentos (5 por cada uno de los 24 episodios)
+│   └── episodios/                           # 150 documentos (5 por cada uno de los 30 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -339,7 +380,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep21_aar.md ... ep21_mecanicas.md
 │       ├── ep22_aar.md ... ep22_mecanicas.md
 │       ├── ep23_aar.md ... ep23_mecanicas.md
-│       └── ep24_aar.md ... ep24_mecanicas.md
+│       ├── ep24_aar.md ... ep24_mecanicas.md
+│       ├── ep25_aar.md ... ep25_mecanicas.md
+│       ├── ep26_aar.md ... ep26_mecanicas.md
+│       ├── ep27_aar.md ... ep27_mecanicas.md
+│       ├── ep28_aar.md ... ep28_mecanicas.md
+│       ├── ep29_aar.md ... ep29_mecanicas.md
+│       └── ep30_aar.md ... ep30_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -347,19 +394,20 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 24 episodios (Caps 1, 2, 3 y 4)
+│       ├── manifest.rb                      # Catálogo inmutable de los 30 episodios (Caps 1, 2, 3, 4 y 5)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
 │           ├── ep01.rb ... ep07.rb          # Cap 1: 01_origen hasta 07_el_precio
 │           ├── ep08.rb ... ep13.rb          # Cap 2: 08_liberacion hasta 13_reunion_sangrienta
 │           ├── ep14.rb ... ep18.rb          # Cap 3: 14_la_ciudad_en_el_fondo hasta 18_un_techo_y_un_ideal
-│           ├── ep19.rb                      # Cap 4: 19_el_empleo_prometido
-│           ├── ep20.rb                      # Cap 4: 20_otohime_land
-│           ├── ep21.rb                      # Cap 4: 21_el_castillo_de_la_luz
-│           ├── ep22.rb                      # Cap 4: 22_la_noche_en_survive
-│           ├── ep23.rb                      # Cap 4: 23_el_rescate_de_tatsuro
-│           └── ep24.rb                      # Cap 4: 24_el_dragon_del_seiryu
+│           ├── ep19.rb ... ep24.rb          # Cap 4: 19_el_empleo_prometido hasta 24_el_dragon_del_seiryu
+│           ├── ep25.rb                      # Cap 5: 25_la_heredera_de_otohime
+│           ├── ep26.rb                      # Cap 5: 26_el_club_lin_lin
+│           ├── ep27.rb                      # Cap 5: 27_el_cambio_de_oficio
+│           ├── ep28.rb                      # Cap 5: 28_la_resistencia_vecinal
+│           ├── ep29.rb                      # Cap 5: 29_la_imprenta_clandestina
+│           └── ep30.rb                      # Cap 5: 30_explosion_en_el_muelle
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -378,14 +426,16 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
     ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
     ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
+    ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
     ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
-    └── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
+    ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
+    └── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3 y 4 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (106 tests, 677 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4 y 5 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (127 tests, 771 aserciones) e interfaz interactiva tanto por CLI como web.

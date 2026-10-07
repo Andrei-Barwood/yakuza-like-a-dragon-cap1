@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2, 3 Y 4]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2, 3, 4 Y 5]
 
 Última actualización: 2026-10-07
-Episodio actual: 24 (24_el_dragon_del_seiryu)
-Fase completada: Capítulos 1, 2, 3 y 4 completamente integrados y verificados (106 tests pasando al 100%, 677 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 24 episodios.
+Episodio actual: 30 (30_explosion_en_el_muelle)
+Fase completada: Capítulos 1, 2, 3, 4 y 5 completamente integrados y verificados (127 tests pasando al 100%, 771 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 30 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -38,6 +38,14 @@ Catálogo de episodios:
 - 23_el_rescate_de_tatsuro: Completado (Asalto a la sala VIP, detención de inyección letal de cloruro de potasio y derrota de Totsuka)
 - 24_el_dragon_del_seiryu: Completado (Audiencia con Ryuhei Hoshino, billete defectuoso, restitución a Nanoha y hallazgo del cadáver de Nonomiya)
 
+-- CAPÍTULO 5: THE LIUMANG'S WEB --
+- 25_la_heredera_de_otohime: Completado (Muerte de Nonomiya, alianza con Saeko Mukoda y sospechas hacia Akira Mabuchi)
+- 26_el_club_lin_lin: Completado (Incursión en Lin Lin Hostess Bar, derrota de Zheng y localización de Yokohama Trading Company)
+- 27_el_cambio_de_oficio: Completado (Desbloqueo del Job System con Ririka e infiltración como mozos de almacén en Hamakita)
+- 28_la_resistencia_vecinal: Completado (Manifestación de Bleach Japan, bofetada a Sota Kume y solidaridad de comerciantes de Ijincho)
+- 29_la_imprenta_clandestina: Completado (Descubrimiento de la maquinaria clandestina de falsificación de yuanes y plan para obtener una muestra)
+- 30_explosion_en_el_muelle: Completado (Tropiezo del billete, combate, explosión provocada por el camión cisterna y escape del muelle)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -47,10 +55,11 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep24.rb
-- docs/episodios/ep01_* a ep24_* (120 documentos)
-- test/test_scenario_ep01.rb a ep24.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep30.rb
+- docs/episodios/ep01_* a ep30_* (150 documentos)
+- test/test_scenario_ep01.rb a ep30.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
 - test/test_chapter4_continuity.rb
+- test/test_chapter5_continuity.rb
