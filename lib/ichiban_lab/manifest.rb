@@ -111,6 +111,48 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep13",
         description: "Cara a cara con Masumi Arakawa, el disparo a quemarropa y el rescate de Nanba en Yokohama.",
         chapter: 2
+      ),
+
+      # --- CAPÍTULO 3: THE TOWN AT ROCK BOTTOM ---
+      EpisodeInfo.new(
+        id: "14",
+        slug: "14_la_ciudad_en_el_fondo",
+        title: "La ciudad en el fondo",
+        class_name: "IchibanLab::Scenarios::Ep14",
+        description: "Despertar en Isezaki Ijincho junto a Nanba, aprendizaje de supervivencia y permiso del Jefe del campamento.",
+        chapter: 3
+      ),
+      EpisodeInfo.new(
+        id: "15",
+        slug: "15_la_ley_del_campamento",
+        title: "La ley del campamento",
+        class_name: "IchibanLab::Scenarios::Ep15",
+        description: "Recolección de latas, extorsión de Zheng (Yokohama Liumang) y descubrimiento del billete falso en el bolsillo.",
+        chapter: 3
+      ),
+      EpisodeInfo.new(
+        id: "16",
+        slug: "16_en_busca_de_empleo",
+        title: "En busca de empleo",
+        class_name: "IchibanLab::Scenarios::Ep16",
+        description: "Visita a Hello Work, entrevista con Ririka y encargo especial del Director Kanbe para The Harbor Light.",
+        chapter: 3
+      ),
+      EpisodeInfo.new(
+        id: "17",
+        slug: "17_defensa_de_harbor_light",
+        title: "Defensa de The Harbor Light",
+        class_name: "IchibanLab::Scenarios::Ep17",
+        description: "Guardia en el bar de Hamako, enfrentamiento contra Matsuo y desafío abierto al francotirador de Geomijul.",
+        chapter: 3
+      ),
+      EpisodeInfo.new(
+        id: "18",
+        slug: "18_un_techo_y_un_ideal",
+        title: "Un techo y un ideal",
+        class_name: "IchibanLab::Scenarios::Ep18",
+        description: "Enfrentamiento a Bleach Japan y Sota Kume, habitación propia en el hostal de Hamako y el sueño de convertirse en Héroe.",
+        chapter: 3
       )
     ].freeze
 

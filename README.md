@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 y 2
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1, 2 y 3
 
-Simulador narrativo y de continuidad para los dos primeros capítulos (*Light and Shadow* y *Bloody Reunion*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los tres primeros capítulos (*Light and Shadow*, *Bloody Reunion* y *The Town at Rock Bottom*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los trece segmentos clave de los Capítulos 1 y 2:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los dieciocho segmentos clave de los Capítulos 1, 2 y 3:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -22,6 +22,13 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 11. `11_los_bajos_fondos`: Infiltración a través de los conductos subterráneos de alcantarillado.
 12. `12_el_guantelete`: Asalto a la planta ejecutiva de la Omi y combate de jefe contra Jo Sawashiro.
 13. `13_reunion_sangrienta`: Cara a cara con Masumi Arakawa, el disparo a quemarropa y el rescate de Yu Nanba en Yokohama.
+
+### Capítulo 3: The Town at Rock Bottom (2019)
+14. `14_la_ciudad_en_el_fondo`: Despertar en Isezaki Ijincho junto a Nanba, aprendizaje de supervivencia y permiso del Jefe.
+15. `15_la_ley_del_campamento`: Recolección de latas, extorsión de Zheng (Yokohama Liumang) y misterio del billete falso en el bolsillo.
+16. `16_en_busca_de_empleo`: Visita a Hello Work, traba burocrática de Ririka y oferta encubierta del Director Kanbe para The Harbor Light.
+17. `17_defensa_de_harbor_light`: Guardia nocturna en el bar de Hamako, derrota de Matsuo y desafío abierto al francotirador de Geomijul.
+18. `18_un_techo_y_un_ideal`: Confrontación moral con Sota Kume (Bleach Japan), habitación propia con Hamako y promesa de convertirse en Héroe.
 
 ---
 
@@ -111,7 +118,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (67 tests, 475 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (85 tests, 572 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -123,6 +130,7 @@ ruby -Ilib -Itest test/test_dispatcher.rb
 ruby -Ilib -Itest test/test_web_app.rb
 ruby -Ilib -Itest test/test_episode_continuity.rb
 ruby -Ilib -Itest test/test_chapter2_continuity.rb
+ruby -Ilib -Itest test/test_chapter3_continuity.rb
 ```
 
 ---
@@ -139,13 +147,13 @@ ruby -Ilib -Itest test/test_chapter2_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 13)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 18)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 65 documentos (ep01 a ep13: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 90 documentos (ep01 a ep18: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (67 tests)
+└── test/                              # Suite de pruebas Minitest (85 tests, 572 aserciones)
 ```

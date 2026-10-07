@@ -5,12 +5,14 @@ require "open3"
 
 class TestDispatcher < Minitest::Test
   def test_manifest_contains_seven_episodes
-    assert_equal 13, IchibanLab::Manifest.all.size
-    assert_equal %w[01 02 03 04 05 06 07 08 09 10 11 12 13], IchibanLab::Manifest.ids
+    assert_equal 18, IchibanLab::Manifest.all.size
+    assert_equal %w[01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18], IchibanLab::Manifest.ids
     assert IchibanLab::Manifest.valid_id?("01")
     assert IchibanLab::Manifest.valid_id?("08")
     assert IchibanLab::Manifest.valid_id?(13)
-    refute IchibanLab::Manifest.valid_id?("14")
+    assert IchibanLab::Manifest.valid_id?("14")
+    assert IchibanLab::Manifest.valid_id?(18)
+    refute IchibanLab::Manifest.valid_id?("19")
     refute IchibanLab::Manifest.valid_id?("unknown")
   end
 

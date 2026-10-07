@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 Y 2]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1, 2 Y 3]
 
 Última actualización: 2026-10-07
-Episodio actual: 13 (13_reunion_sangrienta)
-Fase completada: Capítulos 1 y 2 completamente integrados y verificados (67 tests pasando al 100%, 475 aserciones)
-Próximo paso: El alcance cubre los dos primeros capítulos (Capítulo 1: Light and Shadow, 01 a 07; Capítulo 2: Bloody Reunion, 08 a 13).
+Episodio actual: 18 (18_un_techo_y_un_ideal)
+Fase completada: Capítulos 1, 2 y 3 completamente integrados y verificados (85 tests pasando al 100%, 572 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 18 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -23,16 +23,25 @@ Catálogo de episodios:
 - 12_el_guantelete: Completado (Asalto a la planta ejecutiva y duelo de jefe contra Jo Sawashiro)
 - 13_reunion_sangrienta: Completado (Encuentro con Arakawa, disparo en el pecho y rescate de Nanba en Yokohama)
 
+-- CAPÍTULO 3: THE TOWN AT ROCK BOTTOM --
+- 14_la_ciudad_en_el_fondo: Completado (Despertar en Ijincho, rebusque bajo máquinas y permiso del Jefe)
+- 15_la_ley_del_campamento: Completado (Recolección de latas, combate contra Zheng de Yokohama Liumang y billete falso)
+- 16_en_busca_de_empleo: Completado (Visita a Hello Work, traba burocrática y encargo del Director Kanbe para The Harbor Light)
+- 17_defensa_de_harbor_light: Completado (Guardia en The Harbor Light, derrota de Matsuo, desafío al francotirador de Geomijul y cobro de ¥5,000)
+- 18_un_techo_y_un_ideal: Completado (Resistencia a Bleach Japan / Kume, habitación propia con Hamako y juramento del camino del Héroe)
+
 Archivos clave:
 - AGENTS.md
 - README.md
 - BITACORA.md
 - Gemfile
-- Rakefile
-- config.ru
-- Procfile
-- bin/episodio (runner CLI para episodios 01 a 13)
-- bin/servidor (servidor web Sinatra)
-- lib/ichiban_lab/ (dominio, escenarios ep01 a ep13, WebApp)
-- docs/episodios/ (65 documentos técnicos en total)
-- test/ (suite completa de 67 tests unitarios, de continuidad y de servidor web)
+- bin/episodio
+- bin/servidor_web
+- lib/ichiban_lab.rb
+- lib/ichiban_lab/web_app.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep18.rb
+- docs/episodios/ep01_* a ep18_* (90 documentos)
+- test/test_scenario_ep01.rb a ep18.rb
+- test/test_episode_continuity.rb
+- test/test_chapter2_continuity.rb
+- test/test_chapter3_continuity.rb

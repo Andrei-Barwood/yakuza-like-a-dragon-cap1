@@ -210,6 +210,42 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 10: Capítulo 3 — "The Town at Rock Bottom" (Episodios 14 a 18)
+- **Objetivo:** Ampliar el laboratorio narrativo para cubrir con exactitud el Capítulo 3 de *Yakuza: Like a Dragon* (どん底の街), estructurándolo en 5 episodios canónicos que narran el despertar de Ichiban tras la herida de bala en el basurero de Yokohama, su adaptación al campamento de personas sin hogar junto a Yu Nanba, el descubrimiento de los Tres de Ijin y el billete falso, la búsqueda de empleo en Hello Work, la defensa de The Harbor Light ante la mafia coreana Geomijul y el choque con la ONG puritana Bleach Japan para forjar el ideal del Héroe.
+- **Episodios implementados:**
+  1. **Episodio 14 (`14_la_ciudad_en_el_fondo` - "La ciudad en el fondo"):**
+     - Despertar de Ichiban tres días después en el vertedero de Isezaki Ijincho. Nanba explica la sutura con hilo de pescar y la regla de no llamar la atención. Aprendizaje de la habilidad de rebusque bajo máquinas expendedoras (*Treasure Hunt*), recolección de ¥500 y audiencia con el Jefe del campamento para obtener el permiso de estancia.
+     - Documentación: `docs/episodios/ep14_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep14.rb`.
+     - Test: `test/test_scenario_ep14.rb`.
+  2. **Episodio 15 (`15_la_ley_del_campamento` - "La ley del campamento"):**
+     - Rutina de recolección de latas al alba a las 05:30 AM (adquisición de ¥800). Nanba comparte su panecillo. Intrusión de Zheng (Yokohama Liumang) para cobrar extorsión y combate conjunto exitoso. Descubrimiento del billete de ¥10,000 en el bolsillo interior de Ichiban: no presenta orificio de bala, demostrando que fue introducido después del disparo. Revelación del equilibrio de los Tres de Ijin (*Ijin Three*: Yokohama Liumang, Clan Seiryu y Geomijul).
+     - Documentación: `docs/episodios/ep15_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep15.rb`.
+     - Test: `test/test_scenario_ep15.rb`.
+  3. **Episodio 16 (`16_en_busca_de_empleo` - "En busca de empleo"):**
+     - Discurso de Ichiban en el campamento para buscar empleo formal y desbloqueo de *Party Chats*. Visita a Hello Work Yokohama. Traba burocrática insalvable ante Ririka por carecer de dirección postal y documentos. Intervención encubierta del Director Shuichi Kanbe, ofreciendo trabajo de guardia nocturna en *The Harbor Light* por ¥5,000.
+     - Documentación: `docs/episodios/ep16_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep16.rb`.
+     - Test: `test/test_scenario_ep16.rb`.
+  4. **Episodio 17 (`17_defensa_de_harbor_light` - "Defensa de The Harbor Light"):**
+     - Llegada al bar; Hamako explica el corte del suministro eléctrico que les robaba la mafia Geomijul. Ataque y vandalismo de Matsuo con un mazo de demolición; combate superado. Lluvia de flechas y desafío público de Ichiban ante el francotirador en el tejado, quien le roza la mejilla y se retira impresionado por su valor. Cobro de ¥5,000 y gratitud de Hamako.
+     - Documentación: `docs/episodios/ep17_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep17.rb`.
+     - Test: `test/test_scenario_ep17.rb`.
+  5. **Episodio 18 (`18_un_techo_y_un_ideal` - "Un techo y un ideal"):**
+     - Labores de limpieza en el restaurante de Hamako en Sunrise Street. Manifestación de Bleach Japan liderada por Sota Kume contra los locales de la zona gris. Confrontación moral de Ichiban en defensa de las trabajadoras indocumentadas. Combate contra los provocadores de Kume. Hamako les cede una habitación en alquiler en el piso superior para salvaguardar el contrato de arrendamiento. Revelación del pasado de Nanba como enfermero despedido y juramento de Ichiban de convertirse en un auténtico Héroe de videojuego. Evento de frontera: `story.chapter_boundary` hacia el Capítulo 4.
+     - Documentación: `docs/episodios/ep18_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep18.rb`.
+     - Test: `test/test_scenario_ep18.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 3:**
+  - `test/test_chapter3_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep13 (Yokohama, herida en el pecho, salvado por Nanba) a través de los episodios 14 al 18, controlando saldos acumulados (¥0 -> ¥500 -> ¥1,300 -> ¥6,300), inventario con el billete falso, residencia formal y vocación de Héroe.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `18`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1, 2 y 3.
+  - Suite de pruebas ejecutada al 100% con éxito: **85 tests, 572 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -217,9 +253,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | El desenlace trágico de la historia (ingreso en prisión en el ep 07 o el disparo en el ep 13) no es un fallo técnico. |
-| **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de carácter de Ichiban. |
-| **Límite Canónico** | Fin cerrado en el despertar en Yokohama junto a Nanba (Capítulo 2) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 3 en adelante. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Las dificultades dramáticas de la historia no constituyen fallos técnicos. |
+| **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
+| **Límite Canónico** | Fin cerrado en la habitación de Sunrise Street y el juramento del Héroe (Capítulo 3) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 4 en adelante. |
 
 ---
 
@@ -232,11 +268,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── BITACORA.md                              # Este documento (registro histórico completo)
 ├── Gemfile                                  # Configuración de dependencias (Rake, Minitest, Sinatra)
 ├── Rakefile                                 # Tarea por defecto rake test
+├── config.ru                                # Entrypoint Rack para servidor y despliegue
+├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..13)
-│   └── servidor_web                         # Lanzador del servidor web Sinatra en puerto 4567
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..18)
+│   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 65 documentos (5 por cada uno de los 13 episodios)
+│   └── episodios/                           # 90 documentos (5 por cada uno de los 18 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -249,7 +287,12 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep10_aar.md ... ep10_mecanicas.md
 │       ├── ep11_aar.md ... ep11_mecanicas.md
 │       ├── ep12_aar.md ... ep12_mecanicas.md
-│       └── ep13_aar.md ... ep13_mecanicas.md
+│       ├── ep13_aar.md ... ep13_mecanicas.md
+│       ├── ep14_aar.md ... ep14_mecanicas.md
+│       ├── ep15_aar.md ... ep15_mecanicas.md
+│       ├── ep16_aar.md ... ep16_mecanicas.md
+│       ├── ep17_aar.md ... ep17_mecanicas.md
+│       └── ep18_aar.md ... ep18_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -257,17 +300,17 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 13 episodios (Cap 1 y Cap 2)
+│       ├── manifest.rb                      # Catálogo inmutable de los 18 episodios (Caps 1, 2 y 3)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
 │           ├── ep01.rb ... ep07.rb          # Cap 1: 01_origen hasta 07_el_precio
-│           ├── ep08.rb                      # Cap 2: 08_liberacion
-│           ├── ep09.rb                      # Cap 2: 09_el_nuevo_kamurocho
-│           ├── ep10.rb                      # Cap 2: 10_rescate_en_la_calle
-│           ├── ep11.rb                      # Cap 2: 11_los_bajos_fondos
-│           ├── ep12.rb                      # Cap 2: 12_el_guantelete
-│           └── ep13.rb                      # Cap 2: 13_reunion_sangrienta
+│           ├── ep08.rb ... ep13.rb          # Cap 2: 08_liberacion hasta 13_reunion_sangrienta
+│           ├── ep14.rb                      # Cap 3: 14_la_ciudad_en_el_fondo
+│           ├── ep15.rb                      # Cap 3: 15_la_ley_del_campamento
+│           ├── ep16.rb                      # Cap 3: 16_en_busca_de_empleo
+│           ├── ep17.rb                      # Cap 3: 17_defensa_de_harbor_light
+│           └── ep18.rb                      # Cap 3: 18_un_techo_y_un_ideal
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -284,12 +327,14 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_web_app.rb                      # Tests de la interfaz web Sinatra
     ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
     ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
+    ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
-    └── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
+    ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
+    └── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1 y 2 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura de tests automatizados (67 tests, 475 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2 y 3 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (85 tests, 572 aserciones) e interfaz interactiva tanto por CLI como web.
