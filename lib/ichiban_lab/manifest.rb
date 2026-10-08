@@ -501,6 +501,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep60",
         description: "Pacto de Arakawa con los indigentes, almuerzo en Heian Tower con Hoshino, la muerte de Toshio y el billete defectuoso de 1984.",
         chapter: 10
+      ),
+
+      # --- CAPÍTULO 11: THE ODDS ---
+      EpisodeInfo.new(
+        id: "61",
+        slug: "61_el_ascenso_de_aoki",
+        title: "El ascenso de Aoki",
+        class_name: "IchibanLab::Scenarios::Ep61",
+        description: "Panorama político tras la caída de Ogikubo, bienvenida a Zhao y Han en Survive Bar y mártir fabricado con Ogasawara.",
+        chapter: 11
+      ),
+      EpisodeInfo.new(
+        id: "62",
+        slug: "62_el_refugio_de_hamako",
+        title: "El refugio de Hamako",
+        class_name: "IchibanLab::Scenarios::Ep62",
+        description: "Hamako cierra Harbor Light ante los albergues de Bleach Japan en Hamakita Park y pista del funeral de Ogasawara.",
+        chapter: 11
+      ),
+      EpisodeInfo.new(
+        id: "63",
+        slug: "63_el_funeral_de_ogasawara",
+        title: "El funeral de Ogasawara",
+        class_name: "IchibanLab::Scenarios::Ep63",
+        description: "Panegírico con lágrimas de cocodrilo de Aoki respaldando a Sota Kume y deducción de la ruta subterránea ribereña.",
+        chapter: 11
+      ),
+      EpisodeInfo.new(
+        id: "64",
+        slug: "64_el_estacionamiento_subterraneo",
+        title: "El estacionamiento subterráneo",
+        class_name: "IchibanLab::Scenarios::Ep64",
+        description: "Descenso por el montacargas secreto, desenmascaramiento de los escoltas de la Omi y cita a solas pactada en Otohime Land.",
+        chapter: 11
+      ),
+      EpisodeInfo.new(
+        id: "65",
+        slug: "65_la_noche_en_otohime_land",
+        title: "La noche en Otohime Land",
+        class_name: "IchibanLab::Scenarios::Ep65",
+        description: "Encuentro privado con Aoki: el trasplante pulmonar, la verdad del crimen de Suzumori en el 2000 y el engaño de la revitalización.",
+        chapter: 11
+      ),
+      EpisodeInfo.new(
+        id: "66",
+        slug: "66_el_desengano_y_la_resolucion",
+        title: "El desengaño y la resolución",
+        class_name: "IchibanLab::Scenarios::Ep66",
+        description: "Huida con auxilio de Nanba, victoria sobre la Omi, llanto de Hamako por las deportaciones y pacto de guerra total sin retorno.",
+        chapter: 11
       )
     ].freeze
 

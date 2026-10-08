@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 10
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 11
 
-Simulador narrativo y de continuidad para los diez primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards* y *Justice Bracket*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los once primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket* y *The Odds*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los sesenta segmentos clave de los Capítulos 1 al 10:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los sesenta y seis segmentos clave de los Capítulos 1 al 11:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -50,7 +50,7 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 31. `31_el_despertar_encadenado`: Despertar maniatados con cadenas en el sótano secreto de Mabuchi, interrogatorio forzado grabado y confesión del homicidio de Nonomiya.
 32. `32_la_fuga_subterranea`: Intervención del salvador misterioso, derrota de carceleros, liberación del grupo y recuperación del equipamiento en zona sin señal telefónica.
 33. `33_el_duelo_de_la_excavadora`: Ascenso por la ruta subterránea de contrabando hacia B1F, batalla de jefe contra Yan al mando de la excavadora pesada y salida a la superficie.
-34: `34_la_chispa_del_conflicto`: Contacto telefónico con el Patriarca Hoshino, aviso de asesinatos callejeros en Isezaki Road, ofensiva descontrolada de Takabe y deducción de la trampa.
+34. `34_la_chispa_del_conflicto`: Contacto telefónico con el Patriarca Hoshino, aviso de asesinatos callejeros en Isezaki Road, ofensiva descontrolada de Takabe y deducción de la trampa.
 35. `35_camino_a_restaurant_row`: Travesía por el campo de batalla urbano en Restaurant Row, disparo intimidatorio en la entrada de Qing Jin y combate a puño limpio con Takabe.
 36. `36_el_juicio_de_tianyou_zhao`: Intervención de Tianyou Zhao con pistola en mano, confrontación con el video editado por Mabuchi, tregua armada y ultimátum para conseguir pruebas en Geomijul.
 
@@ -86,6 +86,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 59. `59_reencuentro_con_mitsuo`: Liberación de Zhao, reencuentro privado con Mitsuo Yasuda (información sobre la familia Arakawa) y traspaso de la jefatura de los Liumang de Zhao a Seonhee.
 60. `60_la_promesa_del_pato_de_pekin`: El Jefe del campamento confiesa el protocolo secreto de rescate médico; almuerzo de pato de Pekín con Hoshino en Heian Tower; revelación del asesinato de Toshio Arakawa en 1977 y el mensaje del billete defectuoso de 1984 («Ni la justicia ni la piedad deben desbalancear la balanza»); transición al Capítulo 11.
 
+### Capítulo 11: The Odds (2019)
+61. `61_el_ascenso_de_aoki`: Panorama político tras la caída de Ogikubo, integración de Zhao y Han en Survive Bar y mártir fabricado con Ogasawara.
+62. `62_el_refugio_de_hamako`: Hamako cierra Harbor Light ante los albergues de Bleach Japan en Hamakita Park y pista del funeral de Ogasawara.
+63. `63_el_funeral_de_ogasawara`: Panegírico con lágrimas de cocodrilo de Aoki respaldando a Sota Kume y deducción de la ruta subterránea ribereña.
+64. `64_el_estacionamiento_subterraneo`: Descenso por el montacargas secreto, desenmascaramiento de los escoltas de la Omi y cita a solas pactada en Otohime Land.
+65. `65_la_noche_en_otohime_land`: Encuentro privado con Aoki: el trasplante pulmonar, la verdad del crimen de Suzumori en el 2000 y el engaño de la revitalización.
+66. `66_el_desengano_y_la_resolucion`: Huida con auxilio de Nanba, victoria sobre la Omi, llanto de Hamako por las deportaciones y pacto de guerra total sin retorno; transición al Capítulo 12.
+
 ---
 
 ## Requisitos
@@ -115,7 +123,7 @@ ruby -Ilib bin/servidor
 Por defecto, Sinatra se iniciará en el puerto **`4567`**:
 ```text
 ======================================================================
-  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 10)
+  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 11)
   Servidor Web Sinatra activo en: http://localhost:4567
 ======================================================================
 Presione Ctrl+C para detener el servidor.
@@ -133,11 +141,11 @@ PORT=8080 bin/servidor
    ```text
    http://localhost:4567
    ```
-3. Verás el **Dashboard de los Capítulos 1 al 10** con la estética urbana inspirada en Kamurocho y Yokohama.
+3. Verás el **Dashboard de los Capítulos 1 al 11** con la estética urbana inspirada en Kamurocho y Yokohama.
 
 ### 3. Funcionalidades del Dashboard
 
-- **Catálogo lateral por capítulos:** Selecciona cualquiera de los sesenta episodios (`01` a `60`) para ver su sinopsis y contexto.
+- **Catálogo lateral por capítulos:** Selecciona cualquiera de los sesenta y seis episodios (`01` a `66`) para ver su sinopsis y contexto.
 - **Botón `▶ Ejecutar Episodio`:** Ejecuta el escenario seleccionado de forma determinista y despliega:
   - **Estado Final del Mundo:** Ubicación exacta, periodo temporal, saldo en yenes (¥), inventario de ítems y banderas booleanas activas.
   - **Línea de Timeline de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
@@ -150,7 +158,7 @@ PORT=8080 bin/servidor
 El runner de línea de comandos se encuentra en `bin/episodio`:
 
 ```bash
-# Ejecutar cualquier episodio por su identificador (01 a 60)
+# Ejecutar cualquier episodio por su identificador (01 a 66)
 ruby -Ilib bin/episodio 01
 ruby -Ilib bin/episodio 08
 ruby -Ilib bin/episodio 14
@@ -161,7 +169,8 @@ ruby -Ilib bin/episodio 37
 ruby -Ilib bin/episodio 43
 ruby -Ilib bin/episodio 49
 ruby -Ilib bin/episodio 55
-ruby -Ilib bin/episodio 60
+ruby -Ilib bin/episodio 61
+ruby -Ilib bin/episodio 66
 
 # Ver ayuda y catálogo completo
 ruby -Ilib bin/episodio --help
@@ -182,7 +191,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (232 tests, 1357 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (253 tests, 1496 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -202,6 +211,7 @@ ruby -Ilib -Itest test/test_chapter7_continuity.rb
 ruby -Ilib -Itest test/test_chapter8_continuity.rb
 ruby -Ilib -Itest test/test_chapter9_continuity.rb
 ruby -Ilib -Itest test/test_chapter10_continuity.rb
+ruby -Ilib -Itest test/test_chapter11_continuity.rb
 ```
 
 ---
@@ -218,13 +228,13 @@ ruby -Ilib -Itest test/test_chapter10_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 60)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 66)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 300 documentos (ep01 a ep60: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 330 documentos (ep01 a ep66: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (232 tests, 1357 aserciones)
+└── test/                              # Suite de pruebas Minitest (253 tests, 1496 aserciones)
 ```

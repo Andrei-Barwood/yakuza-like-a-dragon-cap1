@@ -533,6 +533,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 18: Capítulo 11 — The Odds (Episodios 61 a 66)
+- **Objetivo:** Modelar los seis episodios canónicos del Capítulo 11 (*The Odds* / 喧嘩の勝算): el ascenso de Ryo Aoki a presidente del partido tras el retiro de Ogikubo, la acogida de Zhao y Han en Survive Bar, la trampa electoral de los albergues de Bleach Japan en Hamakita Park con Hamako, el funeral público de Ogasawara con el falso panegírico de Aoki promoviendo a Kume, la infiltración por el montacargas secreto al aparcamiento ribereño y desarticulación de la escolta de la Omi con Adachi, el encuentro nocturno a solas en Otohime Land donde Aoki revela que él mismo asesinó a Suzumori en Nochevieja del 2000, y la emboscada posterior de Sawashiro repelida gracias a Nanba culminando con las lágrimas de Hamako ante la deportación masiva de sus trabajadoras y la declaración de guerra total sin marcha atrás.
+- **Episodios implementados:**
+  1. **Episodio 61 (`61_el_ascenso_de_aoki` - "El ascenso de Aoki"):**
+     - Emisión del noticiero anunciando la renuncia de Ogikubo y el ascenso de Aoki a presidente del CLP. Integración formal de Zhao y Han en Survive Bar y deducción de cómo la Omi eliminó a Ogasawara para crear un mártir político.
+     - Documentación: `docs/episodios/ep61_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep61.rb`.
+     - Test: `test/test_scenario_ep61.rb`.
+  2. **Episodio 62 (`62_el_refugio_de_hamako` - "El refugio de Hamako"):**
+     - Hamako convoca al grupo para vaciar Harbor Light; revela que Bleach Japan aloja a sus trabajadoras inmigrantes en Hamakita Park prometiendo visas y formación. Adachi advierte el trasfondo de captación electoral y confirman que Aoki asistirá al funeral de Ogasawara.
+     - Documentación: `docs/episodios/ep62_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep62.rb`.
+     - Test: `test/test_scenario_ep62.rb`.
+  3. **Episodio 63 (`63_el_funeral_de_ogasawara` - "El funeral de Ogasawara"):**
+     - En la funeraria de Ijincho, el grupo presencia el panegírico de Aoki con lágrimas de cocodrilo respaldando a Sota Kume al parlamento. Ante el cerco de la prensa, Saeko deduce que Aoki huirá por el aparcamiento subterráneo junto al río.
+     - Documentación: `docs/episodios/ep63_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep63.rb`.
+     - Test: `test/test_scenario_ep63.rb`.
+  4. **Episodio 64 (`64_el_estacionamiento_subterraneo` - "El estacionamiento subterráneo"):**
+     - Descenso por el montacargas secreto entre The Harbor Light y Bar Rodriguez. Los falsos guardias de seguridad de Aoki hablan con dialecto de Kansai y son desarmados en combate por Adachi. Aoki reprende a sus hombres y cita a Kasuga a solas en Otohime Land.
+     - Documentación: `docs/episodios/ep64_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep64.rb`.
+     - Test: `test/test_scenario_ep64.rb`.
+  5. **Episodio 65 (`65_la_noche_en_otohime_land` - "La noche en Otohime Land"):**
+     - Reunión privada entre Kasuga y Aoki: el trasplante pulmonar en EE.UU., el asesinato de Ogasawara por control de riesgos y la verdad del crimen de Suzumori en Nochevieja del 2000 cometido por Masato. Ruptura de términos y revelación de que el albergue es un plan de deportación masiva.
+     - Documentación: `docs/episodios/ep65_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep65.rb`.
+     - Test: `test/test_scenario_ep65.rb`.
+  6. **Episodio 66 (`66_el_desengano_y_la_resolucion` - "El desengaño y la resolución"):**
+     - Aoki envía a Sawashiro y a la Omi para ejecutar a Kasuga; Nanba interviene oportunamente y el grupo derrota a los matones. Hamako llega desesperada confirmando la deportación masiva de sus empleadas. El grupo asume que no hay retorno y declara la guerra total contra Aoki y la Omi. Emisión de frontera `story.chapter_boundary` hacia el Capítulo 12.
+     - Documentación: `docs/episodios/ep66_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep66.rb`.
+     - Test: `test/test_scenario_ep66.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 11:**
+  - `test/test_chapter11_continuity.rb`: Valida el encadenamiento integral desde el final del Ep60 hasta el cierre del Ep66, verificando la integración de Zhao y Han, el programa de refugios, el funeral de Ogasawara, el combate en el parking subterráneo, la revelación del homicidio de Suzumori, el rescate de Nanba, el llanto de Hamako y la resolución de guerra total.
+  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 66 episodios (`01` a `66`).
+  - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 11 con colores y estilos enriquecidos.
+  - Suite de pruebas ejecutada al 100% con éxito: **253 tests, 1496 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -540,9 +581,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la caída de Mabuchi o la muerte de Toshio) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (las deportaciones o la confesión del crimen de Suzumori) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la comida de Heian Tower y la promesa de pato de Pekín (Capítulo 10) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 11 en adelante. |
+| **Límite Canónico** | Fin cerrado en las lágrimas de Hamako y la resolución de guerra total (Capítulo 11) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 12 en adelante. |
 
 ---
 
@@ -558,10 +599,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..60)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..66)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 300 documentos (5 por cada uno de los 60 episodios)
+│   └── episodios/                           # 330 documentos (5 por cada uno de los 66 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -621,7 +662,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep57_aar.md ... ep57_mecanicas.md
 │       ├── ep58_aar.md ... ep58_mecanicas.md
 │       ├── ep59_aar.md ... ep59_mecanicas.md
-│       └── ep60_aar.md ... ep60_mecanicas.md
+│       ├── ep60_aar.md ... ep60_mecanicas.md
+│       ├── ep61_aar.md ... ep61_mecanicas.md
+│       ├── ep62_aar.md ... ep62_mecanicas.md
+│       ├── ep63_aar.md ... ep63_mecanicas.md
+│       ├── ep64_aar.md ... ep64_mecanicas.md
+│       ├── ep65_aar.md ... ep65_mecanicas.md
+│       └── ep66_aar.md ... ep66_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -629,7 +676,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 60 episodios (Caps 1 al 10)
+│       ├── manifest.rb                      # Catálogo inmutable de los 66 episodios (Caps 1 al 11)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -642,12 +689,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep37.rb ... ep42.rb          # Cap 7: 37_el_barrio_coreano hasta 42_la_cumbre_de_los_tres
 │           ├── ep43.rb ... ep48.rb          # Cap 8: 43_el_pacto_de_los_tres hasta 48_la_verdadera_identidad_de_aoki
 │           ├── ep49.rb ... ep54.rb          # Cap 9: 49_el_perfil_de_aoki hasta 54_el_sacrificio_de_geomijul
-│           ├── ep55.rb                      # Cap 10: 55_el_interrogatorio_de_ogasawara
-│           ├── ep56.rb                      # Cap 10: 56_el_rescate_de_zhao
-│           ├── ep57.rb                      # Cap 10: 57_el_dragon_y_el_tigre
-│           ├── ep58.rb                      # Cap 10: 58_el_retorno_de_nanba
-│           ├── ep59.rb                      # Cap 10: 59_reencuentro_con_mitsuo
-│           └── ep60.rb                      # Cap 10: 60_la_promesa_del_pato_de_pekin
+│           ├── ep55.rb ... ep60.rb          # Cap 10: 55_el_interrogatorio_de_ogasawara hasta 60_la_promesa_del_pato_de_pekin
+│           ├── ep61.rb                      # Cap 11: 61_el_ascenso_de_aoki
+│           ├── ep62.rb                      # Cap 11: 62_el_refugio_de_hamako
+│           ├── ep63.rb                      # Cap 11: 63_el_funeral_de_ogasawara
+│           ├── ep64.rb                      # Cap 11: 64_el_estacionamiento_subterraneo
+│           ├── ep65.rb                      # Cap 11: 65_la_noche_en_otohime_land
+│           └── ep66.rb                      # Cap 11: 66_el_desengano_y_la_resolucion
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -672,6 +720,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │   ├── test_scenario_ep43.rb ... ep48.rb    # Tests unitarios Cap 8
 │   ├── test_scenario_ep49.rb ... ep54.rb    # Tests unitarios Cap 9
 │   ├── test_scenario_ep55.rb ... ep60.rb    # Tests unitarios Cap 10
+│   ├── test_scenario_ep61.rb ... ep66.rb    # Tests unitarios Cap 11
 │   ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
 │   ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
 │   ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
@@ -681,11 +730,12 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │   ├── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
 │   ├── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
 │   ├── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
-│   └── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
+│   ├── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
+│   └── test_chapter11_continuity.rb         # Integración y continuidad Cap 11
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9 y 10 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (232 tests, 1357 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 y 11 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (253 tests, 1496 aserciones) e interfaz interactiva tanto por CLI como web.

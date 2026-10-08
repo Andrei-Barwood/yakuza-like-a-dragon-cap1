@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 10]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 11]
 
 Última actualización: 2026-10-07
-Episodio actual: 60 (60_la_promesa_del_pato_de_pekin)
-Fase completada: Capítulos 1 al 10 completamente integrados y verificados (232 tests pasando al 100%, 1357 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 60 episodios.
+Episodio actual: 66 (66_el_desengano_y_la_resolucion)
+Fase completada: Capítulos 1 al 11 completamente integrados y verificados (253 tests pasando al 100%, 1496 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 66 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -86,6 +86,14 @@ Catálogo de episodios:
 - 59_reencuentro_con_mitsuo: Completado (Liberación de Zhao, encuentro a solas con Mitsuo Yasuda, advertencias sobre Arakawa y sucesión hacia Seonhee)
 - 60_la_promesa_del_pato_de_pekin: Completado (Protocolo de rescate del Jefe, almuerzo en Heian Tower con Hoshino, muerte de Toshio en 1977 y mensaje del billete de 1984)
 
+-- CAPÍTULO 11: THE ODDS --
+- 61_el_ascenso_de_aoki: Completado (Panorama político tras la caída de Ogikubo, integración de Zhao y Han en Survive Bar y mártir fabricado con Ogasawara)
+- 62_el_refugio_de_hamako: Completado (Hamako cierra Harbor Light ante los albergues de Bleach Japan en Hamakita Park y pista del funeral de Ogasawara)
+- 63_el_funeral_de_ogasawara: Completado (Panegírico con lágrimas de cocodrilo de Aoki respaldando a Sota Kume y deducción de la ruta subterránea ribereña)
+- 64_el_estacionamiento_subterraneo: Completado (Descenso por el montacargas secreto, desenmascaramiento de los escoltas de la Omi y cita a solas pactada en Otohime Land)
+- 65_la_noche_en_otohime_land: Completado (Encuentro privado con Aoki: el trasplante pulmonar, la verdad del crimen de Suzumori en el 2000 y el engaño de la revitalización)
+- 66_el_desengano_y_la_resolucion: Completado (Huida con auxilio de Nanba, victoria sobre la Omi, llanto de Hamako por las deportaciones y pacto de guerra total sin retorno)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -95,9 +103,9 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep60.rb
-- docs/episodios/ep01_* a ep60_* (300 documentos)
-- test/test_scenario_ep01.rb a ep60.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep66.rb
+- docs/episodios/ep01_* a ep66_* (330 documentos)
+- test/test_scenario_ep01.rb a ep66.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
@@ -108,3 +116,4 @@ Archivos clave:
 - test/test_chapter8_continuity.rb
 - test/test_chapter9_continuity.rb
 - test/test_chapter10_continuity.rb
+- test/test_chapter11_continuity.rb

@@ -5,8 +5,8 @@ require "open3"
 
 class TestDispatcher < Minitest::Test
   def test_manifest_contains_seven_episodes
-    assert_equal 60, IchibanLab::Manifest.all.size
-    assert_equal %w[01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60], IchibanLab::Manifest.ids
+    assert_equal 66, IchibanLab::Manifest.all.size
+    assert_equal %w[01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66], IchibanLab::Manifest.ids
     assert IchibanLab::Manifest.valid_id?("01")
     assert IchibanLab::Manifest.valid_id?("08")
     assert IchibanLab::Manifest.valid_id?(13)
@@ -26,7 +26,9 @@ class TestDispatcher < Minitest::Test
     assert IchibanLab::Manifest.valid_id?(54)
     assert IchibanLab::Manifest.valid_id?("55")
     assert IchibanLab::Manifest.valid_id?(60)
-    refute IchibanLab::Manifest.valid_id?("61")
+    assert IchibanLab::Manifest.valid_id?("61")
+    assert IchibanLab::Manifest.valid_id?(66)
+    refute IchibanLab::Manifest.valid_id?("67")
     refute IchibanLab::Manifest.valid_id?("unknown")
   end
 
