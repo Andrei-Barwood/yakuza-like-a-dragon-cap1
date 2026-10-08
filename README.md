@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 12
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 13
 
-Simulador narrativo y de continuidad para los doce primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket*, *The Odds* y *The End of the Yakuza*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los trece primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket*, *The Odds*, *The End of the Yakuza* y *Coin Locker Baby*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los setenta y dos segmentos clave de los Capítulos 1 al 12:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los setenta y ocho segmentos clave de los Capítulos 1 al 13:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -101,6 +101,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 70. `70_el_pacto_de_disolucion`: Revelación del Plan 3K, liberación de Masaru Watase y proclamación solemne de la disolución del Tojo y la Omi.
 71. `71_la_gran_batalla_de_la_omi`: Batalla campal contra rebeldes Omi, intercepción providencial de Kazuma Kiryu y entrega del acta a la policía.
 72. `72_la_noche_en_hamakita_y_el_golpe`: Encuentro nocturno con Masumi Arakawa en Hamakita Park, confidencias paternas y trágico hallazgo de su cadáver al día siguiente; transición al Capítulo 13.
+
+### Capítulo 13: Coin Locker Baby (2019)
+73. `73_el_dolor_en_el_muelle`: Desgarrador intento de Kasuga por alcanzar el cadáver de Arakawa en el muelle, reporte de Takabe y tensión en Kamurocho.
+74. `74_el_lamento_y_la_determinacion`: Encuentro en Heian Tower con Hoshino, recuerdos del pato de Pekín de Arakawa y rechazo a la venganza militar mafiosa.
+75. `75_la_candidatura_inesperada`: Enfrentamiento en Isezaki Road, fianza electoral de 3M y registro contrarreloj de Kasuga como candidato al parlamento.
+76. `76_el_debate_en_hamakita`: Guerra de carteles, furgoneta de campaña y discurso sobre las zonas grises en Hamakita Park que humilla a Kume y enfurece a Aoki.
+77. `77_el_apreton_de_manos_en_jinnai`: Aproximación a pie a la estación de Jinnai, apretón de manos público forzado a Kume y alerta roja por asalto a la sede del Seiryu.
+78. `78_los_bebes_de_las_taquillas`: Incursión en la sede del Seiryu, muerte de Hoshino a manos de Sawashiro, duelo a muerte y revelación del linaje de los bebés de las taquillas; transición al Capítulo 14.
 
 ---
 
@@ -200,7 +208,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (274 tests, 1632 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (295 tests, 1797 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -222,6 +230,7 @@ ruby -Ilib -Itest test/test_chapter9_continuity.rb
 ruby -Ilib -Itest test/test_chapter10_continuity.rb
 ruby -Ilib -Itest test/test_chapter11_continuity.rb
 ruby -Ilib -Itest test/test_chapter12_continuity.rb
+ruby -Ilib -Itest test/test_chapter13_continuity.rb
 ```
 
 ---
@@ -238,13 +247,13 @@ ruby -Ilib -Itest test/test_chapter12_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 72)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 78)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 360 documentos (ep01 a ep72: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 390 documentos (ep01 a ep78: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (274 tests, 1632 aserciones)
+└── test/                              # Suite de pruebas Minitest (295 tests, 1797 aserciones)
 ```

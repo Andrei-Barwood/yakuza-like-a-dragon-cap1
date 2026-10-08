@@ -608,10 +608,51 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
      - Escenario: `lib/ichiban_lab/scenarios/ep72.rb`.
      - Test: `test/test_scenario_ep72.rb`.
 - **Integración de Continuidad y Pruebas del Capítulo 12:**
-  - `test/test_chapter12_continuity.rb`: Valida el encadenamiento integral desde el final del Ep66 hasta el cierre del Ep72, verificando el viaje a Sotenbori, infiltración de catering, duelo contra Majima y Saejima, pacto de Watase y Daigo, defensa con Kazuma Kiryu, reencuentro en Hamakita y el hallazgo trágico del cadáver de Arakawa.
-  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 72 episodios (`01` a `72`).
-  - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 12 con colores morados (`#b388ff`) e insignias carmesí.
-  - Suite de pruebas ejecutada al 100% con éxito: **274 tests, 1632 aserciones, 0 fallos, 0 errores**.
+   - `test/test_chapter12_continuity.rb`: Valida el encadenamiento integral desde el final del Ep66 hasta el cierre del Ep72, verificando el viaje a Sotenbori, infiltración de catering, duelo contra Majima y Saejima, pacto de Watase y Daigo, defensa con Kazuma Kiryu, reencuentro en Hamakita y el hallazgo trágico del cadáver de Arakawa.
+   - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 72 episodios (`01` a `72`).
+   - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 12 con colores morados (`#b388ff`) e insignias carmesí.
+   - Suite de pruebas ejecutada al 100% con éxito: **274 tests, 1632 aserciones, 0 fallos, 0 errores**.
+
+---
+
+### Fase 20: Capítulo 13 — Coin Locker Baby (Episodios 73 a 78)
+- **Objetivo:** Modelar los seis episodios canónicos del Capítulo 13 (*Coin Locker Baby* / コインロッカーベイビー): la desolación de Kasuga en el muelle de Yokohama tras el hallazgo del cadáver de Masumi Arakawa y la conformación forzada de la Tokyo Omi Alliance por Sawashiro e Ishioda; el duelo contenido en Survive Bar, el relato de Hoshino sobre la cena de pato de Pekín de Arakawa en Heian Tower y el rechazo tajante de Kasuga a la venganza mafiosa armada; el intento de abordar a Kume en Isezaki Road, la fianza electoral de 3 millones de yenes reintegrada por Hoshino y el registro contrarreloj de Kasuga como candidato oficial al Parlamento por el 2º Distrito de Kanagawa; la guerra sucia de carteles de Bleach Japan, el despliegue de la furgoneta electoral de campaña, el mítico debate callejero en Hamakita Park en defensa de las zonas grises humillando a Kume y el ultimátum letal de 24 horas de Aoki a Sawashiro; la aproximación a pie a la Estación de Jinnai, el forzado apretón de manos diplomático ante los medios y la alerta roja de Geomijul por el asalto a los cuarteles del Clan Seiryu; y finalmente la incursión armada en la sede del Seiryu, la muerte del presidente Hoshino a manos de Sawashiro, el duelo cumbre cuerpo a cuerpo y la monumental confesión de Sawashiro sobre la Nochevieja de 1977 revelando que Masato Arakawa (Ryo Aoki) es su propio hijo biológico y que Ichiban Kasuga es el verdadero hijo biológico de Masumi Arakawa y Akane.
+- **Episodios implementados:**
+  1. **Episodio 73 (`73_el_dolor_en_el_muelle` - "El dolor en el muelle"):**
+     - Desesperado intento de Kasuga por alcanzar el cadáver acordonado de Masumi Arakawa en el muelle de Yokohama; reporte de Takabe sobre la última cena con Hoshino y atentados simultáneos en Osaka; en Kamurocho, Sawashiro ejecuta a un subordinado y pacta con Ishioda la creación de la Tokyo Omi Alliance provisional.
+     - Documentación: `docs/episodios/ep73_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep73.rb`.
+     - Test: `test/test_scenario_ep73.rb`.
+  2. **Episodio 74 (`74_el_lamento_y_la_determinacion` - "El lamento y la determinación"):**
+     - Apoyado por Zhao en Survive Bar, Kasuga visita a Hoshino en Heian Tower. Hoshino relata la serenidad de Arakawa probando pato de Pekín la noche antes de morir y ofrece el ejército del Seiryu para vengar su muerte. Kasuga rechaza la violencia mafiosa: mantendrá vivo el ideal de Arakawa derrotando políticamente a Aoki con sus propios amigos.
+     - Documentación: `docs/episodios/ep74_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep74.rb`.
+     - Test: `test/test_scenario_ep74.rb`.
+  3. **Episodio 75 (`75_la_candidatura_inesperada` - "La candidatura inesperada"):**
+     - Kasuga intenta acercarse a Kume en Isezaki Road y neutraliza a los sicarios encubiertos de la Omi. En la costa, Hoshino le devuelve los 3 millones de yenes de fianza y concibe la estrategia de postular a Kasuga al parlamento por Kanagawa 2nd District para forzar a Kume a interactuar en público. Inscripción oficial in extremis en el edificio Nishihama.
+     - Documentación: `docs/episodios/ep75_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep75.rb`.
+     - Test: `test/test_scenario_ep75.rb`.
+  4. **Episodio 76 (`76_el_debate_en_hamakita` - "El debate en Hamakita"):**
+     - Bleach Japan vandaliza Survive Bar; Takabe suministra la furgoneta clásica de campaña de Hoshino. En Hamakita Park, Kasuga desmonta a Kume en un elocuente debate callejero sobre las zonas grises y la dignidad de los desamparados con apoyo de Hamako y el Jefe. Kume huye en ridículo, Kasuga se vuelve viral y Aoki da un ultimátum de 24 horas a Sawashiro.
+     - Documentación: `docs/episodios/ep76_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep76.rb`.
+     - Test: `test/test_scenario_ep76.rb`.
+  5. **Episodio 77 (`77_el_apreton_de_manos_en_jinnai` - "El apretón de manos en Jinnai"):**
+     - Desplazamiento a pie a la Estación de Jinnai para sorprender a Kume; combate y neutralización de la guardia de la Tokyo Omi; protocolar apretón de manos frente a las cámaras. Alerta roja urgente de Joon-gi Han: la sede del Seiryu está siendo asaltada por sicarios para asesinar a Hoshino.
+     - Documentación: `docs/episodios/ep77_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep77.rb`.
+     - Test: `test/test_scenario_ep77.rb`.
+  6. **Episodio 78 (`78_los_bebes_de_las_taquillas` - "Los bebés de las taquillas"):**
+     - Asalto a la sede del Seiryu, pasillos ensangrentados y encuentro con Takabe herido. En el despacho, hallan a Ryuhei Hoshino asesinado por Jo Sawashiro bajo órdenes de Aoki. Tras un combate a muerte, Sawashiro derrotado desvela el misterio de las taquillas de 1977: Masato Arakawa (Ryo Aoki) es su hijo biológico y Kasuga es el verdadero hijo de Masumi Arakawa y Akane. Emisión de frontera `story.chapter_boundary` hacia el Capítulo 14.
+     - Documentación: `docs/episodios/ep78_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep78.rb`.
+     - Test: `test/test_scenario_ep78.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 13:**
+  - `test/test_chapter13_continuity.rb`: Valida el encadenamiento integral desde el final del Ep72 hasta el cierre del Ep78, verificando el dolor en el muelle, la resolución en Heian Tower, la candidatura de Kasuga, el debate de Hamakita, el apretón de manos en Jinnai, la defensa del Seiryu y la revelación del linaje en las taquillas.
+  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 78 episodios (`01` a `78`).
+  - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 13 con colores dorados (`#ffab40`) y distintivos específicos.
+  - Suite de pruebas ejecutada al 100% con éxito: **295 tests, 1797 aserciones, 0 fallos, 0 errores**.
 
 ---
 
@@ -622,9 +663,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la muerte de Arakawa o la disolución de la Omi) son hechos narrativos, no fallos técnicos. |
-| **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la trágica muerte de Masumi Arakawa y la frontera al Capítulo 13 | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 13 en adelante. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la muerte de Hoshino o la verdad de las taquillas) son hechos narrativos, no fallos técnicos. |
+| **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso cívico de Ichiban. |
+| **Límite Canónico** | Fin cerrado en la revelación del linaje de los bebés de las taquillas y la frontera al Capítulo 14 | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 14 en adelante. |
 
 ---
 
@@ -640,10 +681,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..72)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..78)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 360 documentos (5 por cada uno de los 72 episodios)
+│   └── episodios/                           # 390 documentos (5 por cada uno de los 78 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -715,7 +756,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep69_aar.md ... ep69_mecanicas.md
 │       ├── ep70_aar.md ... ep70_mecanicas.md
 │       ├── ep71_aar.md ... ep71_mecanicas.md
-│       └── ep72_aar.md ... ep72_mecanicas.md
+│       ├── ep72_aar.md ... ep72_mecanicas.md
+│       ├── ep73_aar.md ... ep73_mecanicas.md
+│       ├── ep74_aar.md ... ep74_mecanicas.md
+│       ├── ep75_aar.md ... ep75_mecanicas.md
+│       ├── ep76_aar.md ... ep76_mecanicas.md
+│       ├── ep77_aar.md ... ep77_mecanicas.md
+│       └── ep78_aar.md ... ep78_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -723,7 +770,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 72 episodios (Caps 1 al 12)
+│       ├── manifest.rb                      # Catálogo inmutable de los 78 episodios (Caps 1 al 13)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -738,12 +785,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep49.rb ... ep54.rb          # Cap 9: 49_el_perfil_de_aoki hasta 54_el_sacrificio_de_geomijul
 │           ├── ep55.rb ... ep60.rb          # Cap 10: 55_el_interrogatorio_de_ogasawara hasta 60_la_promesa_del_pato_de_pekin
 │           ├── ep61.rb ... ep66.rb          # Cap 11: 61_el_ascenso_de_aoki hasta 66_el_desengano_y_la_resolucion
-│           ├── ep67.rb                      # Cap 12: 67_el_despacho_del_gobernador
-│           ├── ep68.rb                      # Cap 12: 68_rumbo_a_sotenbori
-│           ├── ep69.rb                      # Cap 12: 69_los_dragones_legendarios
-│           ├── ep70.rb                      # Cap 12: 70_el_pacto_de_disolucion
-│           ├── ep71.rb                      # Cap 12: 71_la_gran_batalla_de_la_omi
-│           └── ep72.rb                      # Cap 12: 72_la_noche_en_hamakita_y_el_golpe
+│           ├── ep67.rb ... ep72.rb          # Cap 12: 67_el_despacho_del_gobernador hasta 72_la_noche_en_hamakita_y_el_golpe
+│           ├── ep73.rb                      # Cap 13: 73_el_dolor_en_el_muelle
+│           ├── ep74.rb                      # Cap 13: 74_el_lamento_y_la_determinacion
+│           ├── ep75.rb                      # Cap 13: 75_la_candidatura_inesperada
+│           ├── ep76.rb                      # Cap 13: 76_el_debate_en_hamakita
+│           ├── ep77.rb                      # Cap 13: 77_el_apreton_de_manos_en_jinnai
+│           └── ep78.rb                      # Cap 13: 78_los_bebes_de_las_taquillas
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -770,6 +818,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep55.rb ... ep60.rb    # Tests unitarios Cap 10
     ├── test_scenario_ep61.rb ... ep66.rb    # Tests unitarios Cap 11
     ├── test_scenario_ep67.rb ... ep72.rb    # Tests unitarios Cap 12
+    ├── test_scenario_ep73.rb ... ep78.rb    # Tests unitarios Cap 13
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
     ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
@@ -781,11 +830,12 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
     ├── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
     ├── test_chapter11_continuity.rb         # Integración y continuidad Cap 11
-    └── test_chapter12_continuity.rb         # Integración y continuidad Cap 12
+    ├── test_chapter12_continuity.rb         # Integración y continuidad Cap 12
+    └── test_chapter13_continuity.rb         # Integración y continuidad Cap 13
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 y 12 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (274 tests, 1632 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 y 13 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (295 tests, 1797 aserciones) e interfaz interactiva tanto por CLI como web.

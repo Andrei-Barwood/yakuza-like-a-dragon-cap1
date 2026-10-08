@@ -244,7 +244,7 @@
       </ul>
 
       <h3 style="margin-bottom: 12px; color: #b388ff;">Capítulo 12: The End of the Yakuza</h3>
-      <ul class="episode-list">
+      <ul class="episode-list" style="margin-bottom: 20px;">
         <% @episodes.select { |e| e.chapter == 12 }.each do |ep| %>
           <li class="episode-item">
             <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
@@ -252,6 +252,20 @@
                 <strong><%= ep.id %></strong>. <%= h(ep.title) %>
               </div>
               <span class="badge badge-crimson"><%= ep.slug %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+
+      <h3 style="margin-bottom: 12px; color: #ffab40;">Capítulo 13: Coin Locker Baby</h3>
+      <ul class="episode-list">
+        <% @episodes.select { |e| e.chapter == 13 }.each do |ep| %>
+          <li class="episode-item">
+            <a href="/?ep=<%= ep.id %>" class="episode-link <%= 'active' if ep.id == @selected_id %>">
+              <div>
+                <strong><%= ep.id %></strong>. <%= h(ep.title) %>
+              </div>
+              <span class="badge badge-gold"><%= ep.slug %></span>
             </a>
           </li>
         <% end %>

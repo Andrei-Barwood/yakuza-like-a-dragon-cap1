@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 12]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 13]
 
 Última actualización: 2026-10-07
-Episodio actual: 72 (72_la_noche_en_hamakita_y_el_golpe)
-Fase completada: Capítulos 1 al 12 completamente integrados y verificados (274 tests pasando al 100%, 1632 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 72 episodios.
+Episodio actual: 78 (78_los_bebes_de_las_taquillas)
+Fase completada: Capítulos 1 al 13 completamente integrados y verificados (295 tests pasando al 100%, 1797 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 78 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -102,6 +102,14 @@ Catálogo de episodios:
 - 71_la_gran_batalla_de_la_omi: Completado (Batalla campal contra rebeldes Omi, intercepción providencial de Kazuma Kiryu y entrega del acta a la policía)
 - 72_la_noche_en_hamakita_y_el_golpe: Completado (Encuentro nocturno con Masumi Arakawa en Hamakita Park, confidencias paternas y trágico hallazgo de su cadáver al día siguiente)
 
+-- CAPÍTULO 13: COIN LOCKER BABY --
+- 73_el_dolor_en_el_muelle: Completado (Cordón policial en el muelle de Yokohama, reporte de Takabe sobre Heian Tower y tensión entre Sawashiro e Ishioda)
+- 74_el_lamento_y_la_determinacion: Completado (Zhao conforta a Kasuga, cena de pato de Pekín relatada por Hoshino y rechazo a la venganza militar mafiosa)
+- 75_la_candidatura_inesperada: Completado (Mitin de Kume bloqueado, reintegro de fianza electoral de 3M por Hoshino y registro contrarreloj de Kasuga)
+- 76_el_debate_en_hamakita: Completado (Furgoneta electoral, apasionado debate sobre zonas grises humillando a Kume y ultimátum de 24 horas de Aoki)
+- 77_el_apreton_de_manos_en_jinnai: Completado (Aproximación a pie, forzado apretón de manos público ante la prensa y alerta roja de Geomijul en la sede Seiryu)
+- 78_los_bebes_de_las_taquillas: Completado (Asalto al Seiryu, muerte de Hoshino, derrota de Sawashiro y revelación del linaje de los bebés de las taquillas)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -111,9 +119,9 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep72.rb
-- docs/episodios/ep01_* a ep72_* (360 documentos)
-- test/test_scenario_ep01.rb a ep72.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep78.rb
+- docs/episodios/ep01_* a ep78_* (390 documentos)
+- test/test_scenario_ep01.rb a ep78.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
@@ -126,3 +134,4 @@ Archivos clave:
 - test/test_chapter10_continuity.rb
 - test/test_chapter11_continuity.rb
 - test/test_chapter12_continuity.rb
+- test/test_chapter13_continuity.rb

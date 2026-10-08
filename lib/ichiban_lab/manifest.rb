@@ -601,6 +601,54 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep72",
         description: "Encuentro nocturno con Masumi Arakawa en Hamakita Park, confidencias paternas y trágico hallazgo de su cadáver al día siguiente.",
         chapter: 12
+      ),
+      EpisodeInfo.new(
+        id: "73",
+        slug: "73_el_dolor_en_el_muelle",
+        title: "El dolor en el muelle",
+        class_name: "IchibanLab::Scenarios::Ep73",
+        description: "Desgarrador intento de Kasuga por alcanzar el cadáver de Arakawa en el muelle, reporte de Takabe y tensión en Kamurocho.",
+        chapter: 13
+      ),
+      EpisodeInfo.new(
+        id: "74",
+        slug: "74_el_lamento_y_la_determinacion",
+        title: "El lamento y la determinación",
+        class_name: "IchibanLab::Scenarios::Ep74",
+        description: "Encuentro en Heian Tower con Hoshino, recuerdos del pato de Pekín de Arakawa y rechazo a la venganza militar mafiosa.",
+        chapter: 13
+      ),
+      EpisodeInfo.new(
+        id: "75",
+        slug: "75_la_candidatura_inesperada",
+        title: "La candidatura inesperada",
+        class_name: "IchibanLab::Scenarios::Ep75",
+        description: "Enfrentamiento en Isezaki Road, fianza electoral de 3M y registro contrarreloj de Kasuga como candidato al parlamento.",
+        chapter: 13
+      ),
+      EpisodeInfo.new(
+        id: "76",
+        slug: "76_el_debate_en_hamakita",
+        title: "El debate en Hamakita",
+        class_name: "IchibanLab::Scenarios::Ep76",
+        description: "Guerra de carteles, furgoneta de campaña y discurso sobre las zonas grises en Hamakita Park que humilla a Kume y enfurece a Aoki.",
+        chapter: 13
+      ),
+      EpisodeInfo.new(
+        id: "77",
+        slug: "77_el_apreton_de_manos_en_jinnai",
+        title: "El apretón de manos en Jinnai",
+        class_name: "IchibanLab::Scenarios::Ep77",
+        description: "Aproximación a pie a la estación de Jinnai, apretón de manos público forzado a Kume y alerta roja por asalto a la sede del Seiryu.",
+        chapter: 13
+      ),
+      EpisodeInfo.new(
+        id: "78",
+        slug: "78_los_bebes_de_las_taquillas",
+        title: "Los bebés de las taquillas",
+        class_name: "IchibanLab::Scenarios::Ep78",
+        description: "Incursión en la sede del Seiryu, muerte de Hoshino a manos de Sawashiro, duelo a muerte y revelación del origen de Kasuga y Masato.",
+        chapter: 13
       )
     ].freeze
 
