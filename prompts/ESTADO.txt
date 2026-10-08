@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 11]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 12]
 
 Última actualización: 2026-10-07
-Episodio actual: 66 (66_el_desengano_y_la_resolucion)
-Fase completada: Capítulos 1 al 11 completamente integrados y verificados (253 tests pasando al 100%, 1496 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 66 episodios.
+Episodio actual: 72 (72_la_noche_en_hamakita_y_el_golpe)
+Fase completada: Capítulos 1 al 12 completamente integrados y verificados (274 tests pasando al 100%, 1632 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 72 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -94,6 +94,14 @@ Catálogo de episodios:
 - 65_la_noche_en_otohime_land: Completado (Encuentro privado con Aoki: el trasplante pulmonar, la verdad del crimen de Suzumori en el 2000 y el engaño de la revitalización)
 - 66_el_desengano_y_la_resolucion: Completado (Huida con auxilio de Nanba, victoria sobre la Omi, llanto de Hamako por las deportaciones y pacto de guerra total sin retorno)
 
+-- CAPÍTULO 12: THE END OF THE YAKUZA --
+- 67_el_despacho_del_gobernador: Completado (Aoki cuestiona la cumbre de Watase y Arakawa, sospechas de traición y envío de Tendo a vigilar Osaka)
+- 68_rumbo_a_sotenbori: Completado (Viaje a Osaka, llamada de Mitsuo en Cabaret Grand sobre la Cámara del Dragón y plan de catering)
+- 69_los_dragones_legendarios: Completado (Infiltración al cuartel Omi, combate de prueba contra Goro Majima y Taiga Saejima, e intervención de Daigo y Arakawa)
+- 70_el_pacto_de_disolucion: Completado (Revelación del Plan 3K, liberación de Masaru Watase y proclamación solemne de la disolución del Tojo y la Omi)
+- 71_la_gran_batalla_de_la_omi: Completado (Batalla campal contra rebeldes Omi, intercepción providencial de Kazuma Kiryu y entrega del acta a la policía)
+- 72_la_noche_en_hamakita_y_el_golpe: Completado (Encuentro nocturno con Masumi Arakawa en Hamakita Park, confidencias paternas y trágico hallazgo de su cadáver al día siguiente)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -103,9 +111,9 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep66.rb
-- docs/episodios/ep01_* a ep66_* (330 documentos)
-- test/test_scenario_ep01.rb a ep66.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep72.rb
+- docs/episodios/ep01_* a ep72_* (360 documentos)
+- test/test_scenario_ep01.rb a ep72.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
@@ -117,3 +125,4 @@ Archivos clave:
 - test/test_chapter9_continuity.rb
 - test/test_chapter10_continuity.rb
 - test/test_chapter11_continuity.rb
+- test/test_chapter12_continuity.rb

@@ -567,10 +567,51 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
      - Escenario: `lib/ichiban_lab/scenarios/ep66.rb`.
      - Test: `test/test_scenario_ep66.rb`.
 - **Integración de Continuidad y Pruebas del Capítulo 11:**
-  - `test/test_chapter11_continuity.rb`: Valida el encadenamiento integral desde el final del Ep60 hasta el cierre del Ep66, verificando la integración de Zhao y Han, el programa de refugios, el funeral de Ogasawara, el combate en el parking subterráneo, la revelación del homicidio de Suzumori, el rescate de Nanba, el llanto de Hamako y la resolución de guerra total.
-  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 66 episodios (`01` a `66`).
-  - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 11 con colores y estilos enriquecidos.
-  - Suite de pruebas ejecutada al 100% con éxito: **253 tests, 1496 aserciones, 0 fallos, 0 errores**.
+   - `test/test_chapter11_continuity.rb`: Valida el encadenamiento integral desde el final del Ep60 hasta el cierre del Ep66, verificando la integración de Zhao y Han, el programa de refugios, el funeral de Ogasawara, el combate en el parking subterráneo, la revelación del homicidio de Suzumori, el rescate de Nanba, el llanto de Hamako y la resolución de guerra total.
+   - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 66 episodios (`01` a `66`).
+   - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 11 con colores y estilos enriquecidos.
+   - Suite de pruebas ejecutada al 100% con éxito: **253 tests, 1496 aserciones, 0 fallos, 0 errores**.
+
+---
+
+### Fase 19: Capítulo 12 — The End of the Yakuza (Episodios 67 a 72)
+- **Objetivo:** Modelar los seis episodios canónicos del Capítulo 12 (*The End of the Yakuza* / 極道の終焉): la conspiración entre Ryo Aoki y Jo Sawashiro en el despacho del gobernador enviando a Tendo a Osaka por sospechas hacia Arakawa; el viaje del grupo a Sotenbori y la llamada de Mitsuo revelando la cumbre del Dragon Chamber en el Cabaret Grand; la infiltración encubierta en la sede de la Alianza Omi y el legendario combate de prueba contra Goro Majima y Taiga Saejima detenido por Daigo Dojima y Masumi Arakawa; la revelación del verdadero propósito del Plan 3K, la liberación de Masaru Watase y la proclamación conjunta de disolución del Clan Tojo y la Alianza Omi; la gran batalla campal contra los oficiales rebeldes de la Omi con la épica intervención de Kazuma Kiryu como guardaespaldas de Watase y entrega de documentos a la policía de Osaka; y finalmente la íntima conversación nocturna entre Kasuga y Masumi Arakawa en Hamakita Park seguida por la desgarradora llamada de Hoshino a la mañana siguiente confirmando el asesinato de Arakawa arrojado a las aguas del océano.
+- **Episodios implementados:**
+  1. **Episodio 67 (`67_el_despacho_del_gobernador` - "El despacho del gobernador"):**
+     - En Tokio, Aoki y Sawashiro evalúan la inminente salida de prisión de Masaru Watase. Aoki sospecha de la lealtad de Masumi Arakawa y ordena a Sawashiro desplegar a Yosuke Tendo hacia Osaka para supervisar la ceremonia.
+     - Documentación: `docs/episodios/ep67_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep67.rb`.
+     - Test: `test/test_scenario_ep67.rb`.
+  2. **Episodio 68 (`68_rumbo_a_sotenbori` - "Rumbo a Sotenbori"):**
+     - El grupo llega al distrito de Sotenbori en Osaka. Reciben una llamada secreta de Mitsuo desde el Cabaret Grand, advirtiéndoles que la plana mayor de la Omi se congregará en la sede central para el Dragon Chamber; planean infiltración como personal de catering.
+     - Documentación: `docs/episodios/ep68_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep68.rb`.
+     - Test: `test/test_scenario_ep68.rb`.
+  3. **Episodio 69 (`69_los_dragones_legendarios` - "Los dragones legendarios"):**
+     - Infiltración en la sede de la Omi en Osaka; enfrentamiento colosal contra los míticos Goro Majima y Taiga Saejima como prueba de valía. Daigo Dojima y Masumi Arakawa detienen el combate, revelándose como aliados secretos coordinados.
+     - Documentación: `docs/episodios/ep69_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep69.rb`.
+     - Test: `test/test_scenario_ep69.rb`.
+  4. **Episodio 70 (`70_el_pacto_de_disolucion` - "El pacto de disolución"):**
+     - Liberación penitenciaria de Masaru Watase. En el salón principal de la Omi, Watase y Daigo leen la declaración conjunta de disolución simultánea del Clan Tojo y la Alianza Omi para erradicar el crimen organizado tradicional.
+     - Documentación: `docs/episodios/ep70_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep70.rb`.
+     - Test: `test/test_scenario_ep70.rb`.
+  5. **Episodio 71 (`71_la_gran_batalla_de_la_omi` - "La gran batalla de la Omi"):**
+     - Rebelión armada violenta de los lugartenientes de la Omi contrarios a la disolución. Intervención legendaria de Kazuma Kiryu protegiendo a Watase; Kasuga y su grupo barren a los insurrectos y los documentos de disolución son entregados a la policía de Osaka.
+     - Documentación: `docs/episodios/ep71_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep71.rb`.
+     - Test: `test/test_scenario_ep71.rb`.
+  6. **Episodio 72 (`72_la_noche_en_hamakita_y_el_golpe` - "La noche en Hamakita y el golpe"):**
+     - Emotivo reencuentro nocturno a solas entre Kasuga y Masumi Arakawa en Hamakita Park; Arakawa explica las razones del disparo de 2001 y su plan de reinserción para ex-yakuza. A la mañana siguiente en Survive Bar, Hoshino llama destrozado: el cuerpo sin vida de Arakawa ha sido hallado en el mar. Emisión de frontera `story.chapter_boundary` hacia el Capítulo 13.
+     - Documentación: `docs/episodios/ep72_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep72.rb`.
+     - Test: `test/test_scenario_ep72.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 12:**
+  - `test/test_chapter12_continuity.rb`: Valida el encadenamiento integral desde el final del Ep66 hasta el cierre del Ep72, verificando el viaje a Sotenbori, infiltración de catering, duelo contra Majima y Saejima, pacto de Watase y Daigo, defensa con Kazuma Kiryu, reencuentro en Hamakita y el hallazgo trágico del cadáver de Arakawa.
+  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 72 episodios (`01` a `72`).
+  - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 12 con colores morados (`#b388ff`) e insignias carmesí.
+  - Suite de pruebas ejecutada al 100% con éxito: **274 tests, 1632 aserciones, 0 fallos, 0 errores**.
 
 ---
 
@@ -581,9 +622,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (las deportaciones o la confesión del crimen de Suzumori) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la muerte de Arakawa o la disolución de la Omi) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en las lágrimas de Hamako y la resolución de guerra total (Capítulo 11) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 12 en adelante. |
+| **Límite Canónico** | Fin cerrado en la trágica muerte de Masumi Arakawa y la frontera al Capítulo 13 | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 13 en adelante. |
 
 ---
 
@@ -599,10 +640,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..66)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..72)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 330 documentos (5 por cada uno de los 66 episodios)
+│   └── episodios/                           # 360 documentos (5 por cada uno de los 72 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -668,7 +709,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep63_aar.md ... ep63_mecanicas.md
 │       ├── ep64_aar.md ... ep64_mecanicas.md
 │       ├── ep65_aar.md ... ep65_mecanicas.md
-│       └── ep66_aar.md ... ep66_mecanicas.md
+│       ├── ep66_aar.md ... ep66_mecanicas.md
+│       ├── ep67_aar.md ... ep67_mecanicas.md
+│       ├── ep68_aar.md ... ep68_mecanicas.md
+│       ├── ep69_aar.md ... ep69_mecanicas.md
+│       ├── ep70_aar.md ... ep70_mecanicas.md
+│       ├── ep71_aar.md ... ep71_mecanicas.md
+│       └── ep72_aar.md ... ep72_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -676,7 +723,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 66 episodios (Caps 1 al 11)
+│       ├── manifest.rb                      # Catálogo inmutable de los 72 episodios (Caps 1 al 12)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -690,12 +737,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep43.rb ... ep48.rb          # Cap 8: 43_el_pacto_de_los_tres hasta 48_la_verdadera_identidad_de_aoki
 │           ├── ep49.rb ... ep54.rb          # Cap 9: 49_el_perfil_de_aoki hasta 54_el_sacrificio_de_geomijul
 │           ├── ep55.rb ... ep60.rb          # Cap 10: 55_el_interrogatorio_de_ogasawara hasta 60_la_promesa_del_pato_de_pekin
-│           ├── ep61.rb                      # Cap 11: 61_el_ascenso_de_aoki
-│           ├── ep62.rb                      # Cap 11: 62_el_refugio_de_hamako
-│           ├── ep63.rb                      # Cap 11: 63_el_funeral_de_ogasawara
-│           ├── ep64.rb                      # Cap 11: 64_el_estacionamiento_subterraneo
-│           ├── ep65.rb                      # Cap 11: 65_la_noche_en_otohime_land
-│           └── ep66.rb                      # Cap 11: 66_el_desengano_y_la_resolucion
+│           ├── ep61.rb ... ep66.rb          # Cap 11: 61_el_ascenso_de_aoki hasta 66_el_desengano_y_la_resolucion
+│           ├── ep67.rb                      # Cap 12: 67_el_despacho_del_gobernador
+│           ├── ep68.rb                      # Cap 12: 68_rumbo_a_sotenbori
+│           ├── ep69.rb                      # Cap 12: 69_los_dragones_legendarios
+│           ├── ep70.rb                      # Cap 12: 70_el_pacto_de_disolucion
+│           ├── ep71.rb                      # Cap 12: 71_la_gran_batalla_de_la_omi
+│           └── ep72.rb                      # Cap 12: 72_la_noche_en_hamakita_y_el_golpe
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -703,39 +751,41 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── prompts/
 │   └── ESTADO.txt                           # Cursor de estado persistente del proyecto
 └── test/
-│   ├── test_helper.rb                       # Helper de Minitest
-│   ├── test_character.rb                    # Tests unitarios de Character
-│   ├── test_world_state.rb                  # Tests unitarios de WorldState
-│   ├── test_event_log.rb                    # Tests unitarios de EventLog
-│   ├── test_scene.rb                        # Tests unitarios de Scene
-│   ├── test_dispatcher.rb                   # Tests del runner bin/episodio y códigos CLI
-│   ├── test_web_app.rb                      # Tests de la interfaz web Sinatra
-│   ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
-│   ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
-│   ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
-│   ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
-│   ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
-│   ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
-│   ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
-│   ├── test_scenario_ep43.rb ... ep48.rb    # Tests unitarios Cap 8
-│   ├── test_scenario_ep49.rb ... ep54.rb    # Tests unitarios Cap 9
-│   ├── test_scenario_ep55.rb ... ep60.rb    # Tests unitarios Cap 10
-│   ├── test_scenario_ep61.rb ... ep66.rb    # Tests unitarios Cap 11
-│   ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
-│   ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
-│   ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
-│   ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
-│   ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
-│   ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
-│   ├── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
-│   ├── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
-│   ├── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
-│   ├── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
-│   └── test_chapter11_continuity.rb         # Integración y continuidad Cap 11
+    ├── test_helper.rb                       # Helper de Minitest
+    ├── test_character.rb                    # Tests unitarios de Character
+    ├── test_world_state.rb                  # Tests unitarios de WorldState
+    ├── test_event_log.rb                    # Tests unitarios de EventLog
+    ├── test_scene.rb                        # Tests unitarios de Scene
+    ├── test_dispatcher.rb                   # Tests del runner bin/episodio y códigos CLI
+    ├── test_web_app.rb                      # Tests de la interfaz web Sinatra
+    ├── test_scenario_ep01.rb ... ep07.rb    # Tests unitarios Cap 1
+    ├── test_scenario_ep08.rb ... ep13.rb    # Tests unitarios Cap 2
+    ├── test_scenario_ep14.rb ... ep18.rb    # Tests unitarios Cap 3
+    ├── test_scenario_ep19.rb ... ep24.rb    # Tests unitarios Cap 4
+    ├── test_scenario_ep25.rb ... ep30.rb    # Tests unitarios Cap 5
+    ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
+    ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
+    ├── test_scenario_ep43.rb ... ep48.rb    # Tests unitarios Cap 8
+    ├── test_scenario_ep49.rb ... ep54.rb    # Tests unitarios Cap 9
+    ├── test_scenario_ep55.rb ... ep60.rb    # Tests unitarios Cap 10
+    ├── test_scenario_ep61.rb ... ep66.rb    # Tests unitarios Cap 11
+    ├── test_scenario_ep67.rb ... ep72.rb    # Tests unitarios Cap 12
+    ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
+    ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
+    ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
+    ├── test_chapter4_continuity.rb          # Integración y continuidad Cap 4
+    ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
+    ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
+    ├── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
+    ├── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
+    ├── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
+    ├── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
+    ├── test_chapter11_continuity.rb         # Integración y continuidad Cap 11
+    └── test_chapter12_continuity.rb         # Integración y continuidad Cap 12
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 y 11 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (253 tests, 1496 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 y 12 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (274 tests, 1632 aserciones) e interfaz interactiva tanto por CLI como web.

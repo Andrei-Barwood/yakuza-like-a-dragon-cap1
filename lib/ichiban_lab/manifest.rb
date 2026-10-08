@@ -551,6 +551,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep66",
         description: "Huida con auxilio de Nanba, victoria sobre la Omi, llanto de Hamako por las deportaciones y pacto de guerra total sin retorno.",
         chapter: 11
+      ),
+
+      # --- CAPÍTULO 12: THE END OF THE YAKUZA ---
+      EpisodeInfo.new(
+        id: "67",
+        slug: "67_el_despacho_del_gobernador",
+        title: "El despacho del gobernador",
+        class_name: "IchibanLab::Scenarios::Ep67",
+        description: "Aoki cuestiona la cumbre de Watase y Arakawa, sospechas de traición y envío de Tendo a vigilar Osaka.",
+        chapter: 12
+      ),
+      EpisodeInfo.new(
+        id: "68",
+        slug: "68_rumbo_a_sotenbori",
+        title: "Rumbo a Sotenbori",
+        class_name: "IchibanLab::Scenarios::Ep68",
+        description: "Viaje a Osaka, llamada de Mitsuo en Cabaret Grand sobre la Cámara del Dragón y plan de catering.",
+        chapter: 12
+      ),
+      EpisodeInfo.new(
+        id: "69",
+        slug: "69_los_dragones_legendarios",
+        title: "Los dragones legendarios",
+        class_name: "IchibanLab::Scenarios::Ep69",
+        description: "Infiltración al cuartel Omi, combate de prueba contra Goro Majima y Taiga Saejima, e intervención de Daigo y Arakawa.",
+        chapter: 12
+      ),
+      EpisodeInfo.new(
+        id: "70",
+        slug: "70_el_pacto_de_disolucion",
+        title: "El pacto de disolución",
+        class_name: "IchibanLab::Scenarios::Ep70",
+        description: "Revelación del Plan 3K, liberación de Masaru Watase y proclamación solemne de la disolución del Tojo y la Omi.",
+        chapter: 12
+      ),
+      EpisodeInfo.new(
+        id: "71",
+        slug: "71_la_gran_batalla_de_la_omi",
+        title: "La gran batalla de la Omi",
+        class_name: "IchibanLab::Scenarios::Ep71",
+        description: "Batalla campal contra rebeldes Omi, intercepción providencial de Kazuma Kiryu y entrega del acta a la policía.",
+        chapter: 12
+      ),
+      EpisodeInfo.new(
+        id: "72",
+        slug: "72_la_noche_en_hamakita_y_el_golpe",
+        title: "La noche en Hamakita y el golpe",
+        class_name: "IchibanLab::Scenarios::Ep72",
+        description: "Encuentro nocturno con Masumi Arakawa en Hamakita Park, confidencias paternas y trágico hallazgo de su cadáver al día siguiente.",
+        chapter: 12
       )
     ].freeze
 

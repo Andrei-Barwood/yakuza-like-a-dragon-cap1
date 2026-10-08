@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 11
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 12
 
-Simulador narrativo y de continuidad para los once primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket* y *The Odds*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los doce primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket*, *The Odds* y *The End of the Yakuza*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los sesenta y seis segmentos clave de los Capítulos 1 al 11:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los setenta y dos segmentos clave de los Capítulos 1 al 12:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -94,6 +94,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 65. `65_la_noche_en_otohime_land`: Encuentro privado con Aoki: el trasplante pulmonar, la verdad del crimen de Suzumori en el 2000 y el engaño de la revitalización.
 66. `66_el_desengano_y_la_resolucion`: Huida con auxilio de Nanba, victoria sobre la Omi, llanto de Hamako por las deportaciones y pacto de guerra total sin retorno; transición al Capítulo 12.
 
+### Capítulo 12: The End of the Yakuza (2019)
+67. `67_el_despacho_del_gobernador`: Aoki cuestiona la cumbre de Watase y Arakawa, sospechas de traición y envío de Tendo a vigilar Osaka.
+68. `68_rumbo_a_sotenbori`: Viaje a Osaka, llamada de Mitsuo en Cabaret Grand sobre la Cámara del Dragón y plan de catering.
+69. `69_los_dragones_legendarios`: Infiltración al cuartel Omi, combate de prueba contra Goro Majima y Taiga Saejima, e intervención de Daigo y Arakawa.
+70. `70_el_pacto_de_disolucion`: Revelación del Plan 3K, liberación de Masaru Watase y proclamación solemne de la disolución del Tojo y la Omi.
+71. `71_la_gran_batalla_de_la_omi`: Batalla campal contra rebeldes Omi, intercepción providencial de Kazuma Kiryu y entrega del acta a la policía.
+72. `72_la_noche_en_hamakita_y_el_golpe`: Encuentro nocturno con Masumi Arakawa en Hamakita Park, confidencias paternas y trágico hallazgo de su cadáver al día siguiente; transición al Capítulo 13.
+
 ---
 
 ## Requisitos
@@ -123,7 +131,7 @@ ruby -Ilib bin/servidor
 Por defecto, Sinatra se iniciará en el puerto **`4567`**:
 ```text
 ======================================================================
-  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 11)
+  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 12)
   Servidor Web Sinatra activo en: http://localhost:4567
 ======================================================================
 Presione Ctrl+C para detener el servidor.
@@ -141,11 +149,11 @@ PORT=8080 bin/servidor
    ```text
    http://localhost:4567
    ```
-3. Verás el **Dashboard de los Capítulos 1 al 11** con la estética urbana inspirada en Kamurocho y Yokohama.
+3. Verás el **Dashboard de los Capítulos 1 al 12** con la estética urbana inspirada en Kamurocho y Yokohama.
 
 ### 3. Funcionalidades del Dashboard
 
-- **Catálogo lateral por capítulos:** Selecciona cualquiera de los sesenta y seis episodios (`01` a `66`) para ver su sinopsis y contexto.
+- **Catálogo lateral por capítulos:** Selecciona cualquiera de los setenta y dos episodios (`01` a `72`) para ver su sinopsis y contexto.
 - **Botón `▶ Ejecutar Episodio`:** Ejecuta el escenario seleccionado de forma determinista y despliega:
   - **Estado Final del Mundo:** Ubicación exacta, periodo temporal, saldo en yenes (¥), inventario de ítems y banderas booleanas activas.
   - **Línea de Timeline de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
@@ -158,7 +166,7 @@ PORT=8080 bin/servidor
 El runner de línea de comandos se encuentra en `bin/episodio`:
 
 ```bash
-# Ejecutar cualquier episodio por su identificador (01 a 66)
+# Ejecutar cualquier episodio por su identificador (01 a 72)
 ruby -Ilib bin/episodio 01
 ruby -Ilib bin/episodio 08
 ruby -Ilib bin/episodio 14
@@ -170,7 +178,8 @@ ruby -Ilib bin/episodio 43
 ruby -Ilib bin/episodio 49
 ruby -Ilib bin/episodio 55
 ruby -Ilib bin/episodio 61
-ruby -Ilib bin/episodio 66
+ruby -Ilib bin/episodio 67
+ruby -Ilib bin/episodio 72
 
 # Ver ayuda y catálogo completo
 ruby -Ilib bin/episodio --help
@@ -191,7 +200,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (253 tests, 1496 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (274 tests, 1632 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -212,6 +221,7 @@ ruby -Ilib -Itest test/test_chapter8_continuity.rb
 ruby -Ilib -Itest test/test_chapter9_continuity.rb
 ruby -Ilib -Itest test/test_chapter10_continuity.rb
 ruby -Ilib -Itest test/test_chapter11_continuity.rb
+ruby -Ilib -Itest test/test_chapter12_continuity.rb
 ```
 
 ---
@@ -228,13 +238,13 @@ ruby -Ilib -Itest test/test_chapter11_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 66)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 72)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 330 documentos (ep01 a ep66: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 360 documentos (ep01 a ep72: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (253 tests, 1496 aserciones)
+└── test/                              # Suite de pruebas Minitest (274 tests, 1632 aserciones)
 ```
