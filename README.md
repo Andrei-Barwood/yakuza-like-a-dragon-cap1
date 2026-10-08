@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 8
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 9
 
-Simulador narrativo y de continuidad para los ocho primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web* y *Bleached Black*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los nueve primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black* y *House of Cards*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los cuarenta y ocho segmentos clave de los Capítulos 1 al 8:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los cincuenta y cuatro segmentos clave de los Capítulos 1 al 9:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -69,6 +69,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 46. `46_la_caida_de_mabuchi`: Reencuentro en el despacho con Nanba y Ogasawara, combate definitivo de jefe contra Akira Mabuchi y confesión sobre el crimen de Nonomiya y la Omi.
 47. `47_la_huida_de_nanba`: Partida de Nanba cargando a Mabuchi para rescatar a su hermano Shoichi y hallazgo de la foto fundacional de Bleach Japan.
 48. `48_la_verdadera_identidad_de_aoki`: Revelación de que el gobernador Ryo Aoki es Masato Arakawa, orden de Aoki a la Alianza Omi para invadir Yokohama y transición al Capítulo 9.
+
+### Capítulo 9: House of Cards (2019)
+49. `49_el_perfil_de_aoki`: Estudio del perfil público de Aoki en Survive Bar, deducción del Plan 3K, cirugía motriz y cuartel en la segunda planta.
+50. `50_el_contraataque_de_totsuka`: Auxilio a Hamako frente a disidentes del Seiryu, derrota de Totsuka y protección del albergue.
+51. `51_la_marcha_de_los_mil`: Llamada de Zhao, marcha masiva de Bleach Japan/Omi hacia Geomijul, contención de matones y desengaño de Kume.
+52. `52_la_bola_de_demolicion`: Asalto de Reiji Ishioda a los mandos de la grúa demoledora, batalla mecánica de jefe y brecha perimetral.
+53. `53_el_voto_de_eomeoni`: Contacto con Joon-gi Han, pasadizo secreto en Eomeoni's Vow, reverencia de Seonhee y orden de tierra quemada de Ogikubo.
+54. `54_el_sacrificio_de_geomijul`: Batalla campal en la imprenta en llamas contra Ishioda y Nanba, captura de Ogasawara, supervivencia confirmada de Shoichi y transición al Capítulo 10.
 
 ---
 
@@ -163,7 +171,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (190 tests, 1096 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (211 tests, 1225 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -181,6 +189,7 @@ ruby -Ilib -Itest test/test_chapter5_continuity.rb
 ruby -Ilib -Itest test/test_chapter6_continuity.rb
 ruby -Ilib -Itest test/test_chapter7_continuity.rb
 ruby -Ilib -Itest test/test_chapter8_continuity.rb
+ruby -Ilib -Itest test/test_chapter9_continuity.rb
 ```
 
 ---
@@ -197,13 +206,13 @@ ruby -Ilib -Itest test/test_chapter8_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 48)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 54)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 240 documentos (ep01 a ep48: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 270 documentos (ep01 a ep54: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (190 tests, 1096 aserciones)
+└── test/                              # Suite de pruebas Minitest (211 tests, 1225 aserciones)
 ```

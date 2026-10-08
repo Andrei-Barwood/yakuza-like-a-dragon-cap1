@@ -403,6 +403,55 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep48",
         description: "Descubrimiento de que Ryo Aoki es Masato Arakawa, despacho de Tokio y orden de movilización de tropas de la Omi hacia Yokohama.",
         chapter: 8
+      ),
+      # --- CAPÍTULO 9: HOUSE OF CARDS ---
+      EpisodeInfo.new(
+        id: "49",
+        slug: "49_el_perfil_de_aoki",
+        title: "El perfil de Aoki",
+        class_name: "IchibanLab::Scenarios::Ep49",
+        description: "Análisis del historial de Aoki en Survive Bar, deducción del Plan 3K, cirugía motriz y cuartel en la segunda planta.",
+        chapter: 9
+      ),
+      EpisodeInfo.new(
+        id: "50",
+        slug: "50_el_contraataque_de_totsuka",
+        title: "El contraataque de Totsuka",
+        class_name: "IchibanLab::Scenarios::Ep50",
+        description: "Llamada de Hamako, fractura en el Clan Seiryu por el dinero falso, derrota de Totsuka y salvaguarda de Hamako.",
+        chapter: 9
+      ),
+      EpisodeInfo.new(
+        id: "51",
+        slug: "51_la_marcha_de_los_mil",
+        title: "La marcha de los mil",
+        class_name: "IchibanLab::Scenarios::Ep51",
+        description: "Llamada de Zhao, marcha masiva de Bleach Japan/Omi hacia Geomijul, derrota de matones y confesión de Kume.",
+        chapter: 9
+      ),
+      EpisodeInfo.new(
+        id: "52",
+        slug: "52_la_bola_de_demolicion",
+        title: "La bola de demolición",
+        class_name: "IchibanLab::Scenarios::Ep52",
+        description: "Aparición de Reiji Ishioda con la grúa demoledora, batalla de jefe mecánica y destrucción de la barricada de Geomijul.",
+        chapter: 9
+      ),
+      EpisodeInfo.new(
+        id: "53",
+        slug: "53_el_voto_de_eomeoni",
+        title: "El voto de Eomeoni",
+        class_name: "IchibanLab::Scenarios::Ep53",
+        description: "Contacto con Joon-gi Han, pasaje secreto en Eomeoni's Vow, reverencia de Seonhee y pacto de tierra quemada para proteger a Ogikubo.",
+        chapter: 9
+      ),
+      EpisodeInfo.new(
+        id: "54",
+        slug: "54_el_sacrificio_de_geomijul",
+        title: "El sacrificio de Geomijul",
+        class_name: "IchibanLab::Scenarios::Ep54",
+        description: "Batalla campal en la imprenta en llamas contra Ishioda y Nanba, captura de Ogasawara y confirmación de que Shoichi sigue vivo.",
+        chapter: 9
       )
     ].freeze
 

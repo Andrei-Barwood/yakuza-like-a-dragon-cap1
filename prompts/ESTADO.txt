@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 8]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 9]
 
 Última actualización: 2026-10-07
-Episodio actual: 48 (48_la_verdadera_identidad_de_aoki)
-Fase completada: Capítulos 1 al 8 completamente integrados y verificados (190 tests pasando al 100%, 1096 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 48 episodios.
+Episodio actual: 54 (54_el_sacrificio_de_geomijul)
+Fase completada: Capítulos 1 al 9 completamente integrados y verificados (211 tests pasando al 100%, 1225 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 54 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -70,6 +70,14 @@ Catálogo de episodios:
 - 47_la_huida_de_nanba: Completado (Partida de Nanba con Mabuchi para salvar a Shoichi y hallazgo de la foto fundacional de Bleach Japan)
 - 48_la_verdadera_identidad_de_aoki: Completado (Descubrimiento de que Aoki es Masato Arakawa, orden de Aoki a la Omi para invadir Yokohama y frontera a Cap 9)
 
+-- CAPÍTULO 9: HOUSE OF CARDS --
+- 49_el_perfil_de_aoki: Completado (Análisis de Aoki en Survive Bar, Plan 3K, comisionado Horinouchi y refugio en la planta 2F)
+- 50_el_contraataque_de_totsuka: Completado (Auxilio de Hamako, escisión en el Seiryu, derrota de Totsuka y salvaguarda comunitaria)
+- 51_la_marcha_de_los_mil: Completado (Llamada de Zhao, marcha de Bleach Japan/Omi, contención en Isezaki Road y revelación a Kume)
+- 52_la_bola_de_demolicion: Completado (Aparición de Ishioda en grúa demoledora, batalla de jefe mecánica y destrucción de la fachada)
+- 53_el_voto_de_eomeoni: Completado (Pasaje secreto en Eomeoni's Vow con Joon-gi Han, reverencia de Seonhee y orden de quemar la imprenta)
+- 54_el_sacrificio_de_geomijul: Completado (Combate campal en la imprenta en llamas contra Ishioda y Nanba, captura de Ogasawara y confirmación de Shoichi)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -79,9 +87,9 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep48.rb
-- docs/episodios/ep01_* a ep48_* (240 documentos)
-- test/test_scenario_ep01.rb a ep48.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep54.rb
+- docs/episodios/ep01_* a ep54_* (270 documentos)
+- test/test_scenario_ep01.rb a ep54.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
@@ -90,3 +98,4 @@ Archivos clave:
 - test/test_chapter6_continuity.rb
 - test/test_chapter7_continuity.rb
 - test/test_chapter8_continuity.rb
+- test/test_chapter9_continuity.rb

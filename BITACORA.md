@@ -451,6 +451,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 16: Capítulo 9 — House of Cards (Episodios 49 a 54)
+- **Objetivo:** Modelar los seis episodios clave del Capítulo 9 de *Yakuza: Like a Dragon*, abarcando el análisis del perfil y ascenso político de Ryo Aoki, el auxilio a Hamako frente a desertores del Seiryu, la invasión multitudinaria de la Omi bajo la máscara de Bleach Japan, la batalla mecánica contra la grúa de Reiji Ishioda, el pasaje secreto en Eomeoni's Vow y el sacrificio de Geomijul en la imprenta en llamas con la captura de Ogasawara.
+- **Episodios implementados:**
+  1. **Episodio 49 (`49_el_perfil_de_aoki` - "El perfil de Aoki"):**
+     - En Survive Bar, Kasuga, Adachi y Saeko desmenuzan el historial público de Ryo Aoki, deduciendo cómo Masato Arakawa se sometió a cirugía motriz en EE.UU., usurpó un registro familiar nuevo y ejecutó el Plan 3K de Kamurocho para erradicar al Clan Tojo con la complicidad del comisionado Horinouchi. El barman autoriza el uso de la planta 2F como cuartel general seguro.
+     - Documentación: `docs/episodios/ep49_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep49.rb`.
+     - Test: `test/test_scenario_ep49.rb`.
+  2. **Episodio 50 (`50_el_contraataque_de_totsuka` - "El contraataque de Totsuka"):**
+     - Hamako llama aterrorizada alertando que Totsuka y disidentes armados del Clan Seiryu la acorralan tras revelarse el fraude de los billetes. Kasuga acude al albergue, derrota a Totsuka y a sus hombres, y asegura la protección de su benefactora.
+     - Documentación: `docs/episodios/ep50_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep50.rb`.
+     - Test: `test/test_scenario_ep50.rb`.
+  3. **Episodio 51 (`51_la_marcha_de_los_mil` - "La marcha de los mil"):**
+     - Zhao llama alertando sobre mil manifestantes de Bleach Japan —en realidad tropas camufladas de la Alianza Omi— marchando sobre Geomijul. Kasuga intercepta a la vanguardia en Isezaki Road y dispersa a los matones de Kume, quien queda atónito al descubrir que lideraba a miembros de la yakuza.
+     - Documentación: `docs/episodios/ep51_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep51.rb`.
+     - Test: `test/test_scenario_ep51.rb`.
+  4. **Episodio 52 (`52_la_bola_de_demolicion` - "La bola de demolición"):**
+     - Reiji Ishioda, lugarteniente de la Omi, asalta la entrada de Geomijul al mando de una grúa con bola de demolición. Reconoce a Kasuga como el superviviente de Kamurocho y libra una feroz batalla mecánica. Kasuga inutiliza la grúa, pero Ishioda colapsa el edificio exterior con un último impacto, obligando al repliegue.
+     - Documentación: `docs/episodios/ep52_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep52.rb`.
+     - Test: `test/test_scenario_ep52.rb`.
+  5. **Episodio 53 (`53_el_voto_de_eomeoni` - "El voto de Eomeoni"):**
+     - Joon-gi Han contacta al grupo y los guía al restaurante Eomeoni's Vow, cuyo pasaje subterráneo conecta con la base de Geomijul. Una conmovida Seonhee se inclina pidiendo ganar tiempo para incendiar la imprenta y cumplir la orden de Ogikubo de no dejar pruebas incriminatorias.
+     - Documentación: `docs/episodios/ep53_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep53.rb`.
+     - Test: `test/test_scenario_ep53.rb`.
+  6. **Episodio 54 (`54_el_sacrificio_de_geomijul` - "El sacrificio de Geomijul"):**
+     - Con la imprenta ardiendo a sus espaldas, Kasuga resiste la embestida de Ishioda, la Omi y Nanba en una desesperada batalla campal. Tras repeler a los invasores, Seonhee y Joon-gi capturan a Ogasawara y le revelan a Nanba que su hermano Shoichi sigue vivo. El rehén es evacuado al campamento de indigentes. Evento de frontera: `story.chapter_boundary` hacia el Capítulo 10.
+     - Documentación: `docs/episodios/ep54_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep54.rb`.
+     - Test: `test/test_scenario_ep54.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 9:**
+  - `test/test_chapter9_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep48 hasta el desenlace del Ep54, controlando inventarios, rescate de Hamako, combate contra la grúa de Ishioda, pacto de tierra quemada, captura de Ogasawara y confirmación de Shoichi.
+  - Actualización del catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` para abarcar el rango `01` a `54`.
+  - Adaptación de la interfaz web Sinatra (`lib/ichiban_lab/web_app.rb`, `views/layout.erb`, `views/index.erb`) para visualizar y simular episodios agrupados por Capítulos 1 al 9.
+  - Suite de pruebas ejecutada al 100% con éxito: **211 tests, 1225 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -458,9 +499,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la marcha de Nanba o la invasión de la Omi) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la quema de Geomijul o la captura de Ogasawara) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la orden de invasión de la Omi y la revelación de Aoki (Capítulo 8) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 9 en adelante. |
+| **Límite Canónico** | Fin cerrado en la captura de Ogasawara y el incendio de Geomijul (Capítulo 9) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 10 en adelante. |
 
 ---
 
@@ -476,10 +517,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..48)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..54)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 240 documentos (5 por cada uno de los 48 episodios)
+│   └── episodios/                           # 270 documentos (5 por cada uno de los 54 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -527,7 +568,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep45_aar.md ... ep45_mecanicas.md
 │       ├── ep46_aar.md ... ep46_mecanicas.md
 │       ├── ep47_aar.md ... ep47_mecanicas.md
-│       └── ep48_aar.md ... ep48_mecanicas.md
+│       ├── ep48_aar.md ... ep48_mecanicas.md
+│       ├── ep49_aar.md ... ep49_mecanicas.md
+│       ├── ep50_aar.md ... ep50_mecanicas.md
+│       ├── ep51_aar.md ... ep51_mecanicas.md
+│       ├── ep52_aar.md ... ep52_mecanicas.md
+│       ├── ep53_aar.md ... ep53_mecanicas.md
+│       └── ep54_aar.md ... ep54_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -535,7 +582,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 48 episodios (Caps 1 al 8)
+│       ├── manifest.rb                      # Catálogo inmutable de los 54 episodios (Caps 1 al 9)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -546,12 +593,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep25.rb ... ep30.rb          # Cap 5: 25_la_heredera_de_otohime hasta 30_explosion_en_el_muelle
 │           ├── ep31.rb ... ep36.rb          # Cap 6: 31_el_despertar_encadenado hasta 36_el_juicio_de_tianyou_zhao
 │           ├── ep37.rb ... ep42.rb          # Cap 7: 37_el_barrio_coreano hasta 42_la_cumbre_de_los_tres
-│           ├── ep43.rb                      # Cap 8: 43_el_pacto_de_los_tres
-│           ├── ep44.rb                      # Cap 8: 44_el_dilema_de_la_lealtad
-│           ├── ep45.rb                      # Cap 8: 45_asalto_al_edificio_hakuryo
-│           ├── ep46.rb                      # Cap 8: 46_la_caida_de_mabuchi
-│           ├── ep47.rb                      # Cap 8: 47_la_huida_de_nanba
-│           └── ep48.rb                      # Cap 8: 48_la_verdadera_identidad_de_aoki
+│           ├── ep43.rb ... ep48.rb          # Cap 8: 43_el_pacto_de_los_tres hasta 48_la_verdadera_identidad_de_aoki
+│           ├── ep49.rb                      # Cap 9: 49_el_perfil_de_aoki
+│           ├── ep50.rb                      # Cap 9: 50_el_contraataque_de_totsuka
+│           ├── ep51.rb                      # Cap 9: 51_la_marcha_de_los_mil
+│           ├── ep52.rb                      # Cap 9: 52_la_bola_de_demolicion
+│           ├── ep53.rb                      # Cap 9: 53_el_voto_de_eomeoni
+│           └── ep54.rb                      # Cap 9: 54_el_sacrificio_de_geomijul
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -574,6 +622,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │   ├── test_scenario_ep31.rb ... ep36.rb    # Tests unitarios Cap 6
 │   ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
 │   ├── test_scenario_ep43.rb ... ep48.rb    # Tests unitarios Cap 8
+│   ├── test_scenario_ep49.rb ... ep54.rb    # Tests unitarios Cap 9
 │   ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
 │   ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
 │   ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
@@ -581,11 +630,12 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │   ├── test_chapter5_continuity.rb          # Integración y continuidad Cap 5
 │   ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
 │   ├── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
-│   └── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
+│   ├── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
+│   └── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7 y 8 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (190 tests, 1096 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8 y 9 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (211 tests, 1225 aserciones) e interfaz interactiva tanto por CLI como web.
