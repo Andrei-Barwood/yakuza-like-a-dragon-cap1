@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 13]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 14]
 
 Última actualización: 2026-10-07
-Episodio actual: 78 (78_los_bebes_de_las_taquillas)
-Fase completada: Capítulos 1 al 13 completamente integrados y verificados (295 tests pasando al 100%, 1797 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 78 episodios.
+Episodio actual: 84 (84_fuego_cruzado_en_el_distrito_de_bares)
+Fase completada: Capítulos 1 al 14 completamente integrados y verificados (316 tests pasando al 100%, 1949 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 84 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -108,7 +108,13 @@ Catálogo de episodios:
 - 75_la_candidatura_inesperada: Completado (Mitin de Kume bloqueado, reintegro de fianza electoral de 3M por Hoshino y registro contrarreloj de Kasuga)
 - 76_el_debate_en_hamakita: Completado (Furgoneta electoral, apasionado debate sobre zonas grises humillando a Kume y ultimátum de 24 horas de Aoki)
 - 77_el_apreton_de_manos_en_jinnai: Completado (Aproximación a pie, forzado apretón de manos público ante la prensa y alerta roja de Geomijul en la sede Seiryu)
-- 78_los_bebes_de_las_taquillas: Completado (Asalto al Seiryu, muerte de Hoshino, derrota de Sawashiro y revelación del linaje de los bebés de las taquillas)
+-- CAPÍTULO 14: PASSING THE TORCH --
+- 79_la_sangre_del_patriarca: Completado (Kasuga asimila ser hijo biológico de Masumi Arakawa en Survive Bar, repele el asedio de la Omi y se dirige a Bleach Japan)
+- 80_la_aparicion_del_dragon: Completado (Batalla callejera contra la Omi, Kasuga cegado por la furia es detenido por Kazuma Kiryu y citado a Geomijul)
+- 81_el_hilo_de_la_conspiracion: Completado (Aoki extorsiona al comisionado Horinouchi culpando a Sawashiro y promete a Ishioda la presidencia de la Omi a cambio de purgar Ijincho)
+- 82_la_prueba_del_dragon: Completado (Juicio marcial contra Kiryu en el patio de Geomijul, visión del dragón plateado y admisión al santuario)
+- 83_el_asesino_del_espejo: Completado (Zhao identifica al camaleónico sicario Mirror Face contratado para silenciar a Sawashiro; contrato de Kiryu y localización de Ishioda)
+- 84_fuego_cruzado_en_el_distrito_de_bares: Completado (Infiltración en el Bar District, trampa de Mirror Face descubierta por Adachi, combate dual, revelación de Tendo como autor del disparo a Arakawa y huida de la bomba)
 
 Archivos clave:
 - AGENTS.md
@@ -119,9 +125,9 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep78.rb
-- docs/episodios/ep01_* a ep78_* (390 documentos)
-- test/test_scenario_ep01.rb a ep78.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep84.rb
+- docs/episodios/ep01_* a ep84_* (420 documentos)
+- test/test_scenario_ep01.rb a ep84.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
@@ -135,3 +141,5 @@ Archivos clave:
 - test/test_chapter11_continuity.rb
 - test/test_chapter12_continuity.rb
 - test/test_chapter13_continuity.rb
+- test/test_chapter14_continuity.rb
+

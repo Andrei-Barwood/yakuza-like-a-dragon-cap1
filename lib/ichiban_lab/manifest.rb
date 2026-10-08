@@ -649,6 +649,54 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep78",
         description: "Incursión en la sede del Seiryu, muerte de Hoshino a manos de Sawashiro, duelo a muerte y revelación del origen de Kasuga y Masato.",
         chapter: 13
+      ),
+      EpisodeInfo.new(
+        id: "79",
+        slug: "79_la_sangre_del_patriarca",
+        title: "La sangre del patriarca",
+        class_name: "IchibanLab::Scenarios::Ep79",
+        description: "Asimilación del linaje de Arakawa en Survive Bar, decisión de encarar a Aoki y ruptura del cerco de la Tokyo Omi.",
+        chapter: 14
+      ),
+      EpisodeInfo.new(
+        id: "80",
+        slug: "80_la_aparicion_del_dragon",
+        title: "La aparición del Dragón",
+        class_name: "IchibanLab::Scenarios::Ep80",
+        description: "Combate frente al edificio Hakuryo, furia ciega de Kasuga y freno disciplinario de Kazuma Kiryu convocándolo a Geomijul.",
+        chapter: 14
+      ),
+      EpisodeInfo.new(
+        id: "81",
+        slug: "81_el_hilo_de_la_conspiracion",
+        title: "El hilo de la conspiración",
+        class_name: "IchibanLab::Scenarios::Ep81",
+        description: "Maquinaciones de Aoki en Tokio sometiendo a Horinouchi y prometiendo a Reiji Ishioda la corona de la Tokyo Omi.",
+        chapter: 14
+      ),
+      EpisodeInfo.new(
+        id: "82",
+        slug: "82_la_prueba_del_dragon",
+        title: "La prueba del Dragón",
+        class_name: "IchibanLab::Scenarios::Ep82",
+        description: "Duelo de prueba legendario contra Kazuma Kiryu en Geomijul, visión del dragón plateado y conquista de la templanza.",
+        chapter: 14
+      ),
+      EpisodeInfo.new(
+        id: "83",
+        slug: "83_el_asesino_del_espejo",
+        title: "El asesino del espejo",
+        class_name: "IchibanLab::Scenarios::Ep83",
+        description: "Vigilancia de CCTV, Zhao identifica al asesino camaleónico Mirror Face, despedida de Kiryu y localización del escondite.",
+        chapter: 14
+      ),
+      EpisodeInfo.new(
+        id: "84",
+        slug: "84_fuego_cruzado_en_el_distrito_de_bares",
+        title: "Fuego cruzado en el distrito de bares",
+        class_name: "IchibanLab::Scenarios::Ep84",
+        description: "Desenmascaramiento de Mirror Face con preguntas de tráfico, duelo contra Ishioda, confesión de que Tendo mató a Arakawa y bomba remota.",
+        chapter: 14
       )
     ].freeze
 

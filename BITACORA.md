@@ -638,21 +638,62 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
      - Documentación: `docs/episodios/ep76_*.md`.
      - Escenario: `lib/ichiban_lab/scenarios/ep76.rb`.
      - Test: `test/test_scenario_ep76.rb`.
-  5. **Episodio 77 (`77_el_apreton_de_manos_en_jinnai` - "El apretón de manos en Jinnai"):**
-     - Desplazamiento a pie a la Estación de Jinnai para sorprender a Kume; combate y neutralización de la guardia de la Tokyo Omi; protocolar apretón de manos frente a las cámaras. Alerta roja urgente de Joon-gi Han: la sede del Seiryu está siendo asaltada por sicarios para asesinar a Hoshino.
-     - Documentación: `docs/episodios/ep77_*.md`.
-     - Escenario: `lib/ichiban_lab/scenarios/ep77.rb`.
-     - Test: `test/test_scenario_ep77.rb`.
-  6. **Episodio 78 (`78_los_bebes_de_las_taquillas` - "Los bebés de las taquillas"):**
-     - Asalto a la sede del Seiryu, pasillos ensangrentados y encuentro con Takabe herido. En el despacho, hallan a Ryuhei Hoshino asesinado por Jo Sawashiro bajo órdenes de Aoki. Tras un combate a muerte, Sawashiro derrotado desvela el misterio de las taquillas de 1977: Masato Arakawa (Ryo Aoki) es su hijo biológico y Kasuga es el verdadero hijo de Masumi Arakawa y Akane. Emisión de frontera `story.chapter_boundary` hacia el Capítulo 14.
-     - Documentación: `docs/episodios/ep78_*.md`.
-     - Escenario: `lib/ichiban_lab/scenarios/ep78.rb`.
-     - Test: `test/test_scenario_ep78.rb`.
+   5. **Episodio 77 (`77_el_apreton_de_manos_en_jinnai` - "El apretón de manos en Jinnai"):
+      - Desplazamiento a pie a la Estación de Jinnai para sorprender a Kume; combate y neutralización de la guardia de la Tokyo Omi; protocolar apretón de manos frente a las cámaras. Alerta roja urgente de Joon-gi Han: la sede del Seiryu está siendo asaltada por sicarios para asesinar a Hoshino.
+      - Documentación: `docs/episodios/ep77_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep77.rb`.
+      - Test: `test/test_scenario_ep77.rb`.
+   6. **Episodio 78 (`78_los_bebes_de_las_taquillas` - "Los bebés de las taquillas"):
+      - Asalto a la sede del Seiryu, pasillos ensangrentados y encuentro con Takabe herido. En el despacho, hallan a Ryuhei Hoshino asesinado por Jo Sawashiro bajo órdenes de Aoki. Tras un combate a muerte, Sawashiro derrotado desvela el misterio de las taquillas de 1977: Masato Arakawa (Ryo Aoki) es su hijo biológico y Kasuga es el verdadero hijo de Masumi Arakawa y Akane. Emisión de frontera `story.chapter_boundary` hacia el Capítulo 14.
+      - Documentación: `docs/episodios/ep78_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep78.rb`.
+      - Test: `test/test_scenario_ep78.rb`.
 - **Integración de Continuidad y Pruebas del Capítulo 13:**
   - `test/test_chapter13_continuity.rb`: Valida el encadenamiento integral desde el final del Ep72 hasta el cierre del Ep78, verificando el dolor en el muelle, la resolución en Heian Tower, la candidatura de Kasuga, el debate de Hamakita, el apretón de manos en Jinnai, la defensa del Seiryu y la revelación del linaje en las taquillas.
   - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 78 episodios (`01` a `78`).
   - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 13 con colores dorados (`#ffab40`) y distintivos específicos.
   - Suite de pruebas ejecutada al 100% con éxito: **295 tests, 1797 aserciones, 0 fallos, 0 errores**.
+
+---
+
+### Fase 21: Capítulo 14 — "Passing the Torch" (Episodios 79 a 84)
+- **Objetivo:** Ampliar el laboratorio narrativo para cubrir con exactitud el Capítulo 14 de *Yakuza: Like a Dragon* (伝承), estructurado en 6 episodios canónicos que narran la asimilación de Kasuga respecto a su origen como hijo de Masumi Arakawa, la persecución de Bleach Japan, el cruce callejero providencial con Kazuma Kiryu (el Dragón de Dojima), el juicio marcial en el patio de Geomijul, la revelación del sicario metamorfo Mirror Face y la batalla decisiva en el Distrito de Bares contra Reiji Ishioda, donde se descubre que Yosuke Tendo fue el verdadero asesino del Patriarca Arakawa.
+- **Episodios implementados:**
+   1. **Episodio 79 (`79_la_sangre_del_patriarca` - "La sangre del patriarca"):**
+      - En Survive Bar, Kasuga asimila el peso de ser hijo de Arakawa; decide buscar a Aoki sin caer en la venganza ciega. Fuera del bar, un destacamento de asedio de la Tokyo Omi rodea el callejón; combate superado. El grupo se dirige al cuartel de Bleach Japan en el edificio Hakuryo.
+      - Documentación: `docs/episodios/ep79_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep79.rb`.
+      - Test: `test/test_scenario_ep79.rb`.
+   2. **Episodio 80 (`80_la_aparicion_del_dragon` - "La aparición del dragón"):**
+      - Hallan el edificio Hakuryo completamente desalojado. En las calles, combaten a una patrulla de la Omi. Kasuga, desbordado de furia durante el interrogatorio, es derribado e inmovilizado por una figura encapuchada: Kazuma Kiryu. Kiryu le reprende por perder el juicio y le cita en el complejo secreto de Geomijul tras caer la noche.
+      - Documentación: `docs/episodios/ep80_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep80.rb`.
+      - Test: `test/test_scenario_ep80.rb`.
+   3. **Episodio 81 (`81_el_hilo_de_la_conspiracion` - "El hilo de la conspiración"):**
+      - En el despacho de la gobernación de Tokio, Aoki utiliza al comisionado Horinouchi para inculpar a Sawashiro por la muerte de Hoshino. Por teléfono, Aoki encarga a Ishioda la purga definitiva de Yokohama a cambio de nombrarlo presidente de la Tokyo Omi Alliance.
+      - Documentación: `docs/episodios/ep81_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep81.rb`.
+      - Test: `test/test_scenario_ep81.rb`.
+   4. **Episodio 82 (`82_la_prueba_del_dragon` - "La prueba del dragón"):**
+      - Patio exterior de Geomijul iluminado por braseros. Kiryu exige una prueba de combate al límite para comprobar si Kasuga posee la entereza necesaria para no perecer. Agotamiento del grupo; Kasuga experimenta una visión del dragón plateado y alcanza la serenidad interior. Kiryu y Seonhee les abren las puertas del cuartel.
+      - Documentación: `docs/episodios/ep82_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep82.rb`.
+      - Test: `test/test_scenario_ep82.rb`.
+   5. **Episodio 83 (`83_el_asesino_del_espejo` - "El asesino del espejo"):**
+      - Sala de monitoreo de Geomijul. Zhao identifica al sicario camaleónico Mirror Face, contratado por Aoki para liquidar a Sawashiro en prisión fingiendo ser policía. Kiryu revela su contrato de borrado con la facción Daidoji y Seonhee detecta a Ishioda atrincherándose en el Distrito de Bares.
+      - Documentación: `docs/episodios/ep83_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep83.rb`.
+      - Test: `test/test_scenario_ep83.rb`.
+   6. **Episodio 84 (`84_fuego_cruzado_en_el_distrito_de_bares` - "Fuego cruzado en el distrito de bares"):**
+      - Asalto al escondite de Ishioda en Bar District. En el 4to piso, un Adachi impostor intenta engañar a Kasuga, quien lo desenmascara preguntándole por el artículo 34 de la ley de tránsito (Mirror Face). Batalla de jefes simultánea contra Ishioda y Mirror Face. Ishioda revela antes de morir que Yosuke Tendo fue el ejecutor material de Arakawa en el muelle. Detonación remota de explosivos por Tendo, escape del edificio en llamas y emisión de `story.chapter_boundary` hacia el Capítulo 15.
+      - Documentación: `docs/episodios/ep84_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep84.rb`.
+      - Test: `test/test_scenario_ep84.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 14:**
+  - `test/test_chapter14_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep78 hasta el clímax del Ep84, comprobando la asimilación filial en Survive Bar, el encuentro con Kiryu, la conspiración gubernamental de Aoki, la prueba marcial del Dragón de Dojima, el descubrimiento de Mirror Face, la batalla dual en Bar District y la revelación de la traición de Tendo.
+  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a 84 episodios (`01` a `84`).
+  - Adaptación del dashboard Sinatra para visualizar y simular los Capítulos 1 al 14 con temática verde azulada (`#64ffda`).
+  - Suite de pruebas ejecutada al 100% con éxito: **316 tests, 1949 aserciones, 0 fallos, 0 errores**.
 
 ---
 
@@ -663,9 +704,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la muerte de Hoshino o la verdad de las taquillas) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la prueba de Kiryu o la traición de Tendo) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso cívico de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la revelación del linaje de los bebés de las taquillas y la frontera al Capítulo 14 | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 14 en adelante. |
+| **Límite Canónico** | Fin cerrado en la batalla del Bar District, la revelación del disparo de Tendo y la frontera al Capítulo 15 | Prohíbe inventar mecánicas o adelantar hechos del Capítulo 15 en adelante. |
 
 ---
 
@@ -681,10 +722,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..78)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..84)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 390 documentos (5 por cada uno de los 78 episodios)
+│   └── episodios/                           # 420 documentos (5 por cada uno de los 84 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -762,7 +803,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep75_aar.md ... ep75_mecanicas.md
 │       ├── ep76_aar.md ... ep76_mecanicas.md
 │       ├── ep77_aar.md ... ep77_mecanicas.md
-│       └── ep78_aar.md ... ep78_mecanicas.md
+│       ├── ep78_aar.md ... ep78_mecanicas.md
+│       ├── ep79_aar.md ... ep79_mecanicas.md
+│       ├── ep80_aar.md ... ep80_mecanicas.md
+│       ├── ep81_aar.md ... ep81_mecanicas.md
+│       ├── ep82_aar.md ... ep82_mecanicas.md
+│       ├── ep83_aar.md ... ep83_mecanicas.md
+│       └── ep84_aar.md ... ep84_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -770,7 +817,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 78 episodios (Caps 1 al 13)
+│       ├── manifest.rb                      # Catálogo inmutable de los 84 episodios (Caps 1 al 14)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -786,12 +833,8 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep55.rb ... ep60.rb          # Cap 10: 55_el_interrogatorio_de_ogasawara hasta 60_la_promesa_del_pato_de_pekin
 │           ├── ep61.rb ... ep66.rb          # Cap 11: 61_el_ascenso_de_aoki hasta 66_el_desengano_y_la_resolucion
 │           ├── ep67.rb ... ep72.rb          # Cap 12: 67_el_despacho_del_gobernador hasta 72_la_noche_en_hamakita_y_el_golpe
-│           ├── ep73.rb                      # Cap 13: 73_el_dolor_en_el_muelle
-│           ├── ep74.rb                      # Cap 13: 74_el_lamento_y_la_determinacion
-│           ├── ep75.rb                      # Cap 13: 75_la_candidatura_inesperada
-│           ├── ep76.rb                      # Cap 13: 76_el_debate_en_hamakita
-│           ├── ep77.rb                      # Cap 13: 77_el_apreton_de_manos_en_jinnai
-│           └── ep78.rb                      # Cap 13: 78_los_bebes_de_las_taquillas
+│           ├── ep73.rb ... ep78.rb          # Cap 13: 73_el_dolor_en_el_muelle hasta 78_los_bebes_de_las_taquillas
+│           └── ep79.rb ... ep84.rb          # Cap 14: 79_la_sangre_del_patriarca hasta 84_fuego_cruzado_en_el_distrito_de_bares
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -819,6 +862,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep61.rb ... ep66.rb    # Tests unitarios Cap 11
     ├── test_scenario_ep67.rb ... ep72.rb    # Tests unitarios Cap 12
     ├── test_scenario_ep73.rb ... ep78.rb    # Tests unitarios Cap 13
+    ├── test_scenario_ep79.rb ... ep84.rb    # Tests unitarios Cap 14
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
     ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
@@ -831,11 +875,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
     ├── test_chapter11_continuity.rb         # Integración y continuidad Cap 11
     ├── test_chapter12_continuity.rb         # Integración y continuidad Cap 12
-    └── test_chapter13_continuity.rb         # Integración y continuidad Cap 13
+    ├── test_chapter13_continuity.rb         # Integración y continuidad Cap 13
+    └── test_chapter14_continuity.rb         # Integración y continuidad Cap 14
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 y 13 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (295 tests, 1797 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 y 14 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (316 tests, 1949 aserciones) e interfaz interactiva tanto por CLI como web.
+
