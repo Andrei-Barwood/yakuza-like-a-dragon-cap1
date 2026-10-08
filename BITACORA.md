@@ -697,6 +697,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 22: Capítulo 15 — "To the Pinnacle" (Episodios 85 a 90)
+- **Objetivo:** Culminar el laboratorio narrativo de *Yakuza: Like a Dragon* modelando con máxima fidelidad el Capítulo 15 (成り上がりの果て), el clímax y desenlace de la historia completa. Estructurado en 6 episodios canónicos que narran la infiltración en Kamurocho, el farol de la grabación contra Aoki, el asalto a la Torre Milenio, la derrota pugilística de Yosuke Tendo, el desenmascaramiento público de Aoki mediante Mirror Face, el duelo fraternal en el ático, el llanto de redención ante las taquillas de 1977, el magnicidio de Aoki por Kume y el epílogo heroico de Ichiban Kasuga en Ijincho.
+- **Episodios implementados:**
+   1. **Episodio 85 (`85_el_farol_en_kamurocho` - "El farol en Kamurocho"):**
+      - Infiltración disfrazado de indigente ante la furgoneta electoral de Ryo Aoki; apretón de manos forzado ante las cámaras; amenaza de filtrar una grabación comprometedora en el despacho Arakawa de Millennium Tower. En Earth Angel, Nick Ogata diseña la trampa sabiendo que Aoki enviará a Tendo a registrar el edificio. Adachi aloja al grupo en New Serena con Makoto Date.
+      - Documentación: `docs/episodios/ep85_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep85.rb`.
+      - Test: `test/test_scenario_ep85.rb`.
+   2. **Episodio 86 (`86_la_cumbre_de_la_torre_milenio` - "La cumbre de la Torre Milenio"):**
+      - Jornada electoral: pantallas gigantes anuncian la victoria de Sota Kume en Kanagawa Distrito 2. Asalto a Millennium Tower con apoyo y streaming táctico de Nick Ogata. Limpieza de pisos custodiados por la Tokyo Omi y combate en el ático contra Yosuke Tendo, quien confiesa con cinismo haber ejecutado a Masumi Arakawa. Duelo de boxeo a muerte y noqueo definitivo de Tendo.
+      - Documentación: `docs/episodios/ep86_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep86.rb`.
+      - Test: `test/test_scenario_ep86.rb`.
+   3. **Episodio 87 (`87_la_trampa_del_camaleon` - "La trampa del camaleón"):**
+      - Salón del CLP: la celebración del triunfo electoral de Aoki es saboteada por una alerta de orden de arresto emitida por Nick Ogata, quien revela el verdadero nombre de Masato Arakawa. Aoki huye en pánico a la Torre Milenio y encuentra a Tendo junto a los cuerpos caídos de Kasuga. Al ordenar rematarlos a sangre fría, Tendo se desmaquilla revelando ser Mirror Face; Kasuga y sus amigos se alzan y emiten la confesión criminal en directo por televisión e internet.
+      - Documentación: `docs/episodios/ep87_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep87.rb`.
+      - Test: `test/test_scenario_ep87.rb`.
+   4. **Episodio 88 (`88_el_fin_del_advenedizo` - "El fin del advenedizo"):**
+      - Neutralización de la escolta personal del gobernador. Duelo cuerpo a cuerpo y choque ideológico definitivo entre Kasuga y Aoki. Tras ser derrotado, la policía irrumpe; Aoki toma a un oficial de rehén con un cristal roto, hiere al agente en el ascensor y huye hacia las calles de Kamurocho tras confesar su resentimiento hacia Kasuga por recordarle a su padre.
+      - Documentación: `docs/episodios/ep88_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep88.rb`.
+      - Test: `test/test_scenario_ep88.rb`.
+   5. **Episodio 89 (`89_las_taquillas_del_destino` - "Las taquillas del destino"):**
+      - Aoki deambula moribundo viendo su video en bucle en el jumbotron de Kamurocho. Llega a la taquilla de monedas donde fue abandonado en 1977 e intenta suicidarse con su revólver. Kasuga llega a tiempo y entre lágrimas de dolor fraternal le ruega que elija vivir y empezar de nuevo, recordándole el amor de su padre. Aoki recapacita, guarda el arma y llama a su secretaria para entregarse. En ese instante, un enloquecido Sota Kume aparece y lo apuñala fatalmente por traicionar a Bleach Japan. Kasuga sostiene el cuerpo de su hermano en brazos.
+      - Documentación: `docs/episodios/ep89_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep89.rb`.
+      - Test: `test/test_scenario_ep89.rb`.
+   6. **Episodio 90 (`90_hacia_la_cima` - "Hacia la cima"):**
+      - Días posteriores: Adachi entrega el pendrive incautado en la torre con la lista de sobornos de 300 millones de yenes del Plan 3K, arrestando al corrupto comisionado Horinouchi. En el funeral conjunto de Masumi y Masato Arakawa, Nanba comunica la cadena perpetua de Sawashiro y Kasuga descarta una prueba de ADN. Daigo Dojima y Masaru Watase le ofrecen presidir la compañía de seguridad para exyakuzas en Osaka; Ichiban declina para regresar a Ijincho, donde su familia elegida de marginados lo recibe como el Dragón y Héroe que ascendió desde el fondo absoluto hasta la cima del alma humana. Emisión de `story.chapter_boundary` con estatus `:grand_finale`.
+      - Documentación: `docs/episodios/ep90_*.md`.
+      - Escenario: `lib/ichiban_lab/scenarios/ep90.rb`.
+      - Test: `test/test_scenario_ep90.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 15:**
+  - `test/test_chapter15_continuity.rb`: Valida el traspaso estricto de estado desde el final del Ep84 hasta la apoteosis del Ep90, comprobando el farol electoral, el asalto a la torre, el combate contra Tendo, el giro de Mirror Face, la batalla contra Aoki, el desenlace en las taquillas y el epílogo definitivo.
+  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 90 episodios (`01` a `90`).
+  - Adaptación del dashboard Sinatra para visualizar y simular los Capítulos 1 al 15 con temática violeta luminosa (`#e040fb`).
+  - Suite de pruebas ejecutada al 100% con éxito: **337 tests, 2127 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -704,9 +745,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la prueba de Kiryu o la traición de Tendo) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros trágicos (la muerte de Aoki a manos de Kume) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso cívico de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la batalla del Bar District, la revelación del disparo de Tendo y la frontera al Capítulo 15 | Prohíbe inventar mecánicas o adelantar hechos del Capítulo 15 en adelante. |
+| **Límite Canónico** | Fin cerrado en el epílogo del Capítulo 15 (Gran Final de la campaña) | Cubre exhaustivamente los 15 capítulos de *Yakuza: Like a Dragon* sin extenderse a secuelas (*Infinite Wealth*). |
 
 ---
 
@@ -722,10 +763,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..84)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..90)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 420 documentos (5 por cada uno de los 84 episodios)
+│   └── episodios/                           # 450 documentos (5 por cada uno de los 90 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -809,7 +850,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep81_aar.md ... ep81_mecanicas.md
 │       ├── ep82_aar.md ... ep82_mecanicas.md
 │       ├── ep83_aar.md ... ep83_mecanicas.md
-│       └── ep84_aar.md ... ep84_mecanicas.md
+│       ├── ep84_aar.md ... ep84_mecanicas.md
+│       ├── ep85_aar.md ... ep85_mecanicas.md
+│       ├── ep86_aar.md ... ep86_mecanicas.md
+│       ├── ep87_aar.md ... ep87_mecanicas.md
+│       ├── ep88_aar.md ... ep88_mecanicas.md
+│       ├── ep89_aar.md ... ep89_mecanicas.md
+│       └── ep90_aar.md ... ep90_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -817,7 +864,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 84 episodios (Caps 1 al 14)
+│       ├── manifest.rb                      # Catálogo inmutable de los 90 episodios (Caps 1 al 15)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -834,7 +881,8 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep61.rb ... ep66.rb          # Cap 11: 61_el_ascenso_de_aoki hasta 66_el_desengano_y_la_resolucion
 │           ├── ep67.rb ... ep72.rb          # Cap 12: 67_el_despacho_del_gobernador hasta 72_la_noche_en_hamakita_y_el_golpe
 │           ├── ep73.rb ... ep78.rb          # Cap 13: 73_el_dolor_en_el_muelle hasta 78_los_bebes_de_las_taquillas
-│           └── ep79.rb ... ep84.rb          # Cap 14: 79_la_sangre_del_patriarca hasta 84_fuego_cruzado_en_el_distrito_de_bares
+│           ├── ep79.rb ... ep84.rb          # Cap 14: 79_la_sangre_del_patriarca hasta 84_fuego_cruzado_en_el_distrito_de_bares
+│           └── ep85.rb ... ep90.rb          # Cap 15: 85_el_farol_en_kamurocho hasta 90_hacia_la_cima
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -863,6 +911,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_scenario_ep67.rb ... ep72.rb    # Tests unitarios Cap 12
     ├── test_scenario_ep73.rb ... ep78.rb    # Tests unitarios Cap 13
     ├── test_scenario_ep79.rb ... ep84.rb    # Tests unitarios Cap 14
+    ├── test_scenario_ep85.rb ... ep90.rb    # Tests unitarios Cap 15
     ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
     ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
     ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
@@ -876,12 +925,14 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
     ├── test_chapter11_continuity.rb         # Integración y continuidad Cap 11
     ├── test_chapter12_continuity.rb         # Integración y continuidad Cap 12
     ├── test_chapter13_continuity.rb         # Integración y continuidad Cap 13
-    └── test_chapter14_continuity.rb         # Integración y continuidad Cap 14
+    ├── test_chapter14_continuity.rb         # Integración y continuidad Cap 14
+    └── test_chapter15_continuity.rb         # Integración y continuidad Cap 15
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 y 14 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (316 tests, 1949 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los 15 Capítulos completos de *Yakuza: Like a Dragon* queda íntegramente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable a lo largo de 90 episodios, cobertura exhaustiva de tests automatizados (337 tests, 2127 aserciones) e interfaz interactiva tanto por CLI como web.
+
 

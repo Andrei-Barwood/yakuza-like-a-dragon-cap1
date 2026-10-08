@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 13
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 15
 
-Simulador narrativo y de continuidad para los trece primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket*, *The Odds*, *The End of the Yakuza* y *Coin Locker Baby*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los quince capítulos de la campaña completa (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards*, *Justice Bracket*, *The Odds*, *The End of the Yakuza*, *Coin Locker Baby*, *Passing the Torch* y *To the Pinnacle*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los setenta y ocho segmentos clave de los Capítulos 1 al 13:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los noventa segmentos clave de los Capítulos 1 al 15:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -110,6 +110,22 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 77. `77_el_apreton_de_manos_en_jinnai`: Aproximación a pie a la estación de Jinnai, apretón de manos público forzado a Kume y alerta roja por asalto a la sede del Seiryu.
 78. `78_los_bebes_de_las_taquillas`: Incursión en la sede del Seiryu, muerte de Hoshino a manos de Sawashiro, duelo a muerte y revelación del linaje de los bebés de las taquillas; transición al Capítulo 14.
 
+### Capítulo 14: Passing the Torch (2019)
+79. `79_la_sangre_del_patriarca`: Asimilación de la verdad biológica en Survive Bar, rechazo a la venganza ciega, ruptura del asedio Omi y marcha hacia Hakuryo.
+80. `80_la_aparicion_del_dragon`: Hakuryo desalojado, refriega callejera y detención de la furia de Kasuga por Kazuma Kiryu, quien lo cita en Geomijul.
+81. `81_el_hilo_de_la_conspiracion`: Extorsión de Aoki a Horinouchi inculpando a Sawashiro y pacto telefónico con Ishioda para purgar Ijincho.
+82. `82_la_prueba_del_dragon`: Juicio marcial contra Kiryu en el patio de Geomijul, visión del dragón plateado y conquista de la serenidad heroica.
+83. `83_el_asesino_del_espejo`: Cámaras de seguridad en Geomijul, Zhao identifica a Mirror Face, despedida de Kiryu y ubicación de Ishioda en Bar District.
+84. `84_fuego_cruzado_en_el_distrito_de_bares`: Asalto al escondite de Ishioda, trampa de Mirror Face desbaratada con preguntas de tránsito, combate dual, revelación de Tendo como autor del disparo a Arakawa y huida de la bomba; transición al Capítulo 15.
+
+### Capítulo 15: To the Pinnacle (2019)
+85. `85_el_farol_en_kamurocho`: Infiltración disfrazado ante la furgoneta de Aoki, apretón de manos público forzado, farol de la grabación en Millennium Tower y refugio en New Serena con Date.
+86. `86_la_cumbre_de_la_torre_milenio`: Asalto a Millennium Tower bajo noticias del triunfo electoral de Kume, streaming táctico de Nick Ogata y brutal combate de boxeo noqueando a Yosuke Tendo.
+87. `87_la_trampa_del_camaleon`: Interrupción del mitin del CLP con orden de arresto y desvelo de Masato Arakawa, huida de Aoki al ático, orden de ejecución ante el falso Tendo (Mirror Face) y transmisión viral en directo.
+88. `88_el_fin_del_advenedizo`: Doblegamiento de los escoltas armados de Aoki, choque ideológico y personal puño a puño entre hermanos, toma de rehén con cristal roto y escape de Aoki por el ascensor.
+89. `89_las_taquillas_del_destino`: Deambular de Aoki bajo sus propias pantallas de condena, suicidio frustrado ante las taquillas de 1977, llanto fraternal de Kasuga, rendición de Aoki y trágica puñalada de Sota Kume.
+90. `90_hacia_la_cima`: Adachi entrega el pendrive del soborno arrestando a Horinouchi, funeral conjunto de Masumi y Masato Arakawa, rechazo a la oferta de Osaka y regreso triunfal del héroe protegiendo a la gente de Ijincho. Gran Final de la campaña.
+
 ---
 
 ## Requisitos
@@ -208,7 +224,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (295 tests, 1797 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (337 tests, 2127 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -231,6 +247,8 @@ ruby -Ilib -Itest test/test_chapter10_continuity.rb
 ruby -Ilib -Itest test/test_chapter11_continuity.rb
 ruby -Ilib -Itest test/test_chapter12_continuity.rb
 ruby -Ilib -Itest test/test_chapter13_continuity.rb
+ruby -Ilib -Itest test/test_chapter14_continuity.rb
+ruby -Ilib -Itest test/test_chapter15_continuity.rb
 ```
 
 ---
@@ -247,13 +265,13 @@ ruby -Ilib -Itest test/test_chapter13_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 78)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 90)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 390 documentos (ep01 a ep78: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 450 documentos (ep01 a ep90: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (295 tests, 1797 aserciones)
+└── test/                              # Suite de pruebas Minitest (337 tests, 2127 aserciones)
 ```

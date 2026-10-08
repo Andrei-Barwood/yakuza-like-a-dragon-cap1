@@ -697,6 +697,56 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep84",
         description: "Desenmascaramiento de Mirror Face con preguntas de tráfico, duelo contra Ishioda, confesión de que Tendo mató a Arakawa y bomba remota.",
         chapter: 14
+      ),
+
+      # --- CAPÍTULO 15: TO THE PINNACLE (成り上がりの果て) ---
+      EpisodeInfo.new(
+        id: "85",
+        slug: "85_el_farol_en_kamurocho",
+        title: "El farol en Kamurocho",
+        class_name: "IchibanLab::Scenarios::Ep85",
+        description: "Infiltración disfrazado ante la furgoneta de Aoki, apretón de manos forzado con farol de la grabación y refugio en New Serena con Date.",
+        chapter: 15
+      ),
+      EpisodeInfo.new(
+        id: "86",
+        slug: "86_la_cumbre_de_la_torre_milenio",
+        title: "La cumbre de la Torre Milenio",
+        class_name: "IchibanLab::Scenarios::Ep86",
+        description: "Asalto a Millennium Tower bajo noticias electorales, apoyo en directo de Nick Ogata y brutal combate de boxeo noqueando a Yosuke Tendo.",
+        chapter: 15
+      ),
+      EpisodeInfo.new(
+        id: "87",
+        slug: "87_la_trampa_del_camaleon",
+        title: "La trampa del camaleón",
+        class_name: "IchibanLab::Scenarios::Ep87",
+        description: "Interrupción del festejo del CLP, huida de Aoki al ático, orden de ejecución ante el falso Tendo (Mirror Face) y emisión viral en directo.",
+        chapter: 15
+      ),
+      EpisodeInfo.new(
+        id: "88",
+        slug: "88_el_fin_del_advenedizo",
+        title: "El fin del advenedizo",
+        class_name: "IchibanLab::Scenarios::Ep88",
+        description: "Duelo ideológico y puño a puño entre Kasuga y Aoki tras vencer a sus escoltas, toma de rehén con cristal roto y escape por el ascensor.",
+        chapter: 15
+      ),
+      EpisodeInfo.new(
+        id: "89",
+        slug: "89_las_taquillas_del_destino",
+        title: "Las taquillas del destino",
+        class_name: "IchibanLab::Scenarios::Ep89",
+        description: "Suicidio frustrado ante las taquillas de 1977, llanto fraternal de Kasuga, rendición de Aoki y trágico apuñalamiento a manos de Sota Kume.",
+        chapter: 15
+      ),
+      EpisodeInfo.new(
+        id: "90",
+        slug: "90_hacia_la_cima",
+        title: "Hacia la cima",
+        class_name: "IchibanLab::Scenarios::Ep90",
+        description: "Arresto de Horinouchi con el pendrive del Plan 3K, funeral conjunto, rechazo a la oferta de Osaka y regreso triunfal del héroe a Ijincho.",
+        chapter: 15
       )
     ].freeze
 
