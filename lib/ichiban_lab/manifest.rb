@@ -452,6 +452,55 @@ module IchibanLab
         class_name: "IchibanLab::Scenarios::Ep54",
         description: "Batalla campal en la imprenta en llamas contra Ishioda y Nanba, captura de Ogasawara y confirmación de que Shoichi sigue vivo.",
         chapter: 9
+      ),
+      # --- CAPÍTULO 10: JUSTICE BRACKET ---
+      EpisodeInfo.new(
+        id: "55",
+        slug: "55_el_interrogatorio_de_ogasawara",
+        title: "El interrogatorio de Ogasawara",
+        class_name: "IchibanLab::Scenarios::Ep55",
+        description: "Confesiones de Ogasawara en el campamento, alerta del golpe de Mabuchi y despedida temporal de Nanba.",
+        chapter: 10
+      ),
+      EpisodeInfo.new(
+        id: "56",
+        slug: "56_el_rescate_de_zhao",
+        title: "El rescate de Zhao",
+        class_name: "IchibanLab::Scenarios::Ep56",
+        description: "Incorporación de Joon-gi Han como refuerzo, emboscada de Zheng en Restaurant Row e infiltración en Qing Jin.",
+        chapter: 10
+      ),
+      EpisodeInfo.new(
+        id: "57",
+        slug: "57_el_dragon_y_el_tigre",
+        title: "El dragón y el tigre",
+        class_name: "IchibanLab::Scenarios::Ep57",
+        description: "Combate contra el tigre de Qing Jin, encuentro con Yosuke Tendo e Ishioda, y derrota definitiva de Akira Mabuchi.",
+        chapter: 10
+      ),
+      EpisodeInfo.new(
+        id: "58",
+        slug: "58_el_retorno_de_nanba",
+        title: "El retorno de Nanba",
+        class_name: "IchibanLab::Scenarios::Ep58",
+        description: "Duelo a muerte contra Reiji Ishioda, regreso providencial de Nanba, victoria y apretón de manos de reconciliación.",
+        chapter: 10
+      ),
+      EpisodeInfo.new(
+        id: "59",
+        slug: "59_reencuentro_con_mitsuo",
+        title: "Reencuentro con Mitsuo",
+        class_name: "IchibanLab::Scenarios::Ep59",
+        description: "Liberación de Zhao, encuentro privado con Mitsuo Yasuda, planes de Arakawa y sucesión de mando en Liumang hacia Seonhee.",
+        chapter: 10
+      ),
+      EpisodeInfo.new(
+        id: "60",
+        slug: "60_la_promesa_del_pato_de_pekin",
+        title: "La promesa del pato de Pekín",
+        class_name: "IchibanLab::Scenarios::Ep60",
+        description: "Pacto de Arakawa con los indigentes, almuerzo en Heian Tower con Hoshino, la muerte de Toshio y el billete defectuoso de 1984.",
+        chapter: 10
       )
     ].freeze
 

@@ -1,9 +1,9 @@
-[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 9]
+[ESTADO DEL PROYECTO: LABORATORIO NARRATIVO YAKUZA: LIKE A DRAGON - CAPÍTULOS 1 AL 10]
 
 Última actualización: 2026-10-07
-Episodio actual: 54 (54_el_sacrificio_de_geomijul)
-Fase completada: Capítulos 1 al 9 completamente integrados y verificados (211 tests pasando al 100%, 1225 aserciones)
-Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 54 episodios.
+Episodio actual: 60 (60_la_promesa_del_pato_de_pekin)
+Fase completada: Capítulos 1 al 10 completamente integrados y verificados (232 tests pasando al 100%, 1357 aserciones)
+Próximo paso: Mantener sincronización del repositorio GitHub y documentación de los 60 episodios.
 
 Catálogo de episodios:
 -- CAPÍTULO 1: LIGHT AND SHADOW --
@@ -78,6 +78,14 @@ Catálogo de episodios:
 - 53_el_voto_de_eomeoni: Completado (Pasaje secreto en Eomeoni's Vow con Joon-gi Han, reverencia de Seonhee y orden de quemar la imprenta)
 - 54_el_sacrificio_de_geomijul: Completado (Combate campal en la imprenta en llamas contra Ishioda y Nanba, captura de Ogasawara y confirmación de Shoichi)
 
+-- CAPÍTULO 10: JUSTICE BRACKET --
+- 55_el_interrogatorio_de_ogasawara: Completado (Interrogatorio en el campamento, alerta del golpe de Mabuchi y despedida temporal de Nanba)
+- 56_el_rescate_de_zhao: Completado (Joon-gi Han se suma al grupo, derrota de Zheng en Restaurant Row e infiltración a Qing Jin)
+- 57_el_dragon_y_el_tigre: Completado (Combate contra el tigre, encuentro con Yosuke Tendo e Ishioda, y derrocamiento de Akira Mabuchi)
+- 58_el_retorno_de_nanba: Completado (Revancha contra Ishioda, retorno providencial de Nanba, reconciliación fraternal y noticias de Shoichi)
+- 59_reencuentro_con_mitsuo: Completado (Liberación de Zhao, encuentro a solas con Mitsuo Yasuda, advertencias sobre Arakawa y sucesión hacia Seonhee)
+- 60_la_promesa_del_pato_de_pekin: Completado (Protocolo de rescate del Jefe, almuerzo en Heian Tower con Hoshino, muerte de Toshio en 1977 y mensaje del billete de 1984)
+
 Archivos clave:
 - AGENTS.md
 - README.md
@@ -87,9 +95,9 @@ Archivos clave:
 - bin/servidor
 - lib/ichiban_lab.rb
 - lib/ichiban_lab/web_app.rb
-- lib/ichiban_lab/scenarios/ep01.rb a ep54.rb
-- docs/episodios/ep01_* a ep54_* (270 documentos)
-- test/test_scenario_ep01.rb a ep54.rb
+- lib/ichiban_lab/scenarios/ep01.rb a ep60.rb
+- docs/episodios/ep01_* a ep60_* (300 documentos)
+- test/test_scenario_ep01.rb a ep60.rb
 - test/test_episode_continuity.rb
 - test/test_chapter2_continuity.rb
 - test/test_chapter3_continuity.rb
@@ -99,3 +107,4 @@ Archivos clave:
 - test/test_chapter7_continuity.rb
 - test/test_chapter8_continuity.rb
 - test/test_chapter9_continuity.rb
+- test/test_chapter10_continuity.rb

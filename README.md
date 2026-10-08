@@ -1,10 +1,10 @@
-# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 9
+# Laboratorio Narrativo: *Yakuza: Like a Dragon* — Capítulos 1 al 10
 
-Simulador narrativo y de continuidad para los nueve primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black* y *House of Cards*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
+Simulador narrativo y de continuidad para los diez primeros capítulos (*Light and Shadow*, *Bloody Reunion*, *The Town at Rock Bottom*, *The Dragon of Yokohama*, *The Liumang's Web*, *Ignition*, *The Spider's Web*, *Bleached Black*, *House of Cards* y *Justice Bracket*) de *Yakuza: Like a Dragon*, modelado en Ruby con verificación automatizada de estados, decisiones y eventos.
 
 ## Propósito
 
-Este proyecto implementa una arquitectura pedagógica y verificable para simular los cincuenta y cuatro segmentos clave de los Capítulos 1 al 9:
+Este proyecto implementa una arquitectura pedagógica y verificable para simular los sesenta segmentos clave de los Capítulos 1 al 10:
 
 ### Capítulo 1: Light and Shadow (1977 - 2001)
 1. `01_origen`: Prólogo de Masumi niño y el origen de la deuda con Toshio (1977).
@@ -50,7 +50,7 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 31. `31_el_despertar_encadenado`: Despertar maniatados con cadenas en el sótano secreto de Mabuchi, interrogatorio forzado grabado y confesión del homicidio de Nonomiya.
 32. `32_la_fuga_subterranea`: Intervención del salvador misterioso, derrota de carceleros, liberación del grupo y recuperación del equipamiento en zona sin señal telefónica.
 33. `33_el_duelo_de_la_excavadora`: Ascenso por la ruta subterránea de contrabando hacia B1F, batalla de jefe contra Yan al mando de la excavadora pesada y salida a la superficie.
-34. `34_la_chispa_del_conflicto`: Contacto telefónico con el Patriarca Hoshino, aviso de asesinatos callejeros en Isezaki Road, ofensiva descontrolada de Takabe y deducción de la trampa.
+34: `34_la_chispa_del_conflicto`: Contacto telefónico con el Patriarca Hoshino, aviso de asesinatos callejeros en Isezaki Road, ofensiva descontrolada de Takabe y deducción de la trampa.
 35. `35_camino_a_restaurant_row`: Travesía por el campo de batalla urbano en Restaurant Row, disparo intimidatorio en la entrada de Qing Jin y combate a puño limpio con Takabe.
 36. `36_el_juicio_de_tianyou_zhao`: Intervención de Tianyou Zhao con pistola en mano, confrontación con el video editado por Mabuchi, tregua armada y ultimátum para conseguir pruebas en Geomijul.
 
@@ -77,6 +77,14 @@ Este proyecto implementa una arquitectura pedagógica y verificable para simular
 52. `52_la_bola_de_demolicion`: Asalto de Reiji Ishioda a los mandos de la grúa demoledora, batalla mecánica de jefe y brecha perimetral.
 53. `53_el_voto_de_eomeoni`: Contacto con Joon-gi Han, pasadizo secreto en Eomeoni's Vow, reverencia de Seonhee y orden de tierra quemada de Ogikubo.
 54. `54_el_sacrificio_de_geomijul`: Batalla campal en la imprenta en llamas contra Ishioda y Nanba, captura de Ogasawara, supervivencia confirmada de Shoichi y transición al Capítulo 10.
+
+### Capítulo 10: Justice Bracket (2019)
+55. `55_el_interrogatorio_de_ogasawara`: Interrogatorio en el campamento, alerta de golpe de Estado de Mabuchi y despedida temporal de Nanba tras confirmar la seguridad de Shoichi.
+56. `56_el_rescate_de_zhao`: Incorporación de Joon-gi Han como refuerzo, enfrentamiento en Restaurant Row con Zheng (recompensa de ¥100M) e infiltración a Qing Jin.
+57. `57_el_dragon_y_el_tigre`: Batalla contra los tigres en el cuartel de Qing Jin, encuentro con Yosuke Tendo e Ishioda, y caída definitiva de Akira Mabuchi.
+58. `58_el_retorno_de_nanba`: Duelo a muerte contra Reiji Ishioda, heroico retorno de Nanba al combate, apretón de manos de reconciliación y reporte de recuperación de Shoichi.
+59. `59_reencuentro_con_mitsuo`: Liberación de Zhao, reencuentro privado con Mitsuo Yasuda (información sobre la familia Arakawa) y traspaso de la jefatura de los Liumang de Zhao a Seonhee.
+60. `60_la_promesa_del_pato_de_pekin`: El Jefe del campamento confiesa el protocolo secreto de rescate médico; almuerzo de pato de Pekín con Hoshino en Heian Tower; revelación del asesinato de Toshio Arakawa en 1977 y el mensaje del billete defectuoso de 1984 («Ni la justicia ni la piedad deben desbalancear la balanza»); transición al Capítulo 11.
 
 ---
 
@@ -107,7 +115,7 @@ ruby -Ilib bin/servidor
 Por defecto, Sinatra se iniciará en el puerto **`4567`**:
 ```text
 ======================================================================
-  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 7)
+  LABORATORIO NARRATIVO — YAKUZA: LIKE A DRAGON (CAPÍTULOS 1 AL 10)
   Servidor Web Sinatra activo en: http://localhost:4567
 ======================================================================
 Presione Ctrl+C para detener el servidor.
@@ -125,14 +133,14 @@ PORT=8080 bin/servidor
    ```text
    http://localhost:4567
    ```
-3. Verás el **Dashboard de los Capítulos 1 al 7** con la estética urbana inspirada en Kamurocho y Yokohama.
+3. Verás el **Dashboard de los Capítulos 1 al 10** con la estética urbana inspirada en Kamurocho y Yokohama.
 
 ### 3. Funcionalidades del Dashboard
 
-- **Catálogo lateral por capítulos:** Selecciona cualquiera de los cuarenta y dos episodios (`01` a `42`) para ver su sinopsis y contexto.
+- **Catálogo lateral por capítulos:** Selecciona cualquiera de los sesenta episodios (`01` a `60`) para ver su sinopsis y contexto.
 - **Botón `▶ Ejecutar Episodio`:** Ejecuta el escenario seleccionado de forma determinista y despliega:
   - **Estado Final del Mundo:** Ubicación exacta, periodo temporal, saldo en yenes (¥), inventario de ítems y banderas booleanas activas.
-  - **Línea de Tiempo de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
+  - **Línea de Timeline de Eventos:** Cronología secuencial de todos los eventos emitidos con actor, objetivo, escena y datos del payload.
 - **Documentación Técnica Integrada:** Accede directamente a las 5 secciones de documentación de cada episodio (`Briefing`, `Escenas`, `Mecánicas`, `Lab` y `AAR`) renderizadas con formato enriquecido.
 
 ---
@@ -142,7 +150,7 @@ PORT=8080 bin/servidor
 El runner de línea de comandos se encuentra en `bin/episodio`:
 
 ```bash
-# Ejecutar cualquier episodio por su identificador (01 a 42)
+# Ejecutar cualquier episodio por su identificador (01 a 60)
 ruby -Ilib bin/episodio 01
 ruby -Ilib bin/episodio 08
 ruby -Ilib bin/episodio 14
@@ -150,7 +158,10 @@ ruby -Ilib bin/episodio 19
 ruby -Ilib bin/episodio 25
 ruby -Ilib bin/episodio 31
 ruby -Ilib bin/episodio 37
-ruby -Ilib bin/episodio 42
+ruby -Ilib bin/episodio 43
+ruby -Ilib bin/episodio 49
+ruby -Ilib bin/episodio 55
+ruby -Ilib bin/episodio 60
 
 # Ver ayuda y catálogo completo
 ruby -Ilib bin/episodio --help
@@ -171,7 +182,7 @@ ruby -Ilib bin/episodio --help
 Para ejecutar la suite automatizada de pruebas unitarias, de integración y de servidor web:
 
 ```bash
-# Ejecutar todas las pruebas (211 tests, 1225 aserciones, 0 fallos)
+# Ejecutar todas las pruebas (232 tests, 1357 aserciones, 0 fallos)
 rake test
 
 # O ejecutar archivos de prueba individuales:
@@ -190,6 +201,7 @@ ruby -Ilib -Itest test/test_chapter6_continuity.rb
 ruby -Ilib -Itest test/test_chapter7_continuity.rb
 ruby -Ilib -Itest test/test_chapter8_continuity.rb
 ruby -Ilib -Itest test/test_chapter9_continuity.rb
+ruby -Ilib -Itest test/test_chapter10_continuity.rb
 ```
 
 ---
@@ -206,13 +218,13 @@ ruby -Ilib -Itest test/test_chapter9_continuity.rb
 ├── config.ru                          # Entrypoint Rack para despliegue
 ├── Procfile                           # Definición de procesos cloud
 ├── bin/
-│   ├── episodio                       # Runner CLI ejecutable (01 a 54)
+│   ├── episodio                       # Runner CLI ejecutable (01 a 60)
 │   └── servidor                       # Servidor web Sinatra ejecutable (puerto 4567)
 ├── docs/
-│   └── episodios/                     # 270 documentos (ep01 a ep54: briefing, escenas, mecánicas, lab, aar)
+│   └── episodios/                     # 300 documentos (ep01 a ep60: briefing, escenas, mecánicas, lab, aar)
 ├── lib/
 │   ├── ichiban_lab.rb                 # Punto de entrada de la gema / librería
 │   └── ichiban_lab/                   # Dominio (Character, WorldState, EventLog, Scene, Scenarios, WebApp)
 ├── prompts/                           # Plantillas y control de estado (ESTADO.txt)
-└── test/                              # Suite de pruebas Minitest (211 tests, 1225 aserciones)
+└── test/                              # Suite de pruebas Minitest (232 tests, 1357 aserciones)
 ```

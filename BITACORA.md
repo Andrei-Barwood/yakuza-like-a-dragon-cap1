@@ -492,6 +492,47 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 
 ---
 
+### Fase 17: Capítulo 10 — Justice Bracket (Episodios 55 a 60)
+- **Objetivo:** Modelar los seis episodios canónicos del Capítulo 10 (*Justice Bracket* / 恩義の契り): el interrogatorio de Hajime Ogasawara en el campamento, la incorporación de Joon-gi Han, el rescate de Tianyou Zhao en Restaurant Row, la batalla en el cuartel general de Qing Jin contra tigres y la caída de Akira Mabuchi, el duelo mortal contra Reiji Ishioda con el retorno reconciliador de Nanba, el reencuentro privado con Mitsuo Yasuda y traspaso del mando Liumang a Seonhee, la revelación del Jefe sobre el rescate médico de Ichiban, el almuerzo de pato de Pekín con Ryuhei Hoshino en Heian Tower, la verdad sobre el asesinato de Toshio Arakawa en 1977 y el significado del billete defectuoso de 1984.
+- **Episodios implementados:**
+  1. **Episodio 55 (`55_el_interrogatorio_de_ogasawara` - "El interrogatorio de Ogasawara"):**
+     - Ogasawara es interrogado por Kasuga y Nanba en la tienda del campamento; confiesa que Mabuchi planea un golpe de Estado dentro de los Yokohama Liumang derrocando a Zhao. Nanba comprueba que su hermano Shoichi está vivo y a salvo bajo tutela médica de Geomijul y decide ausentarse temporalmente para cuidarlo.
+     - Documentación: `docs/episodios/ep55_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep55.rb`.
+     - Test: `test/test_scenario_ep55.rb`.
+  2. **Episodio 56 (`56_el_rescate_de_zhao` - "El rescate de Zhao"):**
+     - Joon-gi Han se incorpora como miembro activo del equipo para auxiliar a Zhao por órdenes de Seonhee. En Restaurant Row son emboscados por Zheng y sicarios que reclaman la recompensa de ¥100 millones puesta por Mabuchi. Tras vencerlos, logran forzar la entrada al cuartel Qing Jin.
+     - Documentación: `docs/episodios/ep56_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep56.rb`.
+     - Test: `test/test_scenario_ep56.rb`.
+  3. **Episodio 57 (`57_el_dragon_y_el_tigre` - "El dragón y el tigre"):**
+     - En el patio interior de Qing Jin, Mabuchi libera a dos tigres de combate para devorar al grupo. Kasuga y su equipo vencen a las fieras. Aparecen Yosuke Tendo y Reiji Ishioda, quienes desprecian el fracaso de Mabuchi y lo abandonan. Kasuga derrota definitivamente a Akira Mabuchi cobrando justicia por Nonomiya.
+     - Documentación: `docs/episodios/ep57_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep57.rb`.
+     - Test: `test/test_scenario_ep57.rb`.
+  4. **Episodio 58 (`58_el_retorno_de_nanba` - "El retorno de Nanba"):**
+     - Ishioda regresa con armamento pesado y refuerzos de la Omi para eliminar a los testigos. En el momento más crítico del combate, Nanba regresa empuñando su paraguas y fuego, cambiando las tornas de la batalla. Tras derrotar a Ishioda, Kasuga y Nanba sellan su reconciliación con un apretón de manos y Nanba confirma la recuperación de Shoichi.
+     - Documentación: `docs/episodios/ep58_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep58.rb`.
+     - Test: `test/test_scenario_ep58.rb`.
+  5. **Episodio 59 (`59_reencuentro_con_mitsuo` - "Reencuentro con Mitsuo"):**
+     - Zhao es liberado de las celdas y agradece a Kasuga; Kasuga se reúne en privado con Mitsuo Yasuda en Survive Bar, quien le relata la situación interna de la Familia Arakawa y la influencia de Aoki. Zhao formaliza la cesión del liderazgo de los Yokohama Liumang a Seonhee para unificar el frente contra la Omi.
+     - Documentación: `docs/episodios/ep59_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep59.rb`.
+     - Test: `test/test_scenario_ep59.rb`.
+  6. **Episodio 60 (`60_la_promesa_del_pato_de_pekin` - "La promesa del pato de Pekín"):**
+     - El Jefe del campamento de indigentes confiesa que la supervivencia de Kasuga en el vertedero no fue un milagro al azar, sino un protocolo médico encubierto ordenado por una red secreta. Hoshino invita a Kasuga a un almuerzo de pato de Pekín en Heian Tower; allí revela la verdad sobre el asesinato de Toshio Arakawa en 1977 y el billete defectuoso de 1984 («Ni la justicia ni la piedad deben desbalancear la balanza»). Emisión de frontera `story.chapter_boundary` hacia el Capítulo 11.
+     - Documentación: `docs/episodios/ep60_*.md`.
+     - Escenario: `lib/ichiban_lab/scenarios/ep60.rb`.
+     - Test: `test/test_scenario_ep60.rb`.
+- **Integración de Continuidad y Pruebas del Capítulo 10:**
+  - `test/test_chapter10_continuity.rb`: Valida el encadenamiento integral desde el final del Ep54 hasta el cierre del Ep60, verificando la partida y regreso de Nanba, incorporación de Joon-gi Han, combates contra tigres, Mabuchi e Ishioda, revelaciones de Mitsuo, confesión del Jefe y almuerzo con Hoshino.
+  - Catálogo `IchibanLab::Manifest::EPISODES` y runner `bin/episodio` ampliados a los 60 episodios (`01` a `60`).
+  - Adaptación del dashboard Sinatra para visualizar y ejecutar los Capítulos 1 al 10 con insignias temáticas.
+  - Suite de pruebas ejecutada al 100% con éxito: **232 tests, 1357 aserciones, 0 fallos, 0 errores**.
+
+---
+
 ## 3. Matriz de Decisiones de Arquitectura
 
 | Aspecto | Decisión Adoptada | Justificación |
@@ -499,9 +540,9 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 | **Motor de Dominio** | Modelado semántico propio (`IchibanLab`) sin copiar metáforas ajenas | Respetar fielmente la narrativa urbana y dramática de *Yakuza: Like a Dragon*. |
 | **Determinismo** | Secuencias predecibles por defecto con semilla opcional (`--seed`) | Garantiza tests 100% reproducibles sin fragilidad por números aleatorios. |
 | **Precondiciones** | Cláusulas explícitas mediante `Scene#check_preconditions!` y `PreconditionError` | Evita fallos silenciosos, defaults enmascarados o transiciones ilegales entre escenas o episodios. |
-| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la quema de Geomijul o la captura de Ogasawara) son hechos narrativos, no fallos técnicos. |
+| **Códigos CLI** | Códigos técnicos `0` (éxito), `2` (fallo de simulación) y `3` (error de uso/id inválido) | Los giros dramáticos (la caída de Mabuchi o la muerte de Toshio) son hechos narrativos, no fallos técnicos. |
 | **Economía Narrativa** | Saldos monetarios e inventarios modelados con impacto directo en las transiciones | Permite verificar cuantitativamente las decisiones de supervivencia y progreso social de Ichiban. |
-| **Límite Canónico** | Fin cerrado en la captura de Ogasawara y el incendio de Geomijul (Capítulo 9) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 10 en adelante. |
+| **Límite Canónico** | Fin cerrado en la comida de Heian Tower y la promesa de pato de Pekín (Capítulo 10) | Prohíbe inventar mecánicas o adelantar revelaciones del Capítulo 11 en adelante. |
 
 ---
 
@@ -517,10 +558,10 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 ├── config.ru                                # Entrypoint Rack para servidor y despliegue
 ├── Procfile                                 # Declaración de proceso web para despliegue
 ├── bin/
-│   ├── episodio                             # Runner CLI ejecutable (IDs 01..54)
+│   ├── episodio                             # Runner CLI ejecutable (IDs 01..60)
 │   └── servidor                             # Lanzador del servidor web Sinatra en puerto 4567
 ├── docs/
-│   └── episodios/                           # 270 documentos (5 por cada uno de los 54 episodios)
+│   └── episodios/                           # 300 documentos (5 por cada uno de los 60 episodios)
 │       ├── ep01_aar.md ... ep01_mecanicas.md
 │       ├── ep02_aar.md ... ep02_mecanicas.md
 │       ├── ep03_aar.md ... ep03_mecanicas.md
@@ -574,7 +615,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── ep51_aar.md ... ep51_mecanicas.md
 │       ├── ep52_aar.md ... ep52_mecanicas.md
 │       ├── ep53_aar.md ... ep53_mecanicas.md
-│       └── ep54_aar.md ... ep54_mecanicas.md
+│       ├── ep54_aar.md ... ep54_mecanicas.md
+│       ├── ep55_aar.md ... ep55_mecanicas.md
+│       ├── ep56_aar.md ... ep56_mecanicas.md
+│       ├── ep57_aar.md ... ep57_mecanicas.md
+│       ├── ep58_aar.md ... ep58_mecanicas.md
+│       ├── ep59_aar.md ... ep59_mecanicas.md
+│       └── ep60_aar.md ... ep60_mecanicas.md
 ├── lib/
 │   ├── ichiban_lab.rb                       # Entrada de la gema y módulo de errores
 │   └── ichiban_lab/
@@ -582,7 +629,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │       ├── world_state.rb                   # Dominio: Estado de Mundo
 │       ├── event_log.rb                     # Dominio: Registro de Eventos
 │       ├── scene.rb                         # Dominio: Escenas y Precondiciones
-│       ├── manifest.rb                      # Catálogo inmutable de los 54 episodios (Caps 1 al 9)
+│       ├── manifest.rb                      # Catálogo inmutable de los 60 episodios (Caps 1 al 10)
 │       ├── base_scenario.rb                 # Plantilla de orquestación de escenarios
 │       ├── web_app.rb                       # Aplicación web Sinatra
 │       └── scenarios/
@@ -594,12 +641,13 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │           ├── ep31.rb ... ep36.rb          # Cap 6: 31_el_despertar_encadenado hasta 36_el_juicio_de_tianyou_zhao
 │           ├── ep37.rb ... ep42.rb          # Cap 7: 37_el_barrio_coreano hasta 42_la_cumbre_de_los_tres
 │           ├── ep43.rb ... ep48.rb          # Cap 8: 43_el_pacto_de_los_tres hasta 48_la_verdadera_identidad_de_aoki
-│           ├── ep49.rb                      # Cap 9: 49_el_perfil_de_aoki
-│           ├── ep50.rb                      # Cap 9: 50_el_contraataque_de_totsuka
-│           ├── ep51.rb                      # Cap 9: 51_la_marcha_de_los_mil
-│           ├── ep52.rb                      # Cap 9: 52_la_bola_de_demolicion
-│           ├── ep53.rb                      # Cap 9: 53_el_voto_de_eomeoni
-│           └── ep54.rb                      # Cap 9: 54_el_sacrificio_de_geomijul
+│           ├── ep49.rb ... ep54.rb          # Cap 9: 49_el_perfil_de_aoki hasta 54_el_sacrificio_de_geomijul
+│           ├── ep55.rb                      # Cap 10: 55_el_interrogatorio_de_ogasawara
+│           ├── ep56.rb                      # Cap 10: 56_el_rescate_de_zhao
+│           ├── ep57.rb                      # Cap 10: 57_el_dragon_y_el_tigre
+│           ├── ep58.rb                      # Cap 10: 58_el_retorno_de_nanba
+│           ├── ep59.rb                      # Cap 10: 59_reencuentro_con_mitsuo
+│           └── ep60.rb                      # Cap 10: 60_la_promesa_del_pato_de_pekin
 ├── views/                                   # Vistas ERB para interfaz web Sinatra
 │   ├── layout.erb
 │   ├── index.erb
@@ -623,6 +671,7 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │   ├── test_scenario_ep37.rb ... ep42.rb    # Tests unitarios Cap 7
 │   ├── test_scenario_ep43.rb ... ep48.rb    # Tests unitarios Cap 8
 │   ├── test_scenario_ep49.rb ... ep54.rb    # Tests unitarios Cap 9
+│   ├── test_scenario_ep55.rb ... ep60.rb    # Tests unitarios Cap 10
 │   ├── test_episode_continuity.rb           # Integración y continuidad Cap 1
 │   ├── test_chapter2_continuity.rb          # Integración y continuidad Cap 2
 │   ├── test_chapter3_continuity.rb          # Integración y continuidad Cap 3
@@ -631,11 +680,12 @@ La construcción se guió por el flujo estipulado en `GUIA_IMPLEMENTACION_YAKUZA
 │   ├── test_chapter6_continuity.rb          # Integración y continuidad Cap 6
 │   ├── test_chapter7_continuity.rb          # Integración y continuidad Cap 7
 │   ├── test_chapter8_continuity.rb          # Integración y continuidad Cap 8
-│   └── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
+│   ├── test_chapter9_continuity.rb          # Integración y continuidad Cap 9
+│   └── test_chapter10_continuity.rb         # Integración y continuidad Cap 10
 ```
 
 ---
 
 ## 5. Conclusión
 
-El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8 y 9 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (211 tests, 1225 aserciones) e interfaz interactiva tanto por CLI como web.
+El laboratorio narrativo de los Capítulos 1, 2, 3, 4, 5, 6, 7, 8, 9 y 10 de *Yakuza: Like a Dragon* queda completamente implementado, verificado y documentado. Cumple con todos los criterios de aceptación técnicos y narrativos definidos en los documentos rectores, garantizando determinismo, continuidad comprobable, cobertura exhaustiva de tests automatizados (232 tests, 1357 aserciones) e interfaz interactiva tanto por CLI como web.

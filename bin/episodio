@@ -54,6 +54,11 @@ def print_help
     puts "  #{ep.id} (#{ep.slug}): #{ep.title} — #{ep.description}"
   end
   puts ""
+  puts "CAPÍTULO 10: JUSTICE BRACKET (55 - 60)"
+  IchibanLab::Manifest.by_chapter(10).each do |ep|
+    puts "  #{ep.id} (#{ep.slug}): #{ep.title} — #{ep.description}"
+  end
+  puts ""
   puts "Códigos de salida:"
   puts "  0: Escenario ejecutado con éxito."
   puts "  2: Error de ejecución o episodio pendiente de implementación."
@@ -81,7 +86,7 @@ normalized = IchibanLab::Manifest.normalize_id(raw_id)
 ep_info = IchibanLab::Manifest.find(normalized)
 
 unless ep_info
-  warn "Error: Episodio '#{raw_id}' no reconocido en el catálogo (IDs válidos: 01 a 54)."
+  warn "Error: Episodio '#{raw_id}' no reconocido en el catálogo (IDs válidos: 01 a 60)."
   warn "Ejecute 'bin/episodio --help' para ver el listado de episodios."
   exit 3
 end
